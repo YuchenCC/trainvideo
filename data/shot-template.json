@@ -1,0 +1,32 @@
+{
+  "chapterId": "",
+  "shotId": "",
+  "durationSec": 5,
+  "corePoint": "",
+  "mainSubtitle": "",
+  "keywords": [],
+  "layout": {
+    "top": "章节标题",
+    "center": "关键图解或截图",
+    "bottom": "一句结论字幕",
+    "corner": "关键词标签"
+  },
+  "evidence": {
+    "screenshotRaw": "",
+    "screenshotProcessed": "",
+    "highlightTargets": []
+  },
+  "motion": {
+    "beat1": "问题出现",
+    "beat2": "机制拆解",
+    "beat3": "截图证明",
+    "beat4": "结论出现"
+  },
+  "acceptance": [
+    "只讲一个核心观点",
+    "主字幕不超过 18 字",
+    "关键词不超过 4 个",
+    "同屏最多突出 1 到 2 个重点",
+    "每 3 到 5 秒有一个明确视觉动作"
+  ]
+}

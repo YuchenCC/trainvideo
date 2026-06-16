@@ -1,0 +1,127 @@
+{
+  "project": "AI 原生 BizDevOps 版本火车系统",
+  "resolution": {
+    "width": 1920,
+    "height": 1080,
+    "orientation": "landscape"
+  },
+  "maxDurationSec": 300,
+  "narrativePattern": [
+    "问题出现",
+    "机制拆解",
+    "系统截图证明",
+    "关键词总结"
+  ],
+  "chapters": [
+    {
+      "id": "01",
+      "slug": "release-chaos",
+      "title": "多系统发布，为什么会失控？",
+      "visualStyle": "问题风暴",
+      "sceneConcept": "飞书、Excel、需求、风险、投产冲突碎片化拼贴。",
+      "colorRoles": ["risk-red", "warning-yellow"],
+      "keywords": ["需求散", "容量黑", "变更乱", "沟通丢"],
+      "conclusion": "多系统发布失控，本质是协同机制失控。"
+    },
+    {
+      "id": "02",
+      "slug": "bizdevops-train",
+      "title": "AI 原生 BizDevOps 版本火车系统",
+      "visualStyle": "从混乱到秩序",
+      "sceneConcept": "混乱线条变成版本火车轨道。",
+      "colorRoles": ["tech-blue", "governance-purple", "ai-orange"],
+      "keywords": ["发布协同", "治理容器", "AI 原生", "可审计"],
+      "conclusion": "版本火车，把发布协同装进治理容器。"
+    },
+    {
+      "id": "03",
+      "slug": "demand-pool",
+      "title": "全量需求统一收口",
+      "visualStyle": "结构化建模",
+      "sceneConcept": "零散需求进入标准化需求池。",
+      "colorRoles": ["tech-blue"],
+      "keywords": ["需求池", "标准化", "统一收口", "协同基础"],
+      "conclusion": "需求先标准化，协同才有基础。"
+    },
+    {
+      "id": "04",
+      "slug": "ai-demand-review",
+      "title": "AI 需求审查，源头把关质量",
+      "visualStyle": "像代码静态检查一样检查需求",
+      "sceneConcept": "一句话需求被 AI 扫描，输出评分和建议。",
+      "colorRoles": ["ai-orange", "done-green"],
+      "keywords": ["AI 审查", "评分", "建议", "源头质量"],
+      "conclusion": "把一句话需求，拦在评审之前。"
+    },
+    {
+      "id": "05",
+      "slug": "train-schedule",
+      "title": "版本火车班次，让发布有节奏",
+      "visualStyle": "列车运行图",
+      "sceneConcept": "班次、容量、节点、快照映射成发布运行图。",
+      "colorRoles": ["tech-blue", "governance-purple", "done-green"],
+      "keywords": ["班次", "容量", "节点", "快照"],
+      "conclusion": "版本火车不是排期表，是发布计划容器。"
+    },
+    {
+      "id": "06",
+      "slug": "ai-triage",
+      "title": "AI 智能纳版，从经验到可解释决策",
+      "visualStyle": "调度算法讲解",
+      "sceneConcept": "优先级、容量、依赖、紧急度进入 AI 纳版引擎。",
+      "colorRoles": ["ai-orange", "risk-red", "done-green"],
+      "keywords": ["优先级", "容量", "依赖", "建议上车"],
+      "conclusion": "纳版不是拍脑袋，是可解释决策。"
+    },
+    {
+      "id": "07",
+      "slug": "change-control",
+      "title": "分级变更管控，全流程可审计",
+      "visualStyle": "审批闸门",
+      "sceneConcept": "封板前后分界线，封板后进入审批闸门。",
+      "colorRoles": ["risk-red", "tech-blue", "done-green"],
+      "keywords": ["封板", "审批", "变更", "留痕"],
+      "conclusion": "封板，是版本治理的分水岭。"
+    },
+    {
+      "id": "08",
+      "slug": "feishu-agent",
+      "title": "飞书 AI 变更智能体，让沟通可治理",
+      "visualStyle": "群聊小剧场 + Agent 解析",
+      "sceneConcept": "飞书消息进入 AI 解析、影响分析和系统建档。",
+      "colorRoles": ["ai-orange", "tech-blue", "done-green"],
+      "keywords": ["自动解析", "影响分析", "系统建档", "变更台账"],
+      "conclusion": "群聊不是流程终点，AI 把沟通转成治理数据。"
+    },
+    {
+      "id": "09",
+      "slug": "dashboard-calendar",
+      "title": "仪表盘与日历视图，消除信息差",
+      "visualStyle": "多角色统一视角",
+      "sceneConcept": "业务、研发、测试、管理者的问题汇聚到统一仪表盘。",
+      "colorRoles": ["tech-blue", "done-green"],
+      "keywords": ["仪表盘", "日历", "统一视角", "信息差"],
+      "conclusion": "一套数据，统一所有角色的认知。"
+    },
+    {
+      "id": "10",
+      "slug": "ai-native-dev-process",
+      "title": "不只是产品用 AI，而是研发过程 AI 原生重构",
+      "visualStyle": "AI 原生研发流水线",
+      "sceneConcept": "PRD、设计、测试、代码、审查、自动化测试、资产沉淀构成闭环。",
+      "colorRoles": ["governance-purple", "ai-orange", "done-green"],
+      "keywords": ["PRD", "设计", "测试", "资产沉淀"],
+      "conclusion": "不是产品加 AI，而是研发过程 AI 原生化。"
+    },
+    {
+      "id": "11",
+      "slug": "ai-native-governance",
+      "title": "从经验协同，到 AI 原生治理",
+      "visualStyle": "金句收束",
+      "sceneConcept": "前面模块快速回闪，最终汇聚为版本火车驶向终点。",
+      "colorRoles": ["tech-blue", "governance-purple", "ai-orange"],
+      "keywords": ["经验协同", "AI 原生", "治理", "收束"],
+      "conclusion": "从经验协同，到 AI 原生治理。"
+    }
+  ]
+}

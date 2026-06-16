@@ -1,0 +1,17 @@
+{
+  "name": "trainvideo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.104 preview",
+    "lint": "npx --yes hyperframes@0.6.104 lint",
+    "validate": "npx --yes hyperframes@0.6.104 validate",
+    "inspect": "npx --yes hyperframes@0.6.104 inspect",
+    "check": "npm run lint && npm run validate && npm run inspect",
+    "snapshot": "npx --yes hyperframes@0.6.104 snapshot",
+    "render": "npx --yes hyperframes@0.6.104 render",
+    "render:draft": "npx --yes hyperframes@0.6.104 render --quality draft --output renders/draft.mp4",
+    "render:high": "npx --yes hyperframes@0.6.104 render --quality high --output renders/final.mp4",
+    "publish": "npx --yes hyperframes@0.6.104 publish"
+  }
+}

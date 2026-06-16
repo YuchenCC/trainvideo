@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# HyperFrames local state and preview logs
+.hyperframes/
+.hyperframes-*.log
+*.log
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Temporary files and caches
+tmp/
+.cache/
+coverage/
+dist/
+
+# Rendered video outputs
+renders/*
+!renders/.gitkeep
+*.mp4
+*.webm
+*.mov
+*.m4v
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
