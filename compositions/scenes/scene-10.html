@@ -1,0 +1,870 @@
+<template id="scene-10-template">
+  <div class="scene10" data-composition-id="scene-10" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --governance-purple: #6d28d9;
+        --governance-soft: #f5f3ff;
+        --ai-orange: #f97316;
+        --ai-orange-soft: #fff7ed;
+        --done-green: #22c55e;
+        --done-green-soft: #dcfce7;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene10 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(109, 40, 217, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+          radial-gradient(circle at 16% 22%, rgba(249, 115, 22, 0.09), transparent 30%),
+          radial-gradient(circle at 82% 72%, rgba(109, 40, 217, 0.09), transparent 32%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .scene-102,
+      .scene-103,
+      .scene-104 {
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(109, 40, 217, 0.24);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--governance-purple);
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1240px;
+        color: var(--text-primary);
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 1160px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .compare-grid {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: 30px;
+      }
+
+      .compare-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.16);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .product-ai {
+        filter: saturate(0.3);
+        opacity: 0.58;
+      }
+
+      .native-ai {
+        border: 2px solid rgba(109, 40, 217, 0.28);
+        background: rgba(255, 255, 255, 0.96);
+      }
+
+      .compare-card header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+        padding: 0 26px;
+        border-bottom: 1px solid rgba(100, 116, 139, 0.14);
+        font-size: 30px;
+        font-weight: 950;
+      }
+
+      .compare-card header span,
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 13px;
+        border-radius: 8px;
+        background: var(--tech-blue-soft);
+        color: var(--tech-blue);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .native-ai header span,
+      .tag.orange {
+        background: var(--ai-orange-soft);
+        color: var(--ai-orange);
+      }
+
+      .tag.green {
+        background: var(--done-green-soft);
+        color: #15803d;
+      }
+
+      .feature-list,
+      .native-list {
+        padding: 30px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .feature-item,
+      .native-node {
+        min-height: 92px;
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 16px;
+        align-items: center;
+        padding: 18px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: #f8fafc;
+      }
+
+      .feature-item b,
+      .native-node b {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 8px;
+        background: var(--tech-blue-soft);
+        color: var(--tech-blue);
+        font-size: 22px;
+        font-weight: 950;
+      }
+
+      .native-node b {
+        background: var(--governance-soft);
+        color: var(--governance-purple);
+      }
+
+      .feature-item strong,
+      .native-node strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 27px;
+        font-weight: 950;
+      }
+
+      .feature-item span,
+      .native-node span {
+        display: block;
+        margin-top: 6px;
+        color: var(--text-secondary);
+        font-size: 19px;
+        font-weight: 750;
+      }
+
+      .loop-board {
+        position: absolute;
+        right: 28px;
+        bottom: 28px;
+        width: 250px;
+        height: 250px;
+        border-radius: 999px;
+        border: 4px solid rgba(109, 40, 217, 0.35);
+        background: rgba(245, 243, 255, 0.82);
+      }
+
+      .loop-chip {
+        position: absolute;
+        min-width: 92px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: white;
+        border: 1px solid rgba(109, 40, 217, 0.22);
+        color: var(--governance-purple);
+        font-size: 21px;
+        font-weight: 950;
+        box-shadow: 0 12px 30px rgba(109, 40, 217, 0.12);
+      }
+
+      .loop-chip.process { left: 78px; top: 20px; }
+      .loop-chip.asset { left: 20px; bottom: 50px; }
+      .loop-chip.quality { right: 16px; bottom: 50px; color: #15803d; border-color: rgba(34, 197, 94, 0.28); }
+
+      .pipeline-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-rows: 112px 1fr 106px;
+        gap: 18px;
+      }
+
+      .agent-layer,
+      .context-layer {
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        border: 1px solid rgba(249, 115, 22, 0.24);
+        background: rgba(255, 247, 237, 0.9);
+        color: var(--ai-orange);
+        font-size: 32px;
+        font-weight: 950;
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.06);
+      }
+
+      .context-layer {
+        border-color: rgba(109, 40, 217, 0.22);
+        background: rgba(245, 243, 255, 0.92);
+        color: var(--governance-purple);
+        font-size: 30px;
+      }
+
+      .asset-flow {
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: rgba(255, 255, 255, 0.9);
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .asset-line {
+        position: absolute;
+        left: 110px;
+        right: 110px;
+        top: 50%;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--ai-orange), var(--governance-purple));
+        transform-origin: left center;
+      }
+
+      .asset-node {
+        position: absolute;
+        top: 50%;
+        width: 220px;
+        min-height: 128px;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        background: white;
+        text-align: center;
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+      }
+
+      .asset-node strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 31px;
+        font-weight: 950;
+      }
+
+      .asset-node span {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-secondary);
+        font-size: 19px;
+        line-height: 1.3;
+        font-weight: 750;
+      }
+
+      .asset-node.n1 { left: 13%; }
+      .asset-node.n2 { left: 38%; }
+      .asset-node.n3 { left: 63%; }
+      .asset-node.n4 { left: 87%; }
+
+      .map-arrow {
+        position: absolute;
+        top: calc(50% + 92px);
+        width: 170px;
+        height: 42px;
+        border-bottom: 4px solid var(--done-green);
+        border-left: 4px solid var(--done-green);
+        border-right: 4px solid var(--done-green);
+        border-radius: 0 0 8px 8px;
+        opacity: 0;
+      }
+
+      .map-arrow::after {
+        content: "";
+        position: absolute;
+        right: -8px;
+        top: -7px;
+        width: 14px;
+        height: 14px;
+        border-right: 4px solid var(--done-green);
+        border-top: 4px solid var(--done-green);
+        transform: rotate(45deg);
+      }
+
+      .map-arrow.a1 { left: 280px; }
+      .map-arrow.a2 { left: 760px; }
+      .map-arrow.a3 { right: 280px; }
+
+      .quality-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 430px;
+        gap: 28px;
+      }
+
+      .quality-loop {
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid rgba(34, 197, 94, 0.22);
+        background: rgba(255, 255, 255, 0.9);
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .quality-ring {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 520px;
+        height: 520px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        border: 8px solid rgba(34, 197, 94, 0.28);
+        box-shadow: inset 0 0 0 24px rgba(220, 252, 231, 0.46);
+      }
+
+      .quality-card {
+        position: absolute;
+        width: 250px;
+        min-height: 118px;
+        padding: 18px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: white;
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+      }
+
+      .quality-card strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 950;
+      }
+
+      .quality-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 750;
+      }
+
+      .quality-card.skills { left: 162px; top: 78px; border-color: rgba(249, 115, 22, 0.28); }
+      .quality-card.tdd { right: 162px; top: 78px; border-color: rgba(37, 99, 235, 0.22); }
+      .quality-card.playwright { left: 50%; top: 244px; transform: translateX(-50%); border-color: rgba(37, 99, 235, 0.22); }
+      .quality-card.review { left: 162px; bottom: 74px; border-color: rgba(109, 40, 217, 0.24); }
+      .quality-card.assets { right: 162px; bottom: 74px; border-color: rgba(34, 197, 94, 0.28); }
+
+      .closure-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 28px;
+        border-radius: 8px;
+        border: 1px solid rgba(34, 197, 94, 0.24);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .closure-panel h2 {
+        color: var(--text-primary);
+        font-size: 36px;
+        line-height: 1.18;
+        font-weight: 950;
+      }
+
+      .closure-tag {
+        min-height: 92px;
+        display: flex;
+        align-items: center;
+        padding: 0 22px;
+        border-radius: 8px;
+        background: var(--done-green-soft);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        color: #15803d;
+        font-size: 26px;
+        font-weight: 950;
+      }
+
+      .conclusion-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 282px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr 1fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .thumb-stack {
+        display: grid;
+        gap: 18px;
+        opacity: 0.48;
+      }
+
+      .mini-artifact {
+        min-height: 118px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.06);
+      }
+
+      .mini-artifact strong {
+        color: var(--text-primary);
+        font-size: 25px;
+        font-weight: 950;
+      }
+
+      .mini-artifact span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        font-weight: 750;
+      }
+
+      .final-claim {
+        position: relative;
+        padding: 42px 42px 122px;
+        border-radius: 8px;
+        border: 2px solid rgba(109, 40, 217, 0.28);
+        background: rgba(255, 255, 255, 0.96);
+        text-align: center;
+        box-shadow: 0 30px 82px rgba(15, 23, 42, 0.12);
+      }
+
+      .final-claim h2 {
+        color: var(--governance-purple);
+        font-size: 68px;
+        line-height: 1.12;
+        font-weight: 950;
+        letter-spacing: 0;
+      }
+
+      .final-claim p {
+        margin-top: 20px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.35;
+        font-weight: 800;
+      }
+
+      .mini-train {
+        position: absolute;
+        left: 42px;
+        right: 42px;
+        bottom: 34px;
+        height: 54px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .mini-car {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--governance-soft);
+        color: var(--governance-purple);
+        border: 1px solid rgba(109, 40, 217, 0.22);
+        font-size: 18px;
+        font-weight: 950;
+      }
+    </style>
+
+    <section class="clip stage scene-101" data-start="0" data-duration="9" data-track-index="1">
+      <div class="eyebrow">Scene 10-1 / AI 原生研发</div>
+      <h1 class="headline">不是产品加 AI，而是研发过程重构</h1>
+      <p class="subline">左侧只是功能点接入模型，右侧才把过程、资产和质量闭环变成研发主线。</p>
+
+      <div class="compare-grid">
+        <article class="compare-card product-ai">
+          <header>产品加 AI <span>局部能力</span></header>
+          <div class="feature-list">
+            <div class="feature-item"><b>AI</b><div><strong>模型入口</strong><span>只在功能点上补一个按钮</span></div></div>
+            <div class="feature-item"><b>答</b><div><strong>文本生成</strong><span>结果脱离研发上下文</span></div></div>
+            <div class="feature-item"><b>点</b><div><strong>孤立增强</strong><span>无法沉淀过程资产</span></div></div>
+          </div>
+        </article>
+        <article class="compare-card native-ai">
+          <header>AI 原生研发 <span>过程框架</span></header>
+          <div class="native-list">
+            <div class="native-node"><b>过</b><div><strong>过程重构</strong><span>需求、设计、测试、代码连成流水线</span></div></div>
+            <div class="native-node"><b>资</b><div><strong>资产沉淀</strong><span>领域上下文持续复用</span></div></div>
+            <div class="native-node"><b>质</b><div><strong>质量闭环</strong><span>审查、测试、自动化持续确认</span></div></div>
+          </div>
+          <div class="loop-board" data-layout-ignore>
+            <div class="loop-chip process">过程</div>
+            <div class="loop-chip asset">资产</div>
+            <div class="loop-chip quality">质量闭环</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="caption">更重要的是，本项目不是简单叠加 AI 功能，而是以 AI 原生方式重构研发过程。</div>
+    </section>
+
+    <section class="clip stage scene-102" data-start="9" data-duration="13" data-track-index="1">
+      <div class="eyebrow">Scene 10-2 / Agent 调度与上下文</div>
+      <h1 class="headline">Agent 调度，让研发资产双向映射</h1>
+      <p class="subline">PRD、设计文档、测试案例与代码结构，被领域上下文连接成可确认链路。</p>
+
+      <div class="pipeline-layout">
+        <div class="agent-layer">AI Agent 调度层</div>
+        <div class="asset-flow">
+          <div class="asset-line"></div>
+          <article class="asset-node n1"><strong>PRD</strong><span>目标、范围、验收标准</span></article>
+          <article class="asset-node n2"><strong>设计文档</strong><span>方案、交互、边界条件</span></article>
+          <article class="asset-node n3"><strong>测试案例</strong><span>用例、断言、回归范围</span></article>
+          <article class="asset-node n4"><strong>代码结构</strong><span>模块、接口、变更影响</span></article>
+          <div class="map-arrow a1"></div>
+          <div class="map-arrow a2"></div>
+          <div class="map-arrow a3"></div>
+        </div>
+        <div class="context-layer">领域上下文沉淀层</div>
+      </div>
+
+      <div class="caption">我们通过智能 Agent 调度和领域上下文沉淀，打通 PRD、设计文档、测试案例与代码结构的双向映射。</div>
+    </section>
+
+    <section class="clip stage scene-103" data-start="22" data-duration="12" data-track-index="1">
+      <div class="eyebrow">Scene 10-3 / 质量闭环</div>
+      <h1 class="headline">AI Skills、TDD、Playwright 进入同一质量闭环</h1>
+      <p class="subline">技术实践不是标签清单，而是连接文档联动、代码审查和自动化测试资产沉淀。</p>
+
+      <div class="quality-layout">
+        <div class="quality-loop">
+          <div class="quality-ring" data-layout-ignore></div>
+          <article class="quality-card skills"><strong>AI Skills</strong><span>把研发动作固化为可复用能力</span></article>
+          <article class="quality-card tdd"><strong>TDD</strong><span>先定义可验证行为，再推进实现</span></article>
+          <article class="quality-card playwright"><strong>Playwright</strong><span>用户路径自动回归验证</span></article>
+          <article class="quality-card review"><strong>代码审查</strong><span>结构、风险与规范同步确认</span></article>
+          <article class="quality-card assets"><strong>自动化测试资产</strong><span>沉淀为后续版本质量底座</span></article>
+        </div>
+        <aside class="closure-panel">
+          <h2>质量闭环确认</h2>
+          <div class="closure-tag">文档联动</div>
+          <div class="closure-tag">代码审查</div>
+          <div class="closure-tag">自动化测试资产沉淀</div>
+          <span class="tag green">Done Green / 可执行</span>
+        </aside>
+      </div>
+
+      <div class="caption">结合 AI Skills、TDD 和 Playwright 自动化测试，形成文档联动、代码审查和自动化测试资产沉淀的质量闭环。</div>
+    </section>
+
+    <section class="clip stage scene-104" data-start="34" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 10-4 / 章节结论</div>
+      <h1 class="headline">研发过程 AI 原生化</h1>
+      <p class="subline">过程、资产、质量闭环收束成同一个研发框架，为最终回闪准备。</p>
+
+      <div class="conclusion-layout">
+        <div class="thumb-stack">
+          <article class="mini-artifact"><strong>PRD 缩略</strong><span>目标和验收保持可追溯</span></article>
+          <article class="mini-artifact"><strong>测试缩略</strong><span>用例和自动化持续联动</span></article>
+        </div>
+        <article class="final-claim">
+          <h2>不是产品加 AI，而是研发过程 AI 原生化</h2>
+          <p>从单点智能，升级为可展开的研发过程框架。</p>
+          <div class="mini-train">
+            <div class="mini-car">PRD</div>
+            <div class="mini-car">设计</div>
+            <div class="mini-car">测试</div>
+            <div class="mini-car">代码</div>
+          </div>
+        </article>
+        <div class="thumb-stack">
+          <article class="mini-artifact"><strong>代码缩略</strong><span>结构与变更影响被保留</span></article>
+          <article class="mini-artifact"><strong>系统缩略</strong><span>治理能力回到产品界面</span></article>
+        </div>
+      </div>
+
+      <div class="caption">不是产品加 AI，而是研发过程 AI 原生化。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene10 = gsap.timeline({ paused: true });
+      window.__timelines["scene-10"] = scene10;
+
+      scene10.from(".scene-101 .eyebrow, .scene-101 .headline, .scene-101 .subline", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.72,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 0.15);
+      scene10.from(".scene-101 .product-ai", {
+        x: -36,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "expo.out"
+      }, 0.65);
+      scene10.from(".scene-101 .native-ai", {
+        x: 38,
+        autoAlpha: 0,
+        duration: 0.82,
+        ease: "power2.out"
+      }, 0.82);
+      scene10.to(".scene-101 .product-ai", {
+        opacity: 0.38,
+        duration: 0.7,
+        ease: "sine.out"
+      }, 3.0);
+      scene10.from(".scene-101 .native-node", {
+        y: 16,
+        autoAlpha: 0,
+        duration: 0.44,
+        stagger: 0.14,
+        ease: "back.out(1.08)"
+      }, 3.9);
+      scene10.from(".scene-101 .loop-board", {
+        scale: 0.86,
+        autoAlpha: 0,
+        duration: 0.58,
+        ease: "circ.out"
+      }, 5.55);
+      scene10.from(".scene-101 .loop-chip", {
+        scale: 0.9,
+        autoAlpha: 0,
+        duration: 0.36,
+        stagger: 0.1,
+        ease: "power1.out"
+      }, 6.2);
+      scene10.from(".scene-101 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 0.35);
+
+      scene10.to(".scene-101", { autoAlpha: 0, duration: 0.35 }, 9);
+      scene10.set(".scene-102", { autoAlpha: 1 }, 9);
+      scene10.from(".scene-102 .eyebrow, .scene-102 .headline, .scene-102 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 9.15);
+      scene10.from(".scene-102 .asset-flow", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 9.55);
+      scene10.from(".scene-102 .asset-line", {
+        scaleX: 0,
+        duration: 0.95,
+        ease: "circ.out"
+      }, 10.6);
+      scene10.from(".scene-102 .asset-node", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.48,
+        stagger: 0.18,
+        ease: "power2.out"
+      }, 11.0);
+      scene10.from(".scene-102 .agent-layer", {
+        y: -24,
+        autoAlpha: 0,
+        duration: 0.66,
+        ease: "back.out(1.12)"
+      }, 13.15);
+      scene10.from(".scene-102 .context-layer", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.68,
+        ease: "power2.out"
+      }, 13.35);
+      scene10.to(".scene-102 .map-arrow", {
+        autoAlpha: 1,
+        duration: 0.44,
+        stagger: 0.16,
+        ease: "power1.out"
+      }, 17.1);
+      scene10.from(".scene-102 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 9.35);
+
+      scene10.to(".scene-102", { autoAlpha: 0, duration: 0.35 }, 22);
+      scene10.set(".scene-103", { autoAlpha: 1 }, 22);
+      scene10.from(".scene-103 .eyebrow, .scene-103 .headline, .scene-103 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 22.15);
+      scene10.from(".scene-103 .quality-loop", {
+        x: -30,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 22.58);
+      scene10.from(".scene-103 .quality-ring", {
+        scale: 0.82,
+        autoAlpha: 0,
+        duration: 0.72,
+        ease: "circ.out"
+      }, 23.2);
+      scene10.from(".scene-103 .quality-card", {
+        scale: 0.92,
+        autoAlpha: 0,
+        duration: 0.46,
+        stagger: 0.15,
+        ease: "back.out(1.08)"
+      }, 24.05);
+      scene10.from(".scene-103 .closure-panel", {
+        x: 30,
+        autoAlpha: 0,
+        duration: 0.74,
+        ease: "power2.out"
+      }, 25.35);
+      scene10.from(".scene-103 .closure-tag", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.4,
+        stagger: 0.14,
+        ease: "power1.out"
+      }, 28.1);
+      scene10.to(".scene-103 .quality-ring", {
+        borderColor: "rgba(34, 197, 94, 0.58)",
+        duration: 0.58,
+        ease: "sine.out"
+      }, 30.2);
+      scene10.from(".scene-103 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 22.35);
+
+      scene10.to(".scene-103", { autoAlpha: 0, duration: 0.35 }, 34);
+      scene10.set(".scene-104", { autoAlpha: 1 }, 34);
+      scene10.from(".scene-104 .eyebrow, .scene-104 .headline, .scene-104 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.08,
+        ease: "power3.out"
+      }, 34.12);
+      scene10.from(".scene-104 .thumb-stack", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.62,
+        stagger: 0.12,
+        ease: "power2.out"
+      }, 34.65);
+      scene10.from(".scene-104 .final-claim", {
+        scale: 0.94,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "expo.out"
+      }, 35.0);
+      scene10.from(".scene-104 .mini-car", {
+        y: 12,
+        autoAlpha: 0,
+        duration: 0.34,
+        stagger: 0.1,
+        ease: "back.out(1.1)"
+      }, 38.0);
+      scene10.from(".scene-104 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.46,
+        ease: "power2.out"
+      }, 34.32);
+    </script>
+  </div>
+</template>
