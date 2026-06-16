@@ -1,0 +1,668 @@
+<template id="scene-03-template">
+  <div class="scene03" data-composition-id="scene-03" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --panel-soft: rgba(255, 255, 255, 0.84);
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --risk-red: #ef4444;
+        --warning-yellow: #facc15;
+        --done-green: #22c55e;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene03 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+          radial-gradient(circle at 18% 22%, rgba(239, 68, 68, 0.07), transparent 28%),
+          radial-gradient(circle at 82% 78%, rgba(34, 197, 94, 0.08), transparent 30%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.74);
+        color: var(--tech-blue);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1140px;
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 960px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .scatter-board {
+        position: absolute;
+        left: 122px;
+        right: 122px;
+        top: 308px;
+        bottom: 148px;
+      }
+
+      .source-card {
+        position: absolute;
+        width: 318px;
+        min-height: 154px;
+        padding: 20px 22px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+      }
+
+      .source-card.chat {
+        left: 36px;
+        top: 36px;
+        border-color: rgba(239, 68, 68, 0.32);
+      }
+
+      .source-card.excel {
+        right: 78px;
+        top: 12px;
+        width: 360px;
+        border-color: rgba(250, 204, 21, 0.48);
+      }
+
+      .source-card.mail {
+        left: 84px;
+        bottom: 54px;
+        width: 340px;
+        border-color: rgba(100, 116, 139, 0.24);
+      }
+
+      .source-card.voice {
+        right: 54px;
+        bottom: 74px;
+        width: 310px;
+        border-color: rgba(239, 68, 68, 0.24);
+      }
+
+      .source-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--text-primary);
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .source-chip {
+        padding: 5px 10px;
+        border-radius: 6px;
+        color: var(--text-secondary);
+        background: #f1f5f9;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .source-line {
+        margin-top: 16px;
+        color: var(--text-secondary);
+        font-size: 21px;
+        line-height: 1.38;
+        font-weight: 650;
+      }
+
+      .missing {
+        display: inline-flex;
+        margin-top: 14px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--risk-red);
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .mini-table {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+      }
+
+      .mini-table span {
+        height: 28px;
+        border-radius: 5px;
+        background: rgba(250, 204, 21, 0.2);
+        color: #854d0e;
+        font-size: 16px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pool {
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        width: 560px;
+        min-height: 310px;
+        transform: translate(-50%, -50%);
+        padding: 26px;
+        border-radius: 8px;
+        border: 2px solid rgba(37, 99, 235, 0.24);
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 30px 78px rgba(37, 99, 235, 0.1);
+      }
+
+      .pool-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--tech-blue);
+        font-size: 30px;
+        font-weight: 850;
+      }
+
+      .pool-title span {
+        color: var(--text-secondary);
+        font-size: 19px;
+        font-weight: 750;
+      }
+
+      .field-grid {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+
+      .field {
+        position: relative;
+        min-height: 132px;
+        padding: 14px 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: #f8fafc;
+        text-align: center;
+      }
+
+      .field strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 850;
+      }
+
+      .field span {
+        display: inline-flex;
+        margin-top: 18px;
+        padding: 7px 10px;
+        border-radius: 6px;
+        color: var(--risk-red);
+        background: rgba(239, 68, 68, 0.1);
+        font-size: 17px;
+        font-weight: 800;
+      }
+
+      .field .done {
+        position: absolute;
+        left: 50%;
+        top: 52px;
+        transform: translateX(-50%);
+        opacity: 0;
+        color: #15803d;
+        background: rgba(34, 197, 94, 0.14);
+      }
+
+      .field.is-complete {
+        border-color: rgba(34, 197, 94, 0.38);
+        background: rgba(34, 197, 94, 0.07);
+      }
+
+      .field.is-complete span {
+        color: #15803d;
+        background: rgba(34, 197, 94, 0.14);
+      }
+
+      .connector {
+        position: absolute;
+        height: 2px;
+        background: rgba(100, 116, 139, 0.22);
+        transform-origin: left center;
+      }
+
+      .connector.c1 {
+        left: 448px;
+        top: 166px;
+        width: 430px;
+        transform: rotate(13deg);
+      }
+
+      .connector.c2 {
+        right: 492px;
+        top: 162px;
+        width: 360px;
+        transform: rotate(164deg);
+      }
+
+      .connector.c3 {
+        left: 462px;
+        bottom: 174px;
+        width: 414px;
+        transform: rotate(-15deg);
+      }
+
+      .connector.c4 {
+        right: 420px;
+        bottom: 186px;
+        width: 430px;
+        transform: rotate(194deg);
+      }
+
+      .screenshot-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 284px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 30px;
+        align-items: stretch;
+      }
+
+      .screenshot-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.22);
+        background: var(--panel);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+      }
+
+      .screenshot-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 16%;
+      }
+
+      .screenshot-tint {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(248, 250, 252, 0.02), rgba(248, 250, 252, 0.18));
+        pointer-events: none;
+      }
+
+      .highlight-box {
+        position: absolute;
+        left: 328px;
+        top: 246px;
+        width: 345px;
+        height: 78px;
+        border: 3px solid var(--tech-blue);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.12), 0 16px 36px rgba(37, 99, 235, 0.2);
+      }
+
+      .field-label {
+        position: absolute;
+        top: 174px;
+        left: 348px;
+        width: 276px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--tech-blue);
+        font-size: 21px;
+        font-weight: 850;
+        box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+      }
+
+      .field-label span {
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      .field-label .label-secondary {
+        opacity: 0;
+      }
+
+      .node-panel {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .node {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--text-primary);
+        font-size: 30px;
+        font-weight: 850;
+        box-shadow: 0 20px 54px rgba(15, 23, 42, 0.08);
+      }
+
+      .node::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        width: 30px;
+        height: 2px;
+        background: rgba(37, 99, 235, 0.54);
+      }
+
+      .node span {
+        position: absolute;
+        bottom: 22px;
+        color: var(--done-green);
+        font-size: 18px;
+        font-weight: 850;
+      }
+    </style>
+
+    <section class="clip stage scene-031" data-start="0" data-duration="12" data-track-index="1">
+      <div class="eyebrow">Scene 03-1 / 需求统一收口</div>
+      <h1 class="headline">需求散落，是协同失控的起点</h1>
+      <p class="subline">把群聊、表格、邮件和口头沟通收进同一个标准化需求池，先把口径统一。</p>
+
+      <div class="scatter-board">
+        <div class="connector c1"></div>
+        <div class="connector c2"></div>
+        <div class="connector c3"></div>
+        <div class="connector c4"></div>
+
+        <div class="source-card chat">
+          <div class="source-title">群聊一句话 <span class="source-chip">消息</span></div>
+          <div class="source-line">“下个版本把支付流程优化一下”</div>
+          <div class="missing">缺少验收与影响范围</div>
+        </div>
+
+        <div class="source-card excel">
+          <div class="source-title">Excel 需求表 <span class="source-chip">表格</span></div>
+          <div class="mini-table">
+            <span>标题</span>
+            <span>负责人</span>
+            <span>日期</span>
+            <span>状态</span>
+            <span>空白</span>
+            <span>备注</span>
+          </div>
+          <div class="missing">字段不一致</div>
+        </div>
+
+        <div class="source-card mail">
+          <div class="source-title">邮件附件 <span class="source-chip">文档</span></div>
+          <div class="source-line">PRD_v7_最终确认版.docx</div>
+          <div class="missing">版本难追溯</div>
+        </div>
+
+        <div class="source-card voice">
+          <div class="source-title">口头沟通 <span class="source-chip">会议</span></div>
+          <div class="source-line">会后补一下，先按这个方向排期</div>
+          <div class="missing">无评审记录</div>
+        </div>
+
+        <div class="pool">
+          <div class="pool-title">标准化需求池 <span>统一入口</span></div>
+          <div class="field-grid">
+            <div class="field">
+              <strong>状态</strong>
+              <span class="pending">待补齐</span>
+              <span class="done">已补齐</span>
+            </div>
+            <div class="field">
+              <strong>优先级</strong>
+              <span class="pending">待补齐</span>
+              <span class="done">已补齐</span>
+            </div>
+            <div class="field">
+              <strong>系统归属</strong>
+              <span class="pending">待补齐</span>
+              <span class="done">已补齐</span>
+            </div>
+            <div class="field">
+              <strong>依赖关系</strong>
+              <span class="pending">待补齐</span>
+              <span class="done">已补齐</span>
+            </div>
+            <div class="field">
+              <strong>评审记录</strong>
+              <span class="pending">待补齐</span>
+              <span class="done">已补齐</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caption">需求散落，是协同失控的起点；统一需求池｜结构化字段。</div>
+    </section>
+
+    <section class="clip stage scene-032" data-start="12" data-duration="12" data-track-index="1">
+      <div class="eyebrow">Scene 03-2 / 需求列表证明</div>
+      <h1 class="headline">需求先标准化，协同才有基础</h1>
+      <p class="subline">真实需求列表里的字段，直接成为后续评审、纳版和交付的依据。</p>
+
+      <div class="screenshot-layout">
+        <div class="screenshot-card">
+          <img src="assets/screenshots/raw/Scene03.png" alt="需求列表">
+          <div class="screenshot-tint"></div>
+          <div class="field-label">
+            <span class="label-primary">状态｜优先级｜系统归属</span>
+            <span class="label-secondary">依赖关系｜评审记录</span>
+          </div>
+          <div class="highlight-box"></div>
+        </div>
+        <div class="node-panel">
+          <div class="node">评审 <span>依据明确</span></div>
+          <div class="node">纳版 <span>范围清晰</span></div>
+          <div class="node">交付 <span>可追溯</span></div>
+        </div>
+      </div>
+
+      <div class="caption">需求先标准化，协同才有基础；评审｜纳版｜交付都有清晰依据。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene03 = gsap.timeline({ paused: true });
+      window.__timelines["scene-03"] = scene03;
+
+      scene03.set(".scene03 .clip", { autoAlpha: 0 });
+      scene03.set(".scene-031", { autoAlpha: 1 }, 0);
+      scene03.from(".scene-031 .eyebrow, .scene-031 .headline, .scene-031 .subline", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.75,
+        stagger: 0.1,
+        ease: "power2.out"
+      }, 0.15);
+      scene03.from(".scene-031 .source-card", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power3.out"
+      }, 0.7);
+      scene03.from(".scene-031 .pool", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "back.out(1.2)"
+      }, 3.9);
+      scene03.to(".scene-031 .connector", {
+        backgroundColor: "rgba(37, 99, 235, 0.5)",
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power1.out"
+      }, 4.1);
+      scene03.to(".scene-031 .source-card", {
+        borderColor: "rgba(37, 99, 235, 0.3)",
+        y: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: "power2.inOut"
+      }, 4.4);
+      scene03.to(".scene-031 .pool", {
+        borderColor: "#2563eb",
+        boxShadow: "0 30px 78px rgba(37, 99, 235, 0.2)",
+        duration: 0.8,
+        ease: "power2.out"
+      }, 4.8);
+      scene03.to(".scene-031 .field", {
+        borderColor: "rgba(34, 197, 94, 0.38)",
+        backgroundColor: "rgba(34, 197, 94, 0.07)",
+        duration: 0.2,
+        stagger: 0.42,
+        ease: "none"
+      }, 8);
+      scene03.to(".scene-031 .field .pending", {
+        autoAlpha: 0,
+        duration: 0.2,
+        stagger: 0.42,
+        ease: "none"
+      }, 8);
+      scene03.to(".scene-031 .field .done", {
+        autoAlpha: 1,
+        duration: 0.2,
+        stagger: 0.42,
+        ease: "none"
+      }, 8);
+      scene03.from(".scene-031 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }, 0.35);
+
+      scene03.to(".scene-031", { autoAlpha: 0, duration: 0.35 }, 12);
+      scene03.set(".scene-032", { autoAlpha: 1 }, 12);
+      scene03.from(".scene-032 .eyebrow, .scene-032 .headline, .scene-032 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out"
+      }, 12.15);
+      scene03.from(".scene-032 .screenshot-card", {
+        y: 20,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }, 12.5);
+      scene03.from(".scene-032 .highlight-box, .scene-032 .field-label", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.55,
+        ease: "power2.out"
+      }, 13.1);
+      scene03.to(".scene-032 .highlight-box", {
+        x: 338,
+        width: 400,
+        duration: 2.2,
+        ease: "power2.inOut"
+      }, 15);
+      scene03.to(".scene-032 .field-label", {
+        x: 318,
+        duration: 0.8,
+        ease: "power2.inOut"
+      }, 15.6);
+      scene03.to(".scene-032 .field-label .label-primary", {
+        autoAlpha: 0,
+        duration: 0.28,
+        ease: "power1.out"
+      }, 15.6);
+      scene03.to(".scene-032 .field-label .label-secondary", {
+        autoAlpha: 1,
+        duration: 0.28,
+        ease: "power1.out"
+      }, 15.78);
+      scene03.from(".scene-032 .node", {
+        x: 26,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.18,
+        ease: "power2.out"
+      }, 18);
+      scene03.from(".scene-032 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }, 12.3);
+    </script>
+  </div>
+</template>

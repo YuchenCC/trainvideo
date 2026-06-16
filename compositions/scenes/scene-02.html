@@ -1,0 +1,843 @@
+<template id="scene-02-template">
+  <style>
+    :root {
+      --background: #f8fafc;
+      --panel: #ffffff;
+      --panel-soft: rgba(255, 255, 255, 0.82);
+      --text-primary: #111827;
+      --text-secondary: #64748b;
+      --tech-blue: #2563eb;
+      --tech-blue-soft: #dbeafe;
+      --governance-purple: #6d28d9;
+      --ai-orange: #f97316;
+      --risk-red: #ef4444;
+      --done-green: #22c55e;
+      --warning-yellow: #facc15;
+      --line: #dbe3ef;
+      --devops-gray: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .scene02 {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+        radial-gradient(circle at 82% 18%, rgba(249, 115, 22, 0.09), transparent 28%),
+        radial-gradient(circle at 18% 76%, rgba(109, 40, 217, 0.08), transparent 30%),
+        var(--background);
+      background-size: 64px 64px, 64px 64px, auto, auto, auto;
+      color: var(--text-primary);
+      font-family: sans-serif;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+      padding: 82px 104px 116px;
+    }
+
+    .scene-021 {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scene-022,
+    .scene-023 {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      height: 46px;
+      padding: 0 16px;
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--tech-blue);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .headline {
+      margin-top: 22px;
+      max-width: 1160px;
+      color: var(--text-primary);
+      font-size: 64px;
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .subline {
+      margin-top: 14px;
+      max-width: 1000px;
+      color: var(--text-secondary);
+      font-size: 29px;
+      line-height: 1.45;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .caption {
+      position: absolute;
+      left: 104px;
+      right: 104px;
+      bottom: 42px;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 36px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text-primary);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0;
+      box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+    }
+
+    .scene-021 .rail-wrap {
+      position: absolute;
+      left: 190px;
+      right: 190px;
+      bottom: 230px;
+      height: 330px;
+    }
+
+    .mess-line {
+      position: absolute;
+      width: 1180px;
+      height: 16px;
+      left: 145px;
+      top: 132px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0), rgba(239, 68, 68, 0.92), rgba(239, 68, 68, 0));
+      transform-origin: center;
+      box-shadow: 0 12px 42px rgba(239, 68, 68, 0.22);
+    }
+
+    .mess-line:nth-child(1) {
+      transform: rotate(-6deg) translateY(-46px);
+    }
+
+    .mess-line:nth-child(2) {
+      transform: rotate(4deg) translateY(10px);
+    }
+
+    .mess-line:nth-child(3) {
+      transform: rotate(-2deg) translateY(64px);
+    }
+
+    .track {
+      position: absolute;
+      left: 110px;
+      right: 110px;
+      top: 154px;
+      height: 84px;
+      opacity: 0;
+    }
+
+    .track::before,
+    .track::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0), var(--tech-blue), rgba(109, 40, 217, 0.8));
+    }
+
+    .track::before {
+      top: 18px;
+    }
+
+    .track::after {
+      bottom: 18px;
+    }
+
+    .sleeper {
+      position: absolute;
+      top: 33px;
+      width: 4px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.36);
+    }
+
+    .foundation {
+      position: absolute;
+      left: 214px;
+      right: 214px;
+      top: 254px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 8px;
+      background: rgba(219, 234, 254, 0.74);
+      color: var(--tech-blue);
+      font-size: 26px;
+      font-weight: 800;
+      opacity: 0;
+    }
+
+    .locomotive {
+      position: absolute;
+      right: 170px;
+      top: 76px;
+      width: 250px;
+      height: 138px;
+      border: 3px solid rgba(37, 99, 235, 0.72);
+      border-radius: 10px 54px 10px 10px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.22);
+      opacity: 0;
+    }
+
+    .locomotive::before {
+      content: "";
+      position: absolute;
+      left: 26px;
+      top: 34px;
+      width: 86px;
+      height: 52px;
+      border-radius: 8px;
+      background: var(--tech-blue-soft);
+      border: 1px solid rgba(37, 99, 235, 0.28);
+    }
+
+    .locomotive::after {
+      content: "AI 原生 BizDevOps";
+      position: absolute;
+      left: 26px;
+      bottom: 24px;
+      color: var(--text-primary);
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .layer-map {
+      position: absolute;
+      left: 122px;
+      right: 122px;
+      bottom: 176px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .layer-labels {
+      display: grid;
+      grid-template-rows: 112px 174px 112px;
+      gap: 18px;
+    }
+
+    .layer-label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(100, 116, 139, 0.18);
+      background: var(--panel-soft);
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .layer-label span {
+      color: var(--text-secondary);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .layer-label.ai {
+      border-color: rgba(249, 115, 22, 0.32);
+      color: var(--ai-orange);
+    }
+
+    .layer-label.biz {
+      border-color: rgba(109, 40, 217, 0.28);
+      color: var(--governance-purple);
+    }
+
+    .layers {
+      display: grid;
+      grid-template-rows: 112px 174px 112px;
+      gap: 18px;
+    }
+
+    .ai-layer,
+    .biz-layer,
+    .devops-layer {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(100, 116, 139, 0.18);
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .ai-layer {
+      border-color: rgba(249, 115, 22, 0.32);
+      background: rgba(255, 247, 237, 0.86);
+    }
+
+    .biz-layer {
+      border-color: rgba(109, 40, 217, 0.26);
+      background: rgba(245, 243, 255, 0.78);
+    }
+
+    .devops-layer {
+      background: rgba(243, 244, 246, 0.92);
+      filter: saturate(0.72);
+    }
+
+    .ai-band {
+      position: absolute;
+      inset: 24px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(249, 115, 22, 0.11);
+      border: 1px solid rgba(249, 115, 22, 0.34);
+      color: var(--ai-orange);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .cars {
+      position: absolute;
+      inset: 28px 34px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .biz-cars {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .devops-cars {
+      grid-template-columns: repeat(2, 1fr);
+      inset-inline: 260px;
+    }
+
+    .car {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 2px solid rgba(37, 99, 235, 0.2);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--text-primary);
+      font-size: 27px;
+      font-weight: 900;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .biz-cars .car {
+      border-color: rgba(109, 40, 217, 0.28);
+    }
+
+    .car::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      width: 14px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(100, 116, 139, 0.4);
+    }
+
+    .car:last-child::after {
+      display: none;
+    }
+
+    .devops-cars .car {
+      border-color: rgba(156, 163, 175, 0.44);
+      background: rgba(249, 250, 251, 0.96);
+      color: #6b7280;
+    }
+
+    .concept-title {
+      position: absolute;
+      right: 120px;
+      top: 84px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(109, 40, 217, 0.2);
+      color: var(--text-primary);
+      font-size: 34px;
+      font-weight: 900;
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
+    }
+
+    .concept-title span:nth-child(1) {
+      color: var(--governance-purple);
+    }
+
+    .concept-title span:nth-child(2) {
+      color: var(--devops-gray);
+    }
+
+    .concept-title span:nth-child(3) {
+      color: var(--ai-orange);
+    }
+
+    .proof-grid {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      top: 292px;
+      bottom: 138px;
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .concept-panel,
+    .screenshot-panel {
+      position: relative;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.84);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    .mini-train {
+      position: absolute;
+      left: 54px;
+      right: 54px;
+      top: 122px;
+      height: 168px;
+    }
+
+    .mini-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 112px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--tech-blue), var(--governance-purple));
+    }
+
+    .mini-cars {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 28px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .mini-car {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 74px;
+      border-radius: 8px;
+      border: 1px solid rgba(109, 40, 217, 0.28);
+      background: rgba(245, 243, 255, 0.92);
+      color: var(--governance-purple);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .loop-line {
+      position: absolute;
+      left: 106px;
+      right: 106px;
+      bottom: 104px;
+      height: 208px;
+      border: 4px solid rgba(34, 197, 94, 0.52);
+      border-radius: 8px;
+      opacity: 0;
+    }
+
+    .conclusion {
+      position: absolute;
+      left: 86px;
+      right: 86px;
+      bottom: 42px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 124px;
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: rgba(34, 197, 94, 0.11);
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      color: #15803d;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .screenshot-frame {
+      position: absolute;
+      inset: 24px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(100, 116, 139, 0.15);
+      background: #ffffff;
+    }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+    }
+
+    .module-highlight {
+      position: absolute;
+      border: 4px solid var(--tech-blue);
+      border-radius: 8px;
+      box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.22), 0 18px 48px rgba(37, 99, 235, 0.22);
+      opacity: 0;
+    }
+
+    .module-highlight.demand {
+      left: 24px;
+      top: 25px;
+      width: 142px;
+      height: 58px;
+    }
+
+    .module-highlight.train {
+      left: 24px;
+      top: 90px;
+      width: 148px;
+      height: 58px;
+    }
+
+    .module-highlight.capacity {
+      left: 388px;
+      top: 200px;
+      width: 196px;
+      height: 64px;
+    }
+
+    .module-highlight.deps {
+      left: 680px;
+      top: 286px;
+      width: 210px;
+      height: 66px;
+    }
+
+    .module-highlight.change {
+      right: 240px;
+      top: 164px;
+      width: 240px;
+      height: 74px;
+    }
+
+    .panel-title {
+      position: absolute;
+      left: 34px;
+      top: 30px;
+      z-index: 2;
+      color: var(--text-primary);
+      font-size: 28px;
+      font-weight: 900;
+    }
+  </style>
+
+  <div class="scene02" data-composition-id="scene-02" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+    <section class="clip stage scene-021" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 02-1 / 治理框架入场</div>
+      <h1 class="headline">从混乱协同，到版本火车治理</h1>
+      <p class="subline">把红色缠绕线整理成清晰轨道，底座从信息碎片变成可承接的 DevOps 工具链。</p>
+
+      <div class="rail-wrap">
+        <div class="mess-line"></div>
+        <div class="mess-line"></div>
+        <div class="mess-line"></div>
+        <div class="track">
+          <span class="sleeper" style="left: 7%"></span>
+          <span class="sleeper" style="left: 17%"></span>
+          <span class="sleeper" style="left: 27%"></span>
+          <span class="sleeper" style="left: 37%"></span>
+          <span class="sleeper" style="left: 47%"></span>
+          <span class="sleeper" style="left: 57%"></span>
+          <span class="sleeper" style="left: 67%"></span>
+          <span class="sleeper" style="left: 77%"></span>
+          <span class="sleeper" style="left: 87%"></span>
+        </div>
+        <div class="foundation">DevOps 工具链底座</div>
+        <div class="locomotive"></div>
+      </div>
+
+      <div class="caption">从混乱协同，到版本火车治理。</div>
+    </section>
+
+    <section class="clip stage scene-022" data-start="8" data-duration="12" data-track-index="1">
+      <div class="eyebrow">Scene 02-2 / BizDevOps 概念</div>
+      <h1 class="headline">Biz 是新增的业务治理能力</h1>
+      <p class="subline">DevOps 保持为灰色原有底座；需求、班次、容量、依赖、变更构成 Biz 新支持能力。</p>
+      <div class="concept-title"><span>Biz</span><span>DevOps</span><span>AI 原生</span></div>
+
+      <div class="layer-map">
+        <div class="layer-labels">
+          <div class="layer-label ai">AI 原生能力<span>贯穿治理与交付链路</span></div>
+          <div class="layer-label biz">Biz 新增支持<span>业务治理能力层</span></div>
+          <div class="layer-label">DevOps 原有底座<span>灰色弱化承托</span></div>
+        </div>
+        <div class="layers">
+          <div class="ai-layer"><div class="ai-band">AI Native Capability Layer</div></div>
+          <div class="biz-layer">
+            <div class="cars biz-cars">
+              <div class="car">需求</div>
+              <div class="car">班次</div>
+              <div class="car">容量</div>
+              <div class="car">依赖</div>
+              <div class="car">变更</div>
+            </div>
+          </div>
+          <div class="devops-layer">
+            <div class="cars devops-cars">
+              <div class="car">持续集成</div>
+              <div class="car">持续部署</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caption">Biz 是新增的业务治理能力，DevOps 是原有工具链底座；持续集成｜持续部署；需求｜班次｜容量｜依赖｜变更。</div>
+    </section>
+
+    <section class="clip stage scene-023" data-start="20" data-duration="10" data-track-index="1">
+      <div class="eyebrow">Scene 02-3 / 产品界面落地</div>
+      <h1 class="headline">它不是流程线上化，而是发布治理容器</h1>
+      <p class="subline">左侧保留版本火车概念，右侧用真实系统界面证明五个模块落到产品能力。</p>
+
+      <div class="proof-grid">
+        <div class="concept-panel">
+          <div class="panel-title">版本火车治理容器</div>
+          <div class="mini-train">
+            <div class="mini-track"></div>
+            <div class="mini-cars">
+              <div class="mini-car">需求</div>
+              <div class="mini-car">班次</div>
+              <div class="mini-car">容量</div>
+              <div class="mini-car">依赖</div>
+              <div class="mini-car">变更</div>
+            </div>
+          </div>
+          <div class="loop-line"></div>
+          <div class="conclusion">
+            <span class="pill">可管控</span>
+            <span class="pill">可追溯</span>
+            <span class="pill">智能交付</span>
+          </div>
+        </div>
+        <div class="screenshot-panel">
+          <div class="screenshot-frame">
+            <img src="assets/screenshots/raw/Scene02-3-1.png" alt="版本火车系统界面">
+            <div class="module-highlight demand"></div>
+            <div class="module-highlight train"></div>
+            <div class="module-highlight capacity"></div>
+            <div class="module-highlight deps"></div>
+            <div class="module-highlight change"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caption">它不是流程线上化，而是发布治理容器；可管控｜可追溯｜智能交付闭环。</div>
+    </section>
+  <script>
+  window.__timelines = window.__timelines || {};
+  const scene02 = gsap.timeline({ paused: true });
+  window.__timelines["scene-02"] = scene02;
+
+  scene02.from(".scene-021 .eyebrow, .scene-021 .headline, .scene-021 .subline", {
+    y: 24,
+    duration: 0.8,
+    stagger: 0.12,
+    ease: "power2.out"
+  }, 0);
+  scene02.to(".scene-021 .mess-line", {
+    rotation: 0,
+    y: 0,
+    background: "linear-gradient(90deg, rgba(37, 99, 235, 0), rgba(37, 99, 235, 0.78), rgba(109, 40, 217, 0.64))",
+    duration: 3,
+    stagger: 0.08,
+    ease: "power2.inOut"
+  }, 0.6);
+  scene02.to(".scene-021 .track, .scene-021 .foundation", {
+    autoAlpha: 1,
+    duration: 1.2,
+    ease: "power2.out"
+  }, 3);
+  scene02.to(".scene-021 .mess-line", {
+    autoAlpha: 0.12,
+    duration: 1,
+    ease: "power1.out"
+  }, 3.4);
+  scene02.fromTo(".scene-021 .locomotive", {
+    x: 80,
+    autoAlpha: 0
+  }, {
+    x: 0,
+    autoAlpha: 1,
+    duration: 1.2,
+    ease: "power2.out"
+  }, 5.1);
+  scene02.from(".scene-021 .caption", {
+    y: 18,
+    duration: 0.6,
+    ease: "power2.out"
+  }, 0.4);
+
+  scene02.to(".scene-021", { autoAlpha: 0, duration: 0.35 }, 8);
+  scene02.set(".scene-022", { autoAlpha: 1 }, 8);
+  scene02.from(".scene-022 .eyebrow, .scene-022 .headline, .scene-022 .subline", {
+    y: 24,
+    autoAlpha: 0,
+    duration: 0.75,
+    stagger: 0.1,
+    ease: "power2.out"
+  }, 8.1);
+  scene02.from(".scene-022 .devops-layer, .scene-022 .layer-label:not(.ai):not(.biz)", {
+    y: 24,
+    autoAlpha: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 8.4);
+  scene02.from(".scene-022 .devops-cars .car", {
+    y: 16,
+    autoAlpha: 0,
+    duration: 0.6,
+    stagger: 0.14,
+    ease: "power2.out"
+  }, 9.2);
+  scene02.from(".scene-022 .biz-layer, .scene-022 .layer-label.biz", {
+    y: -16,
+    autoAlpha: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 12);
+  scene02.from(".scene-022 .biz-cars .car", {
+    y: 18,
+    autoAlpha: 0,
+    duration: 0.58,
+    stagger: 0.16,
+    ease: "power2.out"
+  }, 12.6);
+  scene02.from(".scene-022 .ai-layer, .scene-022 .layer-label.ai", {
+    y: -18,
+    autoAlpha: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 16);
+  scene02.from(".scene-022 .concept-title", {
+    scale: 0.96,
+    autoAlpha: 0,
+    duration: 0.7,
+    ease: "power2.out"
+  }, 17.2);
+  scene02.from(".scene-022 .caption", {
+    y: 18,
+    autoAlpha: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  }, 8.3);
+
+  scene02.to(".scene-022", { autoAlpha: 0, duration: 0.35 }, 20);
+  scene02.set(".scene-023", { autoAlpha: 1 }, 20);
+  scene02.from(".scene-023 .eyebrow, .scene-023 .headline, .scene-023 .subline", {
+    y: 22,
+    autoAlpha: 0,
+    duration: 0.7,
+    stagger: 0.1,
+    ease: "power2.out"
+  }, 20.1);
+  scene02.from(".scene-023 .concept-panel", {
+    x: -40,
+    autoAlpha: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 20.5);
+  scene02.from(".scene-023 .screenshot-panel", {
+    x: 40,
+    autoAlpha: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 20.7);
+  scene02.from(".scene-023 .mini-car", {
+    y: 16,
+    autoAlpha: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "power2.out"
+  }, 22.6);
+  scene02.to(".scene-023 .module-highlight", {
+    autoAlpha: 1,
+    duration: 0.42,
+    stagger: 0.46,
+    ease: "power1.out"
+  }, 23);
+  scene02.to(".scene-023 .module-highlight", {
+    autoAlpha: 0.08,
+    duration: 0.36,
+    stagger: 0.46,
+    ease: "power1.in"
+  }, 23.52);
+  scene02.to(".scene-023 .loop-line", {
+    autoAlpha: 1,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 27);
+  scene02.from(".scene-023 .pill", {
+    y: 14,
+    autoAlpha: 0,
+    duration: 0.42,
+    stagger: 0.12,
+    ease: "power2.out"
+  }, 27.5);
+  scene02.from(".scene-023 .caption", {
+    y: 18,
+    autoAlpha: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  }, 20.3);
+  </script>
+  </div>
+</template>
