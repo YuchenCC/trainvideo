@@ -1,0 +1,139 @@
+<template id="scene-08-template">
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --ink: #111827; --text: #64748b; --line: #dbe3ef;
+      --blue: #2563eb; --orange: #c2410c; --green: #22c55e; --yellow: #facc15; --red: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    .scene08 {
+      position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: sans-serif; color: var(--ink);
+      background:
+        linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px),
+        radial-gradient(circle at 82% 20%, rgba(249,115,22,.10), transparent 30%), var(--bg);
+      background-size: 64px 64px, 64px 64px, auto, auto;
+    }
+    .clip { position: absolute; inset: 0; }
+    .stage { padding: 78px 104px 114px; }
+    .scene-082, .scene-083, .scene-084 { opacity: 0; visibility: hidden; }
+    .eyebrow { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid rgba(249,115,22,.28); background: rgba(255,255,255,.78); color: var(--orange); font-size: 23px; font-weight: 800; }
+    .headline { margin-top: 18px; max-width: 1120px; font-size: 62px; line-height: 1.14; font-weight: 900; }
+    .subline { margin-top: 14px; max-width: 1040px; color: var(--text); font-size: 28px; line-height: 1.45; font-weight: 700; }
+    .caption { position: absolute; left: 104px; right: 104px; bottom: 40px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid rgba(15,23,42,.08); background: rgba(255,255,255,.9); box-shadow: 0 16px 42px rgba(15,23,42,.08); font-size: 28px; font-weight: 900; }
+    .chat-card { position: absolute; left: 210px; top: 276px; width: 620px; min-height: 420px; border-radius: 8px; border: 1px solid rgba(37,99,235,.16); background: rgba(255,255,255,.88); box-shadow: 0 20px 58px rgba(15,23,42,.08); padding: 34px; }
+    .chat-title { font-size: 28px; font-weight: 900; color: var(--blue); }
+    .message { margin-top: 28px; border-radius: 8px; background: rgba(219,234,254,.72); padding: 26px; font-size: 30px; line-height: 1.5; font-weight: 850; }
+    .msg-line { margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(249,115,22,.14); color: #7c2d12; }
+    .bot { margin-top: 24px; display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 18px; border-radius: 8px; background: rgba(249,115,22,.10); border: 1px solid rgba(249,115,22,.30); color: var(--orange); font-size: 24px; font-weight: 900; }
+    .pending { margin-top: 18px; color: var(--text); font-size: 22px; font-weight: 800; }
+    .field-board { position: absolute; right: 190px; top: 294px; width: 690px; min-height: 400px; display: grid; gap: 16px; }
+    .field { min-height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; border-radius: 8px; background: rgba(255,255,255,.88); border: 1px solid rgba(100,116,139,.16); font-size: 24px; font-weight: 900; box-shadow: 0 12px 30px rgba(15,23,42,.06); }
+    .field span:last-child { color: #15803d; }
+    .field .waiting { color: #475569; }
+    .field .ai-wait { color: #a16207; }
+    .field.warn span:last-child { color: #a16207; }
+    .agent-node { position: absolute; left: 50%; top: 498px; transform: translateX(-50%); width: 126px; height: 126px; border-radius: 50%; display: grid; place-items: center; background: rgba(249,115,22,.14); border: 3px solid rgba(249,115,22,.55); color: var(--orange); font-size: 24px; font-weight: 900; box-shadow: 0 18px 48px rgba(249,115,22,.18); }
+    .shot-layout { position: absolute; left: 150px; right: 150px; top: 328px; bottom: 132px; display: grid; grid-template-columns: .74fr 1.26fr; gap: 28px; }
+    .phone-shot, .system-panel, .chain-panel { position: relative; border-radius: 8px; border: 1px solid rgba(37,99,235,.14); background: rgba(255,255,255,.86); overflow: hidden; box-shadow: 0 20px 58px rgba(15,23,42,.08); }
+    .phone-shot img, .chain-panel img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .phone-shot { padding: 18px; }
+    .phone-shot img { border-radius: 8px; border: 1px solid rgba(100,116,139,.12); }
+    .system-panel { padding: 34px; }
+    .system-title { font-size: 32px; font-weight: 900; }
+    .ledger { margin-top: 28px; display: grid; gap: 14px; }
+    .record { min-height: 68px; display: grid; grid-template-columns: 160px 1fr 130px; align-items: center; gap: 12px; padding: 0 18px; border-radius: 8px; background: rgba(248,250,252,.9); border: 1px solid rgba(100,116,139,.16); font-size: 21px; font-weight: 850; }
+    .record.new { border-color: rgba(34,197,94,.42); background: rgba(240,253,244,.78); }
+    .data-tag { position: absolute; right: 34px; bottom: 34px; height: 52px; display: flex; align-items: center; padding: 0 18px; border-radius: 8px; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.32); color: #15803d; font-size: 23px; font-weight: 900; }
+    .chain-panel { position: absolute; left: 190px; right: 190px; top: 330px; bottom: 196px; }
+    .chain-panel img { object-fit: contain; padding: 18px; background: #fff; }
+    .chain-summary { position: absolute; left: 360px; right: 360px; bottom: 132px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.32); color: #15803d; font-size: 24px; font-weight: 900; }
+  </style>
+  <div class="scene08" data-composition-id="scene-08" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+    <section class="clip stage scene-081" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 08-1 / 群聊变更入口</div>
+      <h1 class="headline">群聊里的变更，算不算流程？</h1>
+      <p class="subline">变更先出现在临时沟通里，AI 变更助手把它标记为待解析对象。</p>
+      <div class="chat-card">
+        <div class="chat-title">飞书群聊</div>
+        <div class="message">
+          <div class="msg-line">人力资源系统支付需求修改</div>
+          <div class="msg-line">不做微信支付，只做支付宝。</div>
+        </div>
+        <div class="bot">@ 需求变更助手</div>
+        <div class="pending">状态：待解析</div>
+      </div>
+      <div class="field-board">
+        <div class="field"><span>涉及需求</span><span class="waiting">待识别</span></div>
+        <div class="field"><span>变更内容</span><span class="waiting">待识别</span></div>
+        <div class="field warn"><span>影响分析</span><span class="ai-wait">等待 AI</span></div>
+      </div>
+      <div class="caption">群聊里的变更，算不算流程？；@需求变更助手。</div>
+    </section>
+
+    <section class="clip stage scene-082" data-start="8" data-duration="9" data-track-index="1">
+      <div class="eyebrow">Scene 08-2 / AI Agent 解析</div>
+      <h1 class="headline">AI 自动解析群聊变更</h1>
+      <p class="subline">从群聊消息抽取五类字段，并评估工作量、进度风险和依赖风险。</p>
+      <div class="shot-layout">
+        <div class="phone-shot"><img src="assets/screenshots/raw/Scene08-2.jpeg" alt="飞书 AI 解析报告"></div>
+        <div class="field-board" style="position: relative; inset: auto; width: auto; top: auto; right: auto;">
+          <div class="field"><span>涉及需求</span><span>已识别</span></div>
+          <div class="field"><span>变更内容</span><span>已识别</span></div>
+          <div class="field"><span>工作量影响</span><span>减少约 2 SP</span></div>
+          <div class="field warn"><span>进度风险</span><span>无明显风险</span></div>
+          <div class="field warn"><span>依赖风险</span><span>无冲突</span></div>
+        </div>
+      </div>
+      <div class="agent-node">AI<br>Agent</div>
+      <div class="caption">AI 自动解析群聊变更；自动解析｜识别需求｜影响分析。</div>
+    </section>
+
+    <section class="clip stage scene-083" data-start="17" data-duration="9" data-track-index="1">
+      <div class="eyebrow">Scene 08-3 / 系统建档</div>
+      <h1 class="headline">临时沟通，沉淀为可治理数据</h1>
+      <p class="subline">群聊里的结构化结果进入系统建档、留痕，并生成变更台账。</p>
+      <div class="shot-layout">
+        <div class="phone-shot"><img src="assets/screenshots/raw/Scene08-3.jpeg" alt="飞书变更卡片"></div>
+        <div class="system-panel">
+          <div class="system-title">版本火车系统 / 变更台账</div>
+          <div class="ledger">
+            <div class="record"><span>状态</span><span>待同步</span><span>变更单</span></div>
+            <div class="record new"><span>已建档</span><span>人力资源系统支付需求变更</span><span>新记录</span></div>
+            <div class="record new"><span>来源</span><span>飞书 @需求变更助手</span><span>留痕</span></div>
+            <div class="record new"><span>影响</span><span>工作量减少，进度无明显风险</span><span>已分析</span></div>
+          </div>
+          <div class="data-tag">治理数据</div>
+        </div>
+      </div>
+      <div class="caption">临时沟通，沉淀为可治理数据；系统建档｜留痕｜变更台账。</div>
+    </section>
+
+    <section class="clip stage scene-084" data-start="26" data-duration="4" data-track-index="1">
+      <div class="eyebrow">Scene 08-4 / 三段链路</div>
+      <h1 class="headline">沟通变成治理数据</h1>
+      <p class="subline">飞书 → AI Agent → 系统建档，三段链路在四秒内读完。</p>
+      <div class="chain-panel"><img src="assets/screenshots/raw/Scene08-4.png" alt="飞书到系统建档链路"></div>
+      <div class="chain-summary">飞书 → AI Agent → 系统建档｜可治理数据</div>
+      <div class="caption">沟通变成治理数据；可治理数据。</div>
+    </section>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const scene08 = gsap.timeline({ paused: true });
+    window.__timelines["scene-08"] = scene08;
+    scene08.from(".scene08 .eyebrow, .scene08 .headline, .scene08 .subline", { y: 18, duration: .7, stagger: .08, ease: "power2.out" }, 0);
+    scene08.from(".scene-081 .chat-card, .scene-081 .field", { y: 24, duration: .65, stagger: .1, ease: "power2.out" }, .5);
+    scene08.to(".scene-081 .bot", { boxShadow: "0 0 0 8px rgba(249,115,22,.12)", duration: .6, ease: "power2.out" }, 5);
+    scene08.set(".scene-081", { autoAlpha: 0 }, 8);
+    scene08.set(".scene-082", { autoAlpha: 1 }, 8);
+    scene08.from(".scene-082 .phone-shot, .scene-082 .field, .scene-082 .agent-node", { y: 20, duration: .55, stagger: .1, ease: "power2.out" }, 8.4);
+    scene08.to(".scene-082 .agent-node", { scale: 1.08, yoyo: true, repeat: 3, duration: .35, ease: "power1.inOut" }, 10);
+    scene08.set(".scene-082", { autoAlpha: 0 }, 17);
+    scene08.set(".scene-083", { autoAlpha: 1 }, 17);
+    scene08.from(".scene-083 .phone-shot, .scene-083 .system-panel", { y: 24, duration: .7, stagger: .12, ease: "power2.out" }, 17.4);
+    scene08.from(".scene-083 .record.new, .scene-083 .data-tag", { x: 18, duration: .55, stagger: .12, ease: "power2.out" }, 20);
+    scene08.set(".scene-083", { autoAlpha: 0 }, 26);
+    scene08.set(".scene-084", { autoAlpha: 1 }, 26);
+    scene08.from(".scene-084 .chain-panel, .scene-084 .chain-summary", { y: 22, duration: .6, stagger: .14, ease: "power2.out" }, 26.3);
+  </script>
+</template>

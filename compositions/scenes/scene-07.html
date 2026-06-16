@@ -1,0 +1,369 @@
+<template id="scene-07-template">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --ink: #111827;
+      --text: #64748b;
+      --line: #dbe3ef;
+      --blue: #2563eb;
+      --purple: #6d28d9;
+      --red: #ef4444;
+      --green: #22c55e;
+      --yellow: #facc15;
+    }
+    * { box-sizing: border-box; }
+    .scene07 {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: var(--ink);
+      font-family: sans-serif;
+      background:
+        linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px),
+        radial-gradient(circle at 84% 20%, rgba(109,40,217,.09), transparent 28%),
+        var(--bg);
+      background-size: 64px 64px, 64px 64px, auto, auto;
+    }
+    .clip { position: absolute; inset: 0; }
+    .stage { padding: 78px 104px 114px; }
+    .scene-072, .scene-073 { opacity: 0; visibility: hidden; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(109,40,217,.24);
+      background: rgba(255,255,255,.76);
+      color: var(--purple);
+      font-size: 23px;
+      font-weight: 800;
+    }
+    .headline {
+      margin-top: 18px;
+      max-width: 1120px;
+      font-size: 62px;
+      line-height: 1.14;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .subline {
+      margin-top: 14px;
+      max-width: 1040px;
+      color: var(--text);
+      font-size: 28px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .caption {
+      position: absolute;
+      left: 104px;
+      right: 104px;
+      bottom: 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 16px 42px rgba(15,23,42,.08);
+      font-size: 28px;
+      font-weight: 900;
+    }
+    .board {
+      position: absolute;
+      left: 104px;
+      right: 104px;
+      top: 272px;
+      bottom: 136px;
+      display: grid;
+      grid-template-columns: 1fr 18px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .zone {
+      position: relative;
+      border-radius: 8px;
+      border: 1px solid rgba(100,116,139,.16);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 20px 60px rgba(15,23,42,.08);
+      overflow: hidden;
+      padding: 34px;
+    }
+    .zone-title {
+      font-size: 34px;
+      font-weight: 900;
+    }
+    .zone-sub {
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .pre-zone .tag { background: rgba(37,99,235,.1); color: var(--blue); }
+    .post-zone { border-color: rgba(109,40,217,.28); }
+    .post-zone .tag { background: rgba(109,40,217,.1); color: var(--purple); }
+    .divider {
+      position: relative;
+      border-radius: 999px;
+      background: linear-gradient(var(--purple), rgba(109,40,217,.34));
+      box-shadow: 0 0 0 8px rgba(109,40,217,.08);
+      transform: scaleY(.52);
+      transform-origin: center;
+    }
+    .divider::before {
+      content: "封板";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .tag-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .tag {
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .gate {
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+      width: 260px;
+      height: 132px;
+      border-radius: 8px;
+      border: 3px solid rgba(109,40,217,.62);
+      background: rgba(245,243,255,.82);
+      display: grid;
+      place-items: center;
+      color: var(--purple);
+      font-size: 26px;
+      font-weight: 900;
+    }
+    .path {
+      position: absolute;
+      left: 40px;
+      right: 340px;
+      bottom: 94px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(109,40,217,.15), var(--purple));
+    }
+    .screen-layout {
+      position: absolute;
+      left: 104px;
+      right: 104px;
+      top: 326px;
+      bottom: 132px;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 28px;
+    }
+    .flow-panel, .shot-panel {
+      position: relative;
+      border-radius: 8px;
+      border: 1px solid rgba(37,99,235,.14);
+      background: rgba(255,255,255,.84);
+      overflow: hidden;
+      box-shadow: 0 20px 58px rgba(15,23,42,.08);
+    }
+    .flow-panel { padding: 34px; }
+    .flow-title { font-size: 31px; font-weight: 900; }
+    .flow-columns {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .flow-col {
+      border-radius: 8px;
+      border: 1px solid rgba(100,116,139,.18);
+      background: rgba(248,250,252,.84);
+      padding: 22px;
+      min-height: 360px;
+    }
+    .flow-col.after { border-color: rgba(109,40,217,.28); background: rgba(245,243,255,.72); }
+    .step {
+      display: flex;
+      align-items: center;
+      min-height: 56px;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 850;
+      color: var(--ink);
+    }
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex: 0 0 auto;
+    }
+    .after .dot { background: var(--purple); }
+    .disabled {
+      margin-top: 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px dashed rgba(239,68,68,.45);
+      color: var(--red);
+      font-size: 21px;
+      font-weight: 900;
+      background: rgba(254,242,242,.72);
+    }
+    .shot-frame {
+      position: absolute;
+      inset: 22px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(100,116,139,.14);
+    }
+    .shot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+    }
+    .hl {
+      position: absolute;
+      border: 4px solid var(--blue);
+      border-radius: 8px;
+      box-shadow: 0 0 0 999px rgba(15,23,42,.08), 0 20px 44px rgba(37,99,235,.25);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .hl-approve { left: 300px; top: 70px; width: 314px; height: 230px; }
+    .hl-risk { left: 294px; top: 302px; width: 330px; height: 78px; border-color: var(--red); }
+    .hl-audit { left: 30px; bottom: 20px; width: 520px; height: 210px; border-color: var(--green); }
+    .audit-bar {
+      position: absolute;
+      left: 160px;
+      right: 160px;
+      bottom: 36px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.32);
+      color: #15803d;
+      font-size: 24px;
+      font-weight: 900;
+      opacity: 0;
+    }
+  </style>
+  <div class="scene07" data-composition-id="scene-07" data-start="0" data-duration="29" data-width="1920" data-height="1080">
+    <section class="clip stage scene-071" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 07-1 / 封板分水岭</div>
+      <h1 class="headline">封板，是版本治理的分水岭</h1>
+      <p class="subline">封板前可以调整，但必须留痕；封板后进入受控变更，触发分级审批。</p>
+      <div class="board">
+        <div class="zone pre-zone">
+          <div class="zone-title">封板前</div>
+          <div class="zone-sub">可调整，但系统记录变更来源</div>
+          <div class="tag-row">
+            <span class="tag">系统发起</span>
+            <span class="tag">变更记录</span>
+            <span class="tag">全程留痕</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="zone post-zone">
+          <div class="zone-title">封板后</div>
+          <div class="zone-sub">受控状态，不能私下调整</div>
+          <div class="tag-row">
+            <span class="tag">紧急变更</span>
+            <span class="tag">分级审批</span>
+            <span class="tag">审计留痕</span>
+          </div>
+          <div class="path"></div>
+          <div class="gate">治理闸门</div>
+        </div>
+      </div>
+      <div class="caption">封板，是版本治理的分水岭；分级变更管控。</div>
+    </section>
+
+    <section class="clip stage scene-072" data-start="8" data-duration="10" data-track-index="1">
+      <div class="eyebrow">Scene 07-2 / 分级变更流程</div>
+      <h1 class="headline">封板前留痕，封板后审批</h1>
+      <p class="subline">私下调整路径变灰，紧急变更必须经过 PM 和测试经理双层审批。</p>
+      <div class="screen-layout">
+        <div class="flow-panel">
+          <div class="flow-title">分级变更流程</div>
+          <div class="flow-columns">
+            <div class="flow-col before">
+              <div class="step"><span class="dot"></span>系统发起</div>
+              <div class="step"><span class="dot"></span>变更记录</div>
+              <div class="step"><span class="dot"></span>全程留痕</div>
+              <div class="disabled">私下调整禁用</div>
+            </div>
+            <div class="flow-col after">
+              <div class="step"><span class="dot"></span>紧急变更</div>
+              <div class="step"><span class="dot"></span>PM 审批</div>
+              <div class="step"><span class="dot"></span>测试经理审批</div>
+              <div class="step"><span class="dot"></span>审计留痕</div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-panel">
+          <div class="shot-frame"><img src="assets/screenshots/raw/Scene07-2.png" alt="紧急变更审批截图"></div>
+        </div>
+      </div>
+      <div class="caption">封板前留痕，封板后审批；系统发起｜双层审批｜风险评估｜审计留痕。</div>
+    </section>
+
+    <section class="clip stage scene-073" data-start="18" data-duration="11" data-track-index="1">
+      <div class="eyebrow">Scene 07-3 / 紧急变更弹窗</div>
+      <h1 class="headline">每一次变更都可追溯、可评估、可审计</h1>
+      <p class="subline">审批、风险和操作留痕都被系统记录下来，变更不再只是临时沟通。</p>
+      <div class="shot-panel" style="left: 180px; right: 180px; top: 326px; bottom: 130px; position: absolute;">
+        <div class="shot-frame"><img src="assets/screenshots/raw/Scene07-3.png" alt="操作留痕截图"></div>
+        <div class="hl hl-approve"></div>
+        <div class="hl hl-risk"></div>
+        <div class="hl hl-audit"></div>
+        <div class="audit-bar">审批、风险、留痕三处确认，生成审计记录</div>
+      </div>
+      <div class="caption">每一次变更都可追溯、可评估、可审计。</div>
+    </section>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const scene07 = gsap.timeline({ paused: true });
+    window.__timelines["scene-07"] = scene07;
+    scene07.from(".scene07 .eyebrow, .scene07 .headline, .scene07 .subline", { y: 18, duration: .7, stagger: .08, ease: "power2.out" }, 0);
+    scene07.from(".scene-071 .divider", { scaleY: .12, duration: 1.1, ease: "power3.out" }, .6);
+    scene07.from(".scene-071 .post-zone .tag, .scene-071 .gate", { autoAlpha: 0, y: 16, duration: .6, stagger: .12, ease: "power2.out" }, 3);
+    scene07.set(".scene-071", { autoAlpha: 0 }, 8);
+    scene07.set(".scene-072", { autoAlpha: 1 }, 8);
+    scene07.from(".scene-072 .flow-col, .scene-072 .shot-panel", { y: 24, duration: .75, stagger: .12, ease: "power2.out" }, 8.2);
+    scene07.from(".scene-072 .step", { x: -14, duration: .45, stagger: .12, ease: "power2.out" }, 10);
+    scene07.from(".scene-072 .disabled", { scale: .96, duration: .5, ease: "power2.out" }, 12);
+    scene07.set(".scene-072", { autoAlpha: 0 }, 18);
+    scene07.set(".scene-073", { autoAlpha: 1 }, 18);
+    scene07.from(".scene-073 .shot-panel", { y: 28, duration: .8, ease: "power2.out" }, 18.4);
+    scene07.to(".scene-073 .hl-approve", { autoAlpha: 1, duration: .5, ease: "power2.out" }, 21);
+    scene07.to(".scene-073 .hl-risk", { autoAlpha: 1, duration: .5, ease: "power2.out" }, 24);
+    scene07.to(".scene-073 .hl-audit, .scene-073 .audit-bar", { autoAlpha: 1, duration: .6, ease: "power2.out" }, 26);
+  </script>
+</template>
