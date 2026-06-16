@@ -7,6 +7,9 @@
 - `ai-agent-node`：橙色 AI 智能体节点。
 - `risk-tag`：红色风险标签。
 - `status-tag`：绿色完成标签。
+- `screenshot-focus`：真实截图承载、高亮框和重点标签。
+- `ai-decision-panel`：AI 审查、纳版建议、风险原因说明面板。
+- `train-schedule-rail`：班次轨道、关键站点、需求车厢与版本快照节点。
 
 如果组件需要动画，组件说明必须写清：
 

@@ -1,0 +1,799 @@
+<template id="scene-05-template">
+  <div class="scene05" data-composition-id="scene-05" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --panel-soft: rgba(255, 255, 255, 0.88);
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --governance-purple: #6d28d9;
+        --governance-soft: #f5f3ff;
+        --done-green: #22c55e;
+        --done-green-soft: #dcfce7;
+        --warning-yellow: #facc15;
+        --warning-soft: #fefce8;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene05 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(37, 99, 235, 0.052) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(109, 40, 217, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 16% 76%, rgba(37, 99, 235, 0.09), transparent 29%),
+          radial-gradient(circle at 84% 20%, rgba(109, 40, 217, 0.08), transparent 30%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .scene-052,
+      .scene-053 {
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--tech-blue);
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1160px;
+        color: var(--text-primary);
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 1060px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        padding: 0 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        background: var(--tech-blue-soft);
+        color: var(--tech-blue);
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .compare-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 294px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 0.86fr 1.14fr;
+        gap: 30px;
+        align-items: stretch;
+      }
+
+      .schedule-table,
+      .train-map {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .schedule-table {
+        filter: saturate(0.25);
+        opacity: 0.78;
+      }
+
+      .schedule-table header,
+      .train-map header {
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 26px;
+        border-bottom: 1px solid rgba(100, 116, 139, 0.14);
+        color: var(--text-primary);
+        font-size: 26px;
+        font-weight: 900;
+      }
+
+      .schedule-table header span {
+        color: var(--text-secondary);
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .table-rows {
+        padding: 28px 30px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr 0.8fr;
+        gap: 12px;
+        min-height: 62px;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 8px;
+        background: #f8fafc;
+        color: var(--text-secondary);
+        font-size: 20px;
+        font-weight: 750;
+      }
+
+      .table-row strong {
+        color: var(--text-primary);
+        font-size: 22px;
+        font-weight: 850;
+      }
+
+      .train-map img {
+        position: absolute;
+        inset: 74px 0 0;
+        width: 100%;
+        height: calc(100% - 74px);
+        object-fit: cover;
+        object-position: center 12%;
+        opacity: 0.68;
+      }
+
+      .container-boundary {
+        position: absolute;
+        left: 42px;
+        right: 42px;
+        top: 132px;
+        bottom: 52px;
+        border: 4px solid var(--tech-blue);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.12), 0 20px 58px rgba(37, 99, 235, 0.18);
+        opacity: 0;
+      }
+
+      .train-rail {
+        position: absolute;
+        left: 74px;
+        right: 74px;
+        bottom: 98px;
+        height: 160px;
+      }
+
+      .rail-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 92px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--governance-purple));
+        transform-origin: left center;
+      }
+
+      .train-car {
+        position: absolute;
+        top: 24px;
+        width: 142px;
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 2px solid rgba(37, 99, 235, 0.28);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text-primary);
+        font-size: 22px;
+        font-weight: 900;
+        box-shadow: 0 14px 34px rgba(37, 99, 235, 0.14);
+      }
+
+      .train-car:nth-child(2) {
+        left: 0;
+      }
+
+      .train-car:nth-child(3) {
+        left: 154px;
+      }
+
+      .train-car:nth-child(4) {
+        left: 308px;
+      }
+
+      .compare-divider {
+        position: absolute;
+        left: 50%;
+        top: 320px;
+        bottom: 185px;
+        width: 2px;
+        background: rgba(37, 99, 235, 0.22);
+      }
+
+      .axis-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 28px;
+      }
+
+      .rail-panel {
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .time-scale {
+        position: absolute;
+        left: 82px;
+        right: 82px;
+        top: 98px;
+        height: 326px;
+      }
+
+      .main-rail {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 162px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--governance-purple));
+        transform-origin: left center;
+      }
+
+      .station {
+        position: absolute;
+        top: 116px;
+        width: 116px;
+        min-height: 92px;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      .station::before {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto 12px;
+        border-radius: 999px;
+        background: white;
+        border: 7px solid var(--tech-blue);
+        box-shadow: 0 10px 28px rgba(37, 99, 235, 0.16);
+      }
+
+      .station strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 21px;
+        line-height: 1.18;
+        font-weight: 900;
+      }
+
+      .station span {
+        display: block;
+        margin-top: 6px;
+        color: var(--text-secondary);
+        font-size: 16px;
+        font-weight: 750;
+      }
+
+      .station.s1 { left: 5%; }
+      .station.s2 { left: 23%; }
+      .station.s3 { left: 41%; }
+      .station.s4 { left: 59%; }
+      .station.s5 { left: 77%; }
+      .station.s6 { left: 95%; }
+
+      .system-track {
+        position: absolute;
+        left: 82px;
+        right: 82px;
+        height: 42px;
+        border-radius: 999px;
+        background: rgba(219, 234, 254, 0.62);
+        border: 1px solid rgba(37, 99, 235, 0.18);
+      }
+
+      .system-track.hr {
+        top: 402px;
+      }
+
+      .system-track.frontend {
+        top: 470px;
+        background: rgba(245, 243, 255, 0.7);
+      }
+
+      .track-label {
+        position: absolute;
+        left: 18px;
+        top: 7px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        font-weight: 850;
+      }
+
+      .demand-car {
+        position: absolute;
+        top: 6px;
+        width: 172px;
+        height: 28px;
+        border-radius: 8px;
+        background: var(--tech-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 900;
+      }
+
+      .hr .demand-car {
+        left: 330px;
+      }
+
+      .frontend .demand-car {
+        left: 590px;
+        background: var(--governance-purple);
+      }
+
+      .binding-panel {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .binding-tag {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 18px 48px rgba(15, 23, 42, 0.07);
+      }
+
+      .binding-tag b {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        background: var(--tech-blue-soft);
+        color: var(--tech-blue);
+        font-size: 21px;
+        font-weight: 950;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .binding-tag strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .binding-tag span {
+        display: block;
+        margin-top: 4px;
+        color: var(--text-secondary);
+        font-size: 17px;
+        font-weight: 750;
+      }
+
+      .detail-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 284px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 28px;
+      }
+
+      .detail-shot {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: white;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+      }
+
+      .detail-shot img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .detail-focus {
+        position: absolute;
+        border: 4px solid var(--tech-blue);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.12), 0 18px 48px rgba(37, 99, 235, 0.2);
+      }
+
+      .detail-focus.capacity {
+        left: 128px;
+        top: 112px;
+        width: 760px;
+        height: 132px;
+      }
+
+      .detail-focus.nodes {
+        left: 132px;
+        top: 356px;
+        width: 840px;
+        height: 170px;
+      }
+
+      .detail-focus.snapshot {
+        left: 1040px;
+        top: 70px;
+        width: 214px;
+        height: 148px;
+        border-color: var(--done-green);
+      }
+
+      .proof-tags {
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .proof-tag {
+        min-height: 116px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(34, 197, 94, 0.24);
+        background: rgba(240, 253, 244, 0.92);
+        color: #15803d;
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.07);
+      }
+
+      .proof-tag strong {
+        display: block;
+        font-size: 28px;
+        font-weight: 950;
+      }
+
+      .proof-tag span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 750;
+      }
+
+      .proof-tag.pressure {
+        border-color: rgba(250, 204, 21, 0.44);
+        background: var(--warning-soft);
+        color: #a16207;
+      }
+    </style>
+
+    <section class="clip stage scene-051" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 05-1 / 班次体系</div>
+      <h1 class="headline">版本火车不是普通排期表</h1>
+      <p class="subline">普通表格只能记录日期，版本火车要成为承载多系统发布计划的容器。</p>
+
+      <div class="compare-divider" data-layout-ignore></div>
+      <div class="compare-layout">
+        <article class="schedule-table">
+          <header>普通排期表 <span>弱化记录</span></header>
+          <div class="table-rows">
+            <div class="table-row"><strong>需求</strong><span>负责人</span><span>日期</span></div>
+            <div class="table-row"><strong>系统 A</strong><span>人工维护</span><span>06-13</span></div>
+            <div class="table-row"><strong>系统 B</strong><span>人工维护</span><span>06-22</span></div>
+            <div class="table-row"><strong>系统 C</strong><span>人工维护</span><span>07-02</span></div>
+          </div>
+        </article>
+        <article class="train-map">
+          <header>版本火车运行图 <span class="status-chip">发布计划容器</span></header>
+          <img src="assets/screenshots/raw/Scene05-1.png" alt="版本火车班次详情">
+          <div class="container-boundary"></div>
+          <div class="train-rail">
+            <div class="rail-line"></div>
+            <div class="train-car">需求车厢</div>
+            <div class="train-car">容量</div>
+            <div class="train-car">节点</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="caption">在发布协同层面，我们搭建了专业化版本火车班次体系。</div>
+    </section>
+
+    <section class="clip stage scene-052" data-start="8" data-duration="9" data-track-index="1">
+      <div class="eyebrow">Scene 05-2 / 班次绑定拆解</div>
+      <h1 class="headline">每个班次绑定系统、容量、节点和快照</h1>
+      <p class="subline">时间轴、系统轨道和关键站点共同定义一个可执行的发布计划。</p>
+
+      <div class="axis-layout">
+        <div class="rail-panel">
+          <div class="time-scale">
+            <div class="main-rail"></div>
+            <div class="station s1"><strong>需求评审</strong><span>Review</span></div>
+            <div class="station s2"><strong>纳版</strong><span>Boarding</span></div>
+            <div class="station s3"><strong>SIT</strong><span>系统测试</span></div>
+            <div class="station s4"><strong>UAT</strong><span>用户验收</span></div>
+            <div class="station s5"><strong>封板</strong><span>Freeze</span></div>
+            <div class="station s6"><strong>投产</strong><span>Release</span></div>
+          </div>
+          <div class="system-track hr">
+            <span class="track-label">人力资源系统</span>
+            <span class="demand-car">3 个需求</span>
+          </div>
+          <div class="system-track frontend">
+            <span class="track-label">普惠前端系统</span>
+            <span class="demand-car">2 个需求</span>
+          </div>
+        </div>
+        <div class="binding-panel">
+          <article class="binding-tag"><b>1</b><div><strong>关联系统</strong><span>班次搭载系统范围明确</span></div></article>
+          <article class="binding-tag"><b>2</b><div><strong>研发容量</strong><span>容量点数进入约束条件</span></div></article>
+          <article class="binding-tag"><b>3</b><div><strong>关键节点</strong><span>评审到投产全流程对齐</span></div></article>
+          <article class="binding-tag"><b>4</b><div><strong>版本快照</strong><span>计划可回溯、可存档</span></div></article>
+        </div>
+      </div>
+
+      <div class="caption">版本火车不是普通排期表，而是发布计划容器。每个班次精准绑定关联系统、研发容量、关键节点和版本快照。</div>
+    </section>
+
+    <section class="clip stage scene-053" data-start="17" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 05-3 / 班次详情证明</div>
+      <h1 class="headline">发布计划有标准、有依据、有留痕</h1>
+      <p class="subline">班次详情里的容量、关键节点和版本快照，是多系统并行发布的执行依据。</p>
+
+      <div class="detail-layout">
+        <div class="detail-shot">
+          <img src="assets/screenshots/raw/Scene05-3.png" alt="班次详情容量与纳版信息">
+          <div class="detail-focus capacity"></div>
+          <div class="detail-focus nodes"></div>
+          <div class="detail-focus snapshot"></div>
+        </div>
+        <div class="proof-tags">
+          <article class="proof-tag"><strong>标准化</strong><span>班次字段统一，发布口径一致。</span></article>
+          <article class="proof-tag"><strong>可落地</strong><span>容量与节点直接约束执行。</span></article>
+          <article class="proof-tag"><strong>可存档</strong><span>版本快照形成留痕依据。</span></article>
+          <article class="proof-tag pressure"><strong>容量压力</strong><span>剩余容量提示纳版冲突。</span></article>
+        </div>
+      </div>
+
+      <div class="caption">让多系统并行发布拥有标准化、可落地、可存档的执行依据。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene05 = gsap.timeline({ paused: true });
+      window.__timelines["scene-05"] = scene05;
+
+      scene05.from(".scene-051 .eyebrow, .scene-051 .headline, .scene-051 .subline", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.72,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 0.15);
+      scene05.from(".scene-051 .schedule-table", {
+        x: -34,
+        autoAlpha: 0,
+        duration: 0.74,
+        ease: "expo.out"
+      }, 0.62);
+      scene05.from(".scene-051 .train-map", {
+        x: 34,
+        autoAlpha: 0,
+        duration: 0.82,
+        ease: "power2.out"
+      }, 0.78);
+      scene05.from(".scene-051 .rail-line", {
+        scaleX: 0,
+        duration: 0.85,
+        ease: "circ.out"
+      }, 2.2);
+      scene05.from(".scene-051 .train-car", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.46,
+        stagger: 0.14,
+        ease: "back.out(1.1)"
+      }, 2.62);
+      scene05.to(".scene-051 .container-boundary", {
+        autoAlpha: 1,
+        duration: 0.58,
+        ease: "power1.out"
+      }, 3.55);
+      scene05.to(".scene-051 .schedule-table", {
+        opacity: 0.42,
+        duration: 0.62,
+        ease: "sine.out"
+      }, 3.95);
+      scene05.from(".scene-051 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 0.35);
+
+      scene05.to(".scene-051", { autoAlpha: 0, duration: 0.35 }, 8);
+      scene05.set(".scene-052", { autoAlpha: 1 }, 8);
+      scene05.from(".scene-052 .eyebrow, .scene-052 .headline, .scene-052 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 8.15);
+      scene05.from(".scene-052 .rail-panel", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 8.55);
+      scene05.from(".scene-052 .main-rail", {
+        scaleX: 0,
+        duration: 0.9,
+        ease: "circ.out"
+      }, 9.25);
+      scene05.from(".scene-052 .station", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.38,
+        stagger: 0.22,
+        ease: "power2.out"
+      }, 10.1);
+      scene05.from(".scene-052 .system-track", {
+        x: -28,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.16,
+        ease: "power2.out"
+      }, 11.75);
+      scene05.from(".scene-052 .demand-car", {
+        scale: 0.9,
+        autoAlpha: 0,
+        duration: 0.45,
+        stagger: 0.16,
+        ease: "back.out(1.16)"
+      }, 12.25);
+      scene05.from(".scene-052 .binding-tag", {
+        x: 26,
+        autoAlpha: 0,
+        duration: 0.44,
+        stagger: 0.16,
+        ease: "power2.out"
+      }, 13.15);
+      scene05.from(".scene-052 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 8.35);
+
+      scene05.to(".scene-052", { autoAlpha: 0, duration: 0.35 }, 17);
+      scene05.set(".scene-053", { autoAlpha: 1 }, 17);
+      scene05.from(".scene-053 .eyebrow, .scene-053 .headline, .scene-053 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.68,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 17.15);
+      scene05.from(".scene-053 .detail-shot", {
+        x: -30,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "expo.out"
+      }, 17.55);
+      scene05.from(".scene-053 .proof-tags", {
+        x: 28,
+        autoAlpha: 0,
+        duration: 0.7,
+        ease: "power2.out"
+      }, 17.75);
+      scene05.from(".scene-053 .detail-focus.capacity", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "circ.out"
+      }, 18.8);
+      scene05.from(".scene-053 .detail-focus.nodes, .scene-053 .detail-focus.snapshot", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.52,
+        stagger: 0.16,
+        ease: "power1.out"
+      }, 21.0);
+      scene05.from(".scene-053 .proof-tag", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.4,
+        stagger: 0.16,
+        ease: "power2.out"
+      }, 22.3);
+      scene05.from(".scene-053 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 17.35);
+    </script>
+  </div>
+</template>

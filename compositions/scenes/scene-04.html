@@ -1,0 +1,815 @@
+<template id="scene-04-template">
+  <div class="scene04" data-composition-id="scene-04" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --panel-soft: rgba(255, 255, 255, 0.88);
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --ai-orange: #f97316;
+        --ai-orange-soft: #fff7ed;
+        --risk-red: #ef4444;
+        --risk-red-soft: #fef2f2;
+        --done-green: #22c55e;
+        --done-green-soft: #dcfce7;
+        --warning-yellow: #facc15;
+        --warning-soft: #fefce8;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene04 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(249, 115, 22, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 18% 18%, rgba(249, 115, 22, 0.11), transparent 29%),
+          radial-gradient(circle at 86% 74%, rgba(34, 197, 94, 0.08), transparent 30%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .scene-042,
+      .scene-043 {
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(249, 115, 22, 0.26);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ai-orange);
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1160px;
+        color: var(--text-primary);
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 1060px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .question-board {
+        position: absolute;
+        left: 140px;
+        right: 140px;
+        top: 288px;
+        bottom: 150px;
+      }
+
+      .product-ghost {
+        position: absolute;
+        inset: 28px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: white;
+        opacity: 0.22;
+        filter: saturate(0.78);
+      }
+
+      .product-ghost img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .demand-card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 560px;
+        min-height: 250px;
+        transform: translate(-50%, -50%);
+        padding: 28px 30px;
+        border: 2px solid rgba(100, 116, 139, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 30px 76px rgba(15, 23, 42, 0.12);
+      }
+
+      .demand-card header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .demand-card h2 {
+        margin-top: 22px;
+        color: var(--text-primary);
+        font-size: 42px;
+        line-height: 1.2;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .demand-card p {
+        margin-top: 18px;
+        color: var(--text-secondary);
+        font-size: 24px;
+        line-height: 1.45;
+        font-weight: 650;
+      }
+
+      .risk-chip,
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 0 12px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .risk-chip {
+        color: #b91c1c;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+      }
+
+      .status-chip {
+        color: #15803d;
+        background: rgba(34, 197, 94, 0.12);
+        border: 1px solid rgba(34, 197, 94, 0.24);
+      }
+
+      .question-bubble {
+        position: absolute;
+        width: 300px;
+        min-height: 106px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 22px;
+        border-radius: 8px;
+        border: 1px solid rgba(239, 68, 68, 0.18);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        font-size: 25px;
+        line-height: 1.28;
+        font-weight: 850;
+        text-align: center;
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+        opacity: 0.46;
+      }
+
+      .question-bubble.q1 {
+        left: 210px;
+        top: 60px;
+      }
+
+      .question-bubble.q2 {
+        right: 210px;
+        top: 72px;
+      }
+
+      .question-bubble.q3 {
+        left: 190px;
+        bottom: 72px;
+      }
+
+      .question-bubble.q4 {
+        right: 176px;
+        bottom: 70px;
+      }
+
+      .question-line {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 365px;
+        height: 2px;
+        background: rgba(249, 115, 22, 0.34);
+        transform-origin: left center;
+        opacity: 0;
+      }
+
+      .question-line.l1 {
+        transform: rotate(208deg);
+      }
+
+      .question-line.l2 {
+        transform: rotate(-28deg);
+      }
+
+      .question-line.l3 {
+        transform: rotate(150deg);
+      }
+
+      .question-line.l4 {
+        transform: rotate(28deg);
+      }
+
+      .ai-boundary {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 650px;
+        height: 342px;
+        transform: translate(-50%, -50%);
+        border: 4px solid var(--ai-orange);
+        border-radius: 8px;
+        opacity: 0;
+        box-shadow: 0 0 0 10px rgba(249, 115, 22, 0.08), 0 24px 70px rgba(249, 115, 22, 0.18);
+      }
+
+      .ai-boundary span {
+        position: absolute;
+        right: 18px;
+        top: -52px;
+        display: inline-flex;
+        height: 40px;
+        align-items: center;
+        padding: 0 14px;
+        border-radius: 8px;
+        background: var(--ai-orange);
+        color: white;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .review-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1.16fr 0.84fr;
+        gap: 28px;
+      }
+
+      .screenshot-frame {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: white;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+      }
+
+      .screenshot-frame img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .scan-frame {
+        position: absolute;
+        left: 316px;
+        top: 132px;
+        width: 440px;
+        height: 228px;
+        border: 4px solid var(--ai-orange);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.18), 0 18px 48px rgba(249, 115, 22, 0.2);
+      }
+
+      .scan-line {
+        position: absolute;
+        left: 320px;
+        top: 142px;
+        width: 432px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--ai-orange);
+        box-shadow: 0 0 22px rgba(249, 115, 22, 0.46);
+      }
+
+      .check-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 28px;
+        border-radius: 8px;
+        border: 1px solid rgba(249, 115, 22, 0.22);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .check-panel h2 {
+        color: var(--text-primary);
+        font-size: 34px;
+        line-height: 1.15;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .check-item {
+        display: grid;
+        grid-template-columns: 42px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        min-height: 76px;
+        padding: 16px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        border-radius: 8px;
+        background: #f8fafc;
+      }
+
+      .check-item b {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: rgba(249, 115, 22, 0.12);
+        color: var(--ai-orange);
+        font-size: 20px;
+      }
+
+      .check-item strong {
+        color: var(--text-primary);
+        font-size: 24px;
+        font-weight: 850;
+      }
+
+      .check-item span {
+        color: var(--text-secondary);
+        font-size: 19px;
+        font-weight: 750;
+      }
+
+      .check-item.risk {
+        border-color: rgba(239, 68, 68, 0.26);
+        background: var(--risk-red-soft);
+      }
+
+      .check-item.risk b,
+      .check-item.risk span {
+        color: var(--risk-red);
+      }
+
+      .check-item.done {
+        border-color: rgba(34, 197, 94, 0.26);
+        background: rgba(240, 253, 244, 0.9);
+      }
+
+      .check-item.done b,
+      .check-item.done span {
+        color: #15803d;
+      }
+
+      .proof-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 282px;
+        bottom: 148px;
+        display: grid;
+        grid-template-columns: 1fr 390px;
+        gap: 28px;
+      }
+
+      .proof-shot {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: white;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+      }
+
+      .proof-shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      .focus-box {
+        position: absolute;
+        border: 4px solid var(--ai-orange);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.14), 0 18px 42px rgba(249, 115, 22, 0.2);
+      }
+
+      .focus-box.score {
+        left: 372px;
+        top: 26px;
+        width: 482px;
+        height: 132px;
+      }
+
+      .focus-box.risk-zone {
+        left: 392px;
+        top: 436px;
+        width: 646px;
+        height: 170px;
+        border-color: var(--risk-red);
+      }
+
+      .gate-panel {
+        position: relative;
+        padding: 28px;
+        border-radius: 8px;
+        border: 1px solid rgba(249, 115, 22, 0.28);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .score-badge {
+        display: grid;
+        place-items: center;
+        width: 154px;
+        height: 154px;
+        border-radius: 999px;
+        margin: 0 auto 22px;
+        background: var(--done-green-soft);
+        color: #15803d;
+        font-size: 58px;
+        line-height: 1;
+        font-weight: 950;
+        font-variant-numeric: tabular-nums;
+        box-shadow: 0 18px 44px rgba(34, 197, 94, 0.18);
+      }
+
+      .score-badge span {
+        display: block;
+        margin-top: 8px;
+        color: #15803d;
+        font-size: 20px;
+        font-weight: 850;
+      }
+
+      .gate-panel h2 {
+        color: var(--text-primary);
+        font-size: 31px;
+        line-height: 1.22;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-align: center;
+      }
+
+      .gate-list {
+        margin-top: 24px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .gate-list article {
+        min-height: 74px;
+        padding: 14px 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: #f8fafc;
+      }
+
+      .gate-list strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .gate-list span {
+        display: block;
+        margin-top: 6px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        line-height: 1.32;
+        font-weight: 700;
+      }
+
+      .quality-gate {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        bottom: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 58px;
+        padding: 0 18px;
+        border-radius: 8px;
+        background: var(--ai-orange-soft);
+        border: 2px solid rgba(249, 115, 22, 0.34);
+        color: var(--ai-orange);
+        font-size: 21px;
+        font-weight: 900;
+      }
+    </style>
+
+    <section class="clip stage scene-041" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 04-1 / AI 需求审查入口</div>
+      <h1 class="headline">一句话需求，先进入 AI 审查边界</h1>
+      <p class="subline">需求不是写进系统就结束，提交前要先把范围、验收、影响和依赖说清楚。</p>
+
+      <div class="question-board">
+        <div class="product-ghost" data-layout-ignore><img src="assets/screenshots/raw/Scene04-1.png" alt="AI 需求审查界面"></div>
+        <div class="question-line l1"></div>
+        <div class="question-line l2"></div>
+        <div class="question-line l3"></div>
+        <div class="question-line l4"></div>
+        <article class="question-bubble q1">优化哪里？</article>
+        <article class="question-bubble q2">验收标准是什么？</article>
+        <article class="question-bubble q3">影响哪些系统？</article>
+        <article class="question-bubble q4">依赖是否清楚？</article>
+        <article class="demand-card">
+          <header><span>需求描述</span><b class="risk-chip">一句话需求</b></header>
+          <h2>优化支付流程</h2>
+          <p>目标、验收、影响范围和依赖关系仍处于待补齐状态。</p>
+        </article>
+        <div class="ai-boundary"><span>AI 需求审查 / 智能补全</span></div>
+      </div>
+
+      <div class="caption">在需求提交前，系统引入 AI 需求审查和智能补全能力。</div>
+    </section>
+
+    <section class="clip stage scene-042" data-start="8" data-duration="10" data-track-index="1">
+      <div class="eyebrow">Scene 04-2 / 完整性与风险校验</div>
+      <h1 class="headline">AI 自动识别风险，并补齐缺失标准</h1>
+      <p class="subline">完整性、风险点、模糊表达先被识别，再把验收标准与备注补全成可评审材料。</p>
+
+      <div class="review-layout">
+        <div class="screenshot-frame">
+          <img src="assets/screenshots/raw/Scene04-2.png" alt="AI 审查报告">
+          <div class="scan-frame"></div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="check-panel">
+          <h2>AI 审查结果</h2>
+          <article class="check-item"><b>1</b><strong>完整性</strong><span>已检查</span></article>
+          <article class="check-item risk"><b>2</b><strong>风险点</strong><span>已识别</span></article>
+          <article class="check-item risk"><b>3</b><strong>模糊表达</strong><span>已识别</span></article>
+          <article class="check-item done"><b>4</b><strong>验收标准</strong><span>已补全</span></article>
+          <article class="check-item done"><b>5</b><strong>备注补全</strong><span>已补全</span></article>
+        </div>
+      </div>
+
+      <div class="caption">AI 会自动校验需求完整性，识别潜在风险和模糊表达，并补齐缺失的验收标准与备注。</div>
+    </section>
+
+    <section class="clip stage scene-043" data-start="18" data-duration="11" data-track-index="1">
+      <div class="eyebrow">Scene 04-3 / 源头质量闸门</div>
+      <h1 class="headline">把一句话需求，拦在评审之前</h1>
+      <p class="subline">评分、优化建议、风险提示和验收标准补全共同构成评审前的质量闸门。</p>
+
+      <div class="proof-layout">
+        <div class="proof-shot">
+          <img src="assets/screenshots/raw/Scene04-3.png" alt="AI 需求审查通过弹窗">
+          <div class="focus-box score"></div>
+          <div class="focus-box risk-zone"></div>
+        </div>
+        <aside class="gate-panel">
+          <div class="score-badge">78<span>分</span></div>
+          <h2>需求质量从低分状态切换为可评审状态</h2>
+          <div class="gate-list">
+            <article><strong>优化建议</strong><span>统一整理需求描述，形成可执行方向。</span></article>
+            <article><strong>风险提示</strong><span>中等与严重风险进入显性提示区。</span></article>
+            <article><strong>验收标准补全</strong><span>补齐可验证、可测试的完成条件。</span></article>
+          </div>
+          <div class="quality-gate"><span>AI Orange 质量闸门</span><b>评审前拦截</b></div>
+        </aside>
+      </div>
+
+      <div class="caption">过去靠人工开会查漏的环节，现在可以在需求源头完成质量把关，把一句话需求提前拦截在评审之前。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene04 = gsap.timeline({ paused: true });
+      window.__timelines["scene-04"] = scene04;
+
+      scene04.from(".scene-041 .eyebrow, .scene-041 .headline, .scene-041 .subline", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.72,
+        stagger: 0.11,
+        ease: "power3.out"
+      }, 0.15);
+      scene04.from(".scene-041 .demand-card", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "back.out(1.12)"
+      }, 0.72);
+      scene04.from(".scene-041 .question-bubble", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.16,
+        ease: "expo.out"
+      }, 3.0);
+      scene04.to(".scene-041 .question-bubble", {
+        opacity: 1,
+        borderColor: "rgba(249, 115, 22, 0.36)",
+        duration: 0.52,
+        stagger: 0.08,
+        ease: "sine.out"
+      }, 3.5);
+      scene04.to(".scene-041 .demand-card", {
+        borderColor: "#f97316",
+        boxShadow: "0 30px 76px rgba(249, 115, 22, 0.2)",
+        duration: 0.55,
+        ease: "power2.out"
+      }, 3.75);
+      scene04.to(".scene-041 .question-line", {
+        autoAlpha: 1,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power1.out"
+      }, 5.8);
+      scene04.to(".scene-041 .ai-boundary", {
+        autoAlpha: 1,
+        duration: 0.62,
+        ease: "circ.out"
+      }, 6.05);
+      scene04.from(".scene-041 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 0.38);
+
+      scene04.to(".scene-041", { autoAlpha: 0, duration: 0.35 }, 8);
+      scene04.set(".scene-042", { autoAlpha: 1 }, 8);
+      scene04.from(".scene-042 .eyebrow, .scene-042 .headline, .scene-042 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 8.15);
+      scene04.from(".scene-042 .screenshot-frame", {
+        x: -36,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 8.55);
+      scene04.from(".scene-042 .check-panel", {
+        x: 34,
+        autoAlpha: 0,
+        duration: 0.72,
+        ease: "power2.out"
+      }, 8.72);
+      scene04.from(".scene-042 .scan-frame", {
+        scale: 0.92,
+        autoAlpha: 0,
+        duration: 0.54,
+        ease: "back.out(1.18)"
+      }, 9.25);
+      scene04.to(".scene-042 .scan-line", {
+        y: 206,
+        duration: 2.1,
+        ease: "sine.inOut"
+      }, 9.55);
+      scene04.from(".scene-042 .check-item", {
+        y: 16,
+        autoAlpha: 0,
+        duration: 0.42,
+        stagger: 0.18,
+        ease: "power2.out"
+      }, 11.35);
+      scene04.to(".scene-042 .check-item.risk", {
+        borderColor: "rgba(239, 68, 68, 0.48)",
+        duration: 0.38,
+        stagger: 0.14,
+        ease: "power1.out"
+      }, 13.2);
+      scene04.to(".scene-042 .check-item.done", {
+        borderColor: "rgba(34, 197, 94, 0.52)",
+        duration: 0.38,
+        stagger: 0.16,
+        ease: "power1.out"
+      }, 16.0);
+      scene04.from(".scene-042 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 8.35);
+
+      scene04.to(".scene-042", { autoAlpha: 0, duration: 0.35 }, 18);
+      scene04.set(".scene-043", { autoAlpha: 1 }, 18);
+      scene04.from(".scene-043 .eyebrow, .scene-043 .headline, .scene-043 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 18.15);
+      scene04.from(".scene-043 .proof-shot", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 18.55);
+      scene04.from(".scene-043 .gate-panel", {
+        x: 34,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "power2.out"
+      }, 18.72);
+      scene04.from(".scene-043 .score-badge", {
+        scale: 0.82,
+        autoAlpha: 0,
+        duration: 0.58,
+        ease: "back.out(1.22)"
+      }, 19.15);
+      scene04.from(".scene-043 .focus-box.score", {
+        scale: 0.94,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "circ.out"
+      }, 19.35);
+      scene04.from(".scene-043 .gate-list article", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.44,
+        stagger: 0.16,
+        ease: "power2.out"
+      }, 22.1);
+      scene04.from(".scene-043 .focus-box.risk-zone", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.55,
+        ease: "power1.out"
+      }, 22.55);
+      scene04.from(".scene-043 .quality-gate", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.58,
+        ease: "expo.out"
+      }, 26.6);
+      scene04.from(".scene-043 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 18.35);
+    </script>
+  </div>
+</template>

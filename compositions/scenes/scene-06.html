@@ -1,0 +1,944 @@
+<template id="scene-06-template">
+  <div class="scene06" data-composition-id="scene-06" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --panel-soft: rgba(255, 255, 255, 0.88);
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --ai-orange: #f97316;
+        --ai-orange-soft: #fff7ed;
+        --risk-red: #ef4444;
+        --risk-red-soft: #fef2f2;
+        --done-green: #22c55e;
+        --done-green-soft: #dcfce7;
+        --warning-yellow: #facc15;
+        --warning-soft: #fefce8;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene06 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(249, 115, 22, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 14% 20%, rgba(239, 68, 68, 0.08), transparent 28%),
+          radial-gradient(circle at 82% 78%, rgba(249, 115, 22, 0.1), transparent 30%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .scene-062,
+      .scene-063,
+      .scene-064 {
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(249, 115, 22, 0.24);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ai-orange);
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1180px;
+        color: var(--text-primary);
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 1120px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .conflict-layout {
+        position: absolute;
+        left: 110px;
+        right: 110px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 320px 1fr;
+        gap: 26px;
+        align-items: stretch;
+      }
+
+      .side-panel,
+      .decision-card {
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.16);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .side-panel {
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .side-panel header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--text-primary);
+        font-size: 30px;
+        font-weight: 950;
+      }
+
+      .talk-bubble {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-radius: 8px;
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .business .talk-bubble {
+        background: var(--risk-red-soft);
+        color: #b91c1c;
+        border: 1px solid rgba(239, 68, 68, 0.22);
+      }
+
+      .dev .talk-bubble {
+        background: var(--warning-soft);
+        color: #a16207;
+        border: 1px solid rgba(250, 204, 21, 0.44);
+      }
+
+      .demand-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .demand-row {
+        min-height: 62px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 8px;
+        background: #f8fafc;
+        color: var(--text-primary);
+        font-size: 22px;
+        font-weight: 850;
+      }
+
+      .urgent {
+        display: inline-flex;
+        align-items: center;
+        height: 34px;
+        padding: 0 10px;
+        border-radius: 8px;
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--risk-red);
+        font-size: 17px;
+        font-weight: 900;
+      }
+
+      .capacity-card {
+        margin-top: auto;
+        padding: 22px;
+        border-radius: 8px;
+        background: #f8fafc;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+      }
+
+      .capacity-card strong {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-primary);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .capacity-bar {
+        margin-top: 16px;
+        height: 18px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        overflow: hidden;
+      }
+
+      .capacity-fill {
+        width: 66%;
+        height: 100%;
+        border-radius: 999px;
+        background: var(--done-green);
+      }
+
+      .conflict-center {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .conflict-icon {
+        width: 136px;
+        height: 136px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: white;
+        border: 5px solid var(--risk-red);
+        color: var(--risk-red);
+        font-size: 56px;
+        font-weight: 950;
+        box-shadow: 0 22px 54px rgba(239, 68, 68, 0.18);
+      }
+
+      .decision-card {
+        position: absolute;
+        left: 50%;
+        bottom: 16px;
+        width: 300px;
+        min-height: 156px;
+        transform: translateX(-50%);
+        padding: 22px 26px;
+        border-color: rgba(249, 115, 22, 0.3);
+        background: var(--ai-orange-soft);
+        color: var(--text-primary);
+        opacity: 0;
+      }
+
+      .decision-card strong {
+        display: block;
+        color: var(--ai-orange);
+        font-size: 25px;
+        font-weight: 950;
+      }
+
+      .decision-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 750;
+      }
+
+      .engine-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 430px;
+        gap: 28px;
+      }
+
+      .engine-board {
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid rgba(249, 115, 22, 0.22);
+        background: rgba(255, 255, 255, 0.88);
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .engine-board img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        opacity: 0.3;
+      }
+
+      .ai-engine {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 260px;
+        height: 260px;
+        transform: translate(-50%, -50%);
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 4px solid var(--ai-orange);
+        background: rgba(255, 247, 237, 0.94);
+        color: var(--ai-orange);
+        text-align: center;
+        font-size: 30px;
+        line-height: 1.25;
+        font-weight: 950;
+        box-shadow: 0 24px 70px rgba(249, 115, 22, 0.2);
+      }
+
+      .input-card {
+        position: absolute;
+        width: 260px;
+        min-height: 104px;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text-primary);
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+      }
+
+      .input-card strong {
+        display: block;
+        font-size: 25px;
+        font-weight: 950;
+      }
+
+      .input-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 18px;
+        font-weight: 750;
+      }
+
+      .input-card.priority { left: 88px; top: 82px; }
+      .input-card.capacity { right: 88px; top: 82px; }
+      .input-card.dependency { left: 88px; bottom: 82px; }
+      .input-card.urgency { right: 88px; bottom: 82px; }
+
+      .engine-line {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 300px;
+        height: 2px;
+        background: rgba(249, 115, 22, 0.38);
+        transform-origin: left center;
+      }
+
+      .engine-line.l1 { transform: rotate(218deg); }
+      .engine-line.l2 { transform: rotate(-38deg); }
+      .engine-line.l3 { transform: rotate(142deg); }
+      .engine-line.l4 { transform: rotate(38deg); }
+
+      .score-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 28px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+      }
+
+      .score-panel h2 {
+        color: var(--text-primary);
+        font-size: 34px;
+        line-height: 1.18;
+        font-weight: 950;
+      }
+
+      .score-metric {
+        padding: 18px;
+        border-radius: 8px;
+        background: #f8fafc;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+      }
+
+      .score-metric strong {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-primary);
+        font-size: 23px;
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .score-track {
+        margin-top: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        overflow: hidden;
+      }
+
+      .score-track span {
+        display: block;
+        width: 0;
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--ai-orange));
+      }
+
+      .result-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .result-zone {
+        position: relative;
+        padding: 26px;
+        border-radius: 8px;
+        border: 2px solid rgba(34, 197, 94, 0.24);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .result-zone.defer {
+        border-color: rgba(250, 204, 21, 0.5);
+      }
+
+      .result-zone header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        color: var(--text-primary);
+        font-size: 31px;
+        font-weight: 950;
+      }
+
+      .result-zone header span {
+        display: inline-flex;
+        align-items: center;
+        height: 38px;
+        padding: 0 12px;
+        border-radius: 8px;
+        color: #15803d;
+        background: var(--done-green-soft);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .result-zone.defer header span {
+        color: #a16207;
+        background: var(--warning-soft);
+      }
+
+      .result-card {
+        min-height: 118px;
+        padding: 18px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.14);
+        background: #f8fafc;
+        margin-bottom: 14px;
+      }
+
+      .result-card strong {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-primary);
+        font-size: 24px;
+        font-weight: 950;
+      }
+
+      .result-card strong b {
+        color: var(--tech-blue);
+        font-size: 20px;
+        font-weight: 950;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .reason {
+        margin-top: 12px;
+        color: var(--text-secondary);
+        font-size: 20px;
+        line-height: 1.38;
+        font-weight: 750;
+      }
+
+      .reason-tags {
+        position: absolute;
+        left: 26px;
+        right: 26px;
+        bottom: 24px;
+        display: flex;
+        gap: 14px;
+      }
+
+      .reason-tags span {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        border-radius: 8px;
+        color: var(--text-primary);
+        background: rgba(219, 234, 254, 0.72);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .summary-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 282px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 420px;
+        gap: 28px;
+      }
+
+      .summary-shot {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.18);
+        background: white;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+      }
+
+      .summary-shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      .summary-focus {
+        position: absolute;
+        left: 632px;
+        top: 108px;
+        width: 580px;
+        height: 178px;
+        border: 4px solid var(--ai-orange);
+        border-radius: 8px;
+        box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.14), 0 18px 48px rgba(249, 115, 22, 0.2);
+      }
+
+      .decision-upgrade {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .upgrade-card {
+        min-height: 148px;
+        padding: 24px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.16);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 18px 48px rgba(15, 23, 42, 0.07);
+      }
+
+      .upgrade-card.muted {
+        filter: grayscale(1);
+        opacity: 0.58;
+      }
+
+      .upgrade-card.active {
+        border-color: rgba(34, 197, 94, 0.28);
+        background: rgba(240, 253, 244, 0.92);
+      }
+
+      .upgrade-card strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 30px;
+        font-weight: 950;
+      }
+
+      .upgrade-card span {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-secondary);
+        font-size: 20px;
+        line-height: 1.38;
+        font-weight: 750;
+      }
+
+      .freeze-cue {
+        margin-top: auto;
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 2px solid rgba(37, 99, 235, 0.28);
+        background: var(--tech-blue-soft);
+        color: var(--tech-blue);
+        font-size: 27px;
+        font-weight: 950;
+      }
+    </style>
+
+    <section class="clip stage scene-061" data-start="0" data-duration="9" data-track-index="1">
+      <div class="eyebrow">Scene 06-1 / 纳版冲突</div>
+      <h1 class="headline">所有需求都紧急，但容量接不住</h1>
+      <p class="subline">人工纳版凭感觉，最容易在业务紧急度、研发容量和依赖冲突之间失衡。</p>
+
+      <div class="conflict-layout">
+        <article class="side-panel business">
+          <header>业务侧 <span class="urgent">需求增加</span></header>
+          <div class="talk-bubble">我的需求都很紧急！</div>
+          <div class="demand-list">
+            <div class="demand-row">薪资计算模块优化 <span class="urgent">P0</span></div>
+            <div class="demand-row">报表看板首页 <span class="urgent">P1</span></div>
+            <div class="demand-row">数据导出功能 <span class="urgent">P2</span></div>
+            <div class="demand-row">配置管理 <span class="urgent">P3</span></div>
+          </div>
+        </article>
+        <div class="conflict-center">
+          <div class="conflict-icon">!</div>
+          <article class="decision-card">
+            <strong>待决策问题卡</strong>
+            <span>纳版冲突需要 AI 接管：优先级、容量、依赖、紧急度一起计算。</span>
+          </article>
+        </div>
+        <article class="side-panel dev">
+          <header>研发侧 <span class="urgent">容量告警</span></header>
+          <div class="talk-bubble">产能真的接不住！</div>
+          <div class="capacity-card">
+            <strong><span>总容量</span><b>50 点</b></strong>
+            <div class="capacity-bar"><div class="capacity-fill"></div></div>
+          </div>
+          <div class="capacity-card">
+            <strong><span>已分配</span><b>48 点</b></strong>
+            <div class="capacity-bar"><div class="capacity-fill overload"></div></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="caption">针对人工纳版凭感觉、产能过载、依赖冲突，多方业务所有需求都紧急、研发产能无法全部承接的核心矛盾。</div>
+    </section>
+
+    <section class="clip stage scene-062" data-start="9" data-duration="10" data-track-index="1">
+      <div class="eyebrow">Scene 06-2 / AI 智能纳版引擎</div>
+      <h1 class="headline">AI 综合四类输入，生成纳版评分</h1>
+      <p class="subline">优先级、容量、依赖和紧急度不再分开判断，而是进入同一个可计算引擎。</p>
+
+      <div class="engine-layout">
+        <div class="engine-board">
+          <img src="assets/screenshots/raw/Scene06-2.png" alt="AI 智能纳版分析">
+          <div class="engine-line l1"></div>
+          <div class="engine-line l2"></div>
+          <div class="engine-line l3"></div>
+          <div class="engine-line l4"></div>
+          <div class="input-card priority"><strong>优先级</strong><span>P0 / P1 / P2 / P3 智能排序</span></div>
+          <div class="input-card capacity"><strong>容量</strong><span>剩余容量与故事点约束</span></div>
+          <div class="input-card dependency"><strong>依赖</strong><span>上下游系统影响分析</span></div>
+          <div class="input-card urgency"><strong>紧急度</strong><span>业务诉求与时间窗口读取</span></div>
+          <div class="ai-engine"><span>AI 智能</span><span>纳版引擎</span></div>
+        </div>
+        <aside class="score-panel">
+          <h2>纳版评分面板</h2>
+          <div class="score-metric"><strong>优先级读取 <b>92%</b></strong><div class="score-track"><span></span></div></div>
+          <div class="score-metric"><strong>容量计算 <b>84%</b></strong><div class="score-track"><span></span></div></div>
+          <div class="score-metric"><strong>依赖分析 <b>76%</b></strong><div class="score-track"><span></span></div></div>
+          <div class="score-metric"><strong>生成建议 <b>96%</b></strong><div class="score-track"><span></span></div></div>
+        </aside>
+      </div>
+
+      <div class="caption">系统上线 AI 智能纳版能力。它会综合需求优先级、研发容量、上下游依赖和业务紧急度。</div>
+    </section>
+
+    <section class="clip stage scene-063" data-start="19" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 06-3 / 可解释纳版方案</div>
+      <h1 class="headline">建议上车和建议暂缓，都要说明原因</h1>
+      <p class="subline">绿色不是简单通过，黄色也不是失败，而是带着容量与风险原因的决策状态。</p>
+
+      <div class="result-layout">
+        <section class="result-zone board">
+          <header>建议上车 <span>可纳版</span></header>
+          <article class="result-card"><strong>薪资计算模块优化 <b>Score 96</b></strong><div class="reason">P0 优先级，系统剩余容量充足，可纳入本班次。</div></article>
+          <article class="result-card"><strong>基础数据层 <b>Score 88</b></strong><div class="reason">依赖清晰，研发容量仍可承接，建议随本班次交付。</div></article>
+          <div class="reason-tags"><span>容量原因</span><span>风险原因</span></div>
+        </section>
+        <section class="result-zone defer">
+          <header>建议暂缓 <span>待调整</span></header>
+          <article class="result-card"><strong>报表看板首页 <b>Score 62</b></strong><div class="reason">优先级较低，前置接口依赖未确认，建议暂缓。</div></article>
+          <article class="result-card"><strong>数据导出功能 <b>Score 58</b></strong><div class="reason">容量压力较高，影响范围需要补充评估后再纳版。</div></article>
+          <div class="reason-tags"><span>容量不足</span><span>依赖风险</span></div>
+        </section>
+      </div>
+
+      <div class="caption">生成可解释的纳版方案，清楚说明哪些需求适合上车，哪些需要暂缓，以及背后的容量和风险原因。</div>
+    </section>
+
+    <section class="clip stage scene-064" data-start="27" data-duration="4" data-track-index="1">
+      <div class="eyebrow">Scene 06-4 / 可解释决策</div>
+      <h1 class="headline">纳版从经验拍板，升级为可解释决策</h1>
+      <p class="subline">建议原因和风险说明被保留下来，后续封板管控才有明确边界。</p>
+
+      <div class="summary-layout">
+        <div class="summary-shot">
+          <img src="assets/screenshots/raw/Scene06-3.png" alt="AI 纳版建议结果">
+          <div class="summary-focus"></div>
+        </div>
+        <aside class="decision-upgrade">
+          <article class="upgrade-card muted"><strong>经验拍板</strong><span>只看紧急度，容易忽略容量和依赖风险。</span></article>
+          <article class="upgrade-card active"><strong>可解释决策</strong><span>建议原因、风险说明、容量约束全部可追溯。</span></article>
+          <div class="freeze-cue">下一站：封板节点</div>
+        </aside>
+      </div>
+
+      <div class="caption">纳版从经验拍板，升级为可解释决策。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene06 = gsap.timeline({ paused: true });
+      window.__timelines["scene-06"] = scene06;
+
+      scene06.from(".scene-061 .eyebrow, .scene-061 .headline, .scene-061 .subline", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.72,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 0.15);
+      scene06.from(".scene-061 .business", {
+        x: -38,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "expo.out"
+      }, 0.62);
+      scene06.from(".scene-061 .dev", {
+        x: 38,
+        autoAlpha: 0,
+        duration: 0.76,
+        ease: "power2.out"
+      }, 0.75);
+      scene06.from(".scene-061 .demand-row", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.38,
+        stagger: 0.12,
+        ease: "power2.out"
+      }, 2.0);
+      scene06.to(".scene-061 .capacity-fill", {
+        width: "92%",
+        backgroundColor: "#f97316",
+        duration: 1.1,
+        ease: "sine.inOut"
+      }, 3.15);
+      scene06.to(".scene-061 .capacity-fill.overload", {
+        width: "96%",
+        backgroundColor: "#ef4444",
+        duration: 1.1,
+        ease: "sine.inOut"
+      }, 3.55);
+      scene06.from(".scene-061 .conflict-icon", {
+        scale: 0.82,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "back.out(1.2)"
+      }, 4.7);
+      scene06.to(".scene-061 .decision-card", {
+        autoAlpha: 1,
+        y: -8,
+        duration: 0.62,
+        ease: "circ.out"
+      }, 6.6);
+      scene06.from(".scene-061 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 0.35);
+
+      scene06.to(".scene-061", { autoAlpha: 0, duration: 0.35 }, 9);
+      scene06.set(".scene-062", { autoAlpha: 1 }, 9);
+      scene06.from(".scene-062 .eyebrow, .scene-062 .headline, .scene-062 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 9.15);
+      scene06.from(".scene-062 .engine-board", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.78,
+        ease: "expo.out"
+      }, 9.55);
+      scene06.from(".scene-062 .ai-engine", {
+        scale: 0.84,
+        autoAlpha: 0,
+        duration: 0.58,
+        ease: "back.out(1.16)"
+      }, 10.0);
+      scene06.from(".scene-062 .input-card", {
+        scale: 0.94,
+        autoAlpha: 0,
+        duration: 0.45,
+        stagger: 0.13,
+        ease: "power2.out"
+      }, 10.8);
+      scene06.from(".scene-062 .engine-line", {
+        scaleX: 0,
+        autoAlpha: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "circ.out"
+      }, 11.45);
+      scene06.from(".scene-062 .score-panel", {
+        x: 28,
+        autoAlpha: 0,
+        duration: 0.72,
+        ease: "power2.out"
+      }, 12.55);
+      scene06.to(".scene-062 .score-track span", {
+        width: "96%",
+        duration: 1.25,
+        stagger: 0.18,
+        ease: "sine.inOut"
+      }, 15.0);
+      scene06.from(".scene-062 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 9.35);
+
+      scene06.to(".scene-062", { autoAlpha: 0, duration: 0.35 }, 19);
+      scene06.set(".scene-063", { autoAlpha: 1 }, 19);
+      scene06.from(".scene-063 .eyebrow, .scene-063 .headline, .scene-063 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.68,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, 19.15);
+      scene06.from(".scene-063 .result-zone", {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.76,
+        stagger: 0.14,
+        ease: "expo.out"
+      }, 19.62);
+      scene06.from(".scene-063 .result-card", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.42,
+        stagger: 0.12,
+        ease: "power2.out"
+      }, 21.0);
+      scene06.from(".scene-063 .reason", {
+        autoAlpha: 0,
+        duration: 0.42,
+        stagger: 0.12,
+        ease: "power1.out"
+      }, 22.2);
+      scene06.from(".scene-063 .reason-tags span", {
+        y: 10,
+        autoAlpha: 0,
+        duration: 0.38,
+        stagger: 0.1,
+        ease: "power2.out"
+      }, 24.65);
+      scene06.from(".scene-063 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "power2.out"
+      }, 19.35);
+
+      scene06.to(".scene-063", { autoAlpha: 0, duration: 0.35 }, 27);
+      scene06.set(".scene-064", { autoAlpha: 1 }, 27);
+      scene06.from(".scene-064 .eyebrow, .scene-064 .headline, .scene-064 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.08,
+        ease: "power3.out"
+      }, 27.12);
+      scene06.from(".scene-064 .summary-shot", {
+        x: -28,
+        autoAlpha: 0,
+        duration: 0.62,
+        ease: "expo.out"
+      }, 27.45);
+      scene06.from(".scene-064 .decision-upgrade", {
+        x: 28,
+        autoAlpha: 0,
+        duration: 0.62,
+        ease: "power2.out"
+      }, 27.55);
+      scene06.from(".scene-064 .summary-focus", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.42,
+        ease: "circ.out"
+      }, 28.15);
+      scene06.from(".scene-064 .freeze-cue", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.38,
+        ease: "power2.out"
+      }, 29.45);
+      scene06.from(".scene-064 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.46,
+        ease: "power2.out"
+      }, 27.28);
+    </script>
+  </div>
+</template>
