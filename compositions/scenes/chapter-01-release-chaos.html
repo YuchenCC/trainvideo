@@ -1,0 +1,862 @@
+<template id="chapter-01-release-chaos-template">
+  <div data-composition-id="chapter-01-release-chaos" data-width="1920" data-height="1080">
+    <section id="c01-s1" class="clip scene scene-shell scene-one" data-start="0" data-duration="6.4" data-track-index="1">
+      <div class="scene-bg" data-layout-ignore=""></div>
+      <svg class="connector-layer c01-connectors" viewBox="0 0 1920 1080" data-layout-ignore="" aria-hidden="true">
+        <path id="c01-s1-line-system" d="M 400 288 C 530 330 548 410 560 480" />
+        <path id="c01-s1-line-demand" d="M 1525 280 C 1436 332 1378 392 1360 474" />
+        <path id="c01-s1-line-test" d="M 1520 830 C 1420 790 1346 705 1320 610" />
+        <path id="c01-s1-line-release" d="M 410 840 C 520 782 580 700 595 612" />
+        <path id="c01-s1-line-chat" d="M 1520 180 C 1380 246 1288 308 1245 356" />
+      </svg>
+      <div class="scene-kicker" id="c01-s1-kicker">Scene 01 / 问题出现</div>
+      <div data-hf-studio-original-inline-translate="none" data-hf-studio-original-translate="" data-hf-studio-path-offset="true" style="--hf-studio-offset-x: -9px; --hf-studio-offset-y: 33px; translate: var(--hf-studio-offset-x, 0px) var(--hf-studio-offset-y, 0px)" class="scene-body scene-one-body">
+        <div class="focus-panel" id="c01-title-panel">
+          <span class="panel-label">Release Chaos</span>
+          <h1 id="c01-main-title">多系统发布，为什么会失控？</h1>
+          <p id="c01-main-subtitle">信息、角色、节奏同时错位，发布就会从协同变成碰运气。</p>
+        </div>
+        <div class="info-node info-node-blue node-system">
+          <span class="node-icon">SYS</span>
+          <strong>系统</strong>
+          <small>多系统并行</small>
+        </div>
+        <div class="info-node info-node-blue node-demand">
+          <span class="node-icon">REQ</span>
+          <strong>需求单</strong>
+          <small>入口不统一</small>
+        </div>
+        <div class="info-node info-node-red node-test">
+          <span class="node-icon">TST</span>
+          <strong>测试单</strong>
+          <small>节奏被打断</small>
+        </div>
+        <div class="info-node info-node-blue node-release">
+          <span class="node-icon">REL</span>
+          <strong>发布单</strong>
+          <small>窗口被挤压</small>
+        </div>
+        <div class="info-node info-node-yellow node-chat">
+          <span class="node-icon">MSG</span>
+          <strong>群聊消息</strong>
+          <small>变更散落</small>
+        </div>
+      </div>
+      <div class="bottom-subtitle" id="c01-s1-subtitle">企业多业务线、多系统并行迭代时，困难不只是写代码，</div>
+    </section>
+
+    <section id="c01-s2" class="clip scene scene-shell scene-two" data-start="5.6" data-duration="10.8" data-track-index="2">
+      <div class="scene-bg" data-layout-ignore=""></div>
+      <div class="scene-kicker" id="c01-s2-kicker">Scene 01 / 机制拆解</div>
+      <div class="scene-body scene-two-body">
+        <div class="role-column">
+          <article class="role-card role-business">
+            <span>01</span>
+            <strong>业务</strong>
+            <small>需求优先级随时变化</small>
+          </article>
+          <article class="role-card role-dev">
+            <span>02</span>
+            <strong>研发</strong>
+            <small>容量和依赖需要确认</small>
+          </article>
+          <article class="role-card role-test">
+            <span>03</span>
+            <strong>测试</strong>
+            <small>测试窗口被动压缩</small>
+          </article>
+          <article class="role-card role-release">
+            <span>04</span>
+            <strong>投产</strong>
+            <small>发布窗口固定不可变</small>
+          </article>
+        </div>
+        <div class="timeline-board">
+          <div class="timeline-axis">
+            <span>需求评审</span>
+            <span>纳版</span>
+            <span>SIT</span>
+            <span>UAT</span>
+            <span>投产</span>
+          </div>
+          <div class="role-timeline tl-business">
+            <b>业务线</b>
+            <div class="timeline-line"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="role-timeline tl-dev">
+            <b>研发线</b>
+            <div class="timeline-line"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="role-timeline tl-test">
+            <b>测试线</b>
+            <div class="timeline-line"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="role-timeline tl-release">
+            <b>投产线</b>
+            <div class="timeline-line"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="risk-break" id="c01-risk-break">
+            <span></span>
+          </div>
+        </div>
+        <div class="keyword-panel">
+          <span class="status-tag warning" id="c01-kw-chat">零散沟通</span>
+          <span class="status-tag warning" id="c01-kw-plan">人工排期</span>
+          <span class="status-tag risk" id="c01-kw-exp">经验判断</span>
+        </div>
+      </div>
+      <div class="bottom-subtitle" id="c01-s2-subtitle">而是让业务、研发、测试和投产在同一条时间线上协同。传统研发依赖零散沟通、人工排期和经验判断，</div>
+    </section>
+
+    <section id="c01-s3" class="clip scene scene-shell scene-three" data-start="15.6" data-duration="12.4" data-track-index="3">
+      <div class="scene-bg" data-layout-ignore=""></div>
+      <svg class="connector-layer tangle-layer" viewBox="0 0 1920 1080" data-layout-ignore="" aria-hidden="true">
+        <path id="c01-tangle-1" d="M 460 390 C 740 210 980 640 1260 360" />
+        <path id="c01-tangle-2" d="M 500 690 C 760 820 920 240 1380 650" />
+        <path id="c01-tangle-3" d="M 620 275 C 880 430 1030 520 1330 785" />
+        <path id="c01-rail-1" d="M 510 760 C 790 760 1070 760 1410 760" />
+        <path id="c01-rail-2" d="M 510 815 C 790 815 1070 815 1410 815" />
+      </svg>
+      <div class="scene-kicker" id="c01-s3-kicker">Scene 01 / 痛点压缩</div>
+      <div class="scene-body scene-three-body">
+        <div class="evidence-grid">
+          <article class="evidence-card chat-card" id="c01-card-chat">
+            <header><span>飞书消息</span><b>刷新中</b></header>
+            <p>临时变更：支付需求改成支付宝优先</p>
+            <div class="message-stack"><i></i><i></i><i></i></div>
+          </article>
+          <article class="evidence-card excel-card" id="c01-card-excel">
+            <header><span>Excel 排期</span><b>人工维护</b></header>
+            <div class="table-mini">
+              <span>系统</span><span>日期</span><span>状态</span>
+              <i>HR</i><i>周三</i><i>待确认</i>
+              <i>PAY</i><i>周五</i><i>冲突</i>
+            </div>
+          </article>
+          <article class="evidence-card demand-card" id="c01-card-demand">
+            <header><span>需求状态</span><b>字段缺失</b></header>
+            <ul>
+              <li>验收标准缺失</li>
+              <li>影响系统待补充</li>
+              <li>依赖关系未确认</li>
+            </ul>
+          </article>
+          <article class="evidence-card risk-card" id="c01-card-risk">
+            <header><span>风险告警</span><b>未闭环</b></header>
+            <div class="risk-meter"><span></span></div>
+            <p>变更无约束，风险难追溯</p>
+          </article>
+        </div>
+        <div class="pain-panel" id="c01-pain-panel">
+          <span class="status-tag risk">需求不规范</span>
+          <span class="status-tag risk">纳版无依据</span>
+          <span class="status-tag risk">变更无约束</span>
+          <span class="status-tag risk">沟通无留痕</span>
+        </div>
+        <div class="problem-card" id="c01-problem-card">
+          <span>结果</span>
+          <strong>版本冲突</strong>
+          <strong>风险失控</strong>
+          <strong>问题难追溯</strong>
+        </div>
+      </div>
+      <div class="bottom-subtitle" id="c01-s3-subtitle">常常带来需求不规范、纳版无依据、变更无约束、沟通无留痕，最终形成版本冲突、风险失控和问题难追溯。</div>
+    </section>
+
+    <div id="c01-transition-blue" class="clip transition-swipe transition-blue" data-start="5.6" data-duration="0.8" data-track-index="8" data-layout-ignore=""></div>
+    <div id="c01-transition-red" class="clip transition-swipe transition-red" data-start="15.6" data-duration="0.8" data-track-index="9" data-layout-ignore=""></div>
+
+    <style>
+      [data-composition-id="chapter-01-release-chaos"] {
+        --bg: #f8fafc;
+        --bg-soft: #f3f4f6;
+        --panel: rgba(255, 255, 255, 0.88);
+        --ink: #111827;
+        --text: #374151;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --blue: #2563eb;
+        --blue-strong: #1677ff;
+        --red: #ef4444;
+        --yellow: #facc15;
+        --green: #22c55e;
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      [data-composition-id="chapter-01-release-chaos"] * {
+        box-sizing: border-box;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+          radial-gradient(circle at 18% 20%, rgba(37, 99, 235, 0.10), transparent 330px),
+          radial-gradient(circle at 86% 74%, rgba(239, 68, 68, 0.08), transparent 330px),
+          var(--bg);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+      }
+
+      .scene-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg, transparent 0 44%, rgba(37, 99, 235, 0.07) 44.2% 44.8%, transparent 45%),
+          linear-gradient(18deg, transparent 0 60%, rgba(229, 231, 235, 0.72) 60.2% 60.8%, transparent 61%);
+        opacity: 0.85;
+      }
+
+      .scene-shell {
+        padding: 72px 104px 86px;
+      }
+
+      .scene-kicker {
+        position: relative;
+        z-index: 6;
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--blue);
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .scene-body {
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        height: calc(100% - 112px);
+        display: flex;
+      }
+
+      .bottom-subtitle {
+        position: absolute;
+        left: 50%;
+        bottom: 44px;
+        z-index: 12;
+        transform: translateX(-50%);
+        width: min(1580px, calc(100% - 240px));
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 30px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 18px 60px rgba(15, 23, 42, 0.10);
+        color: var(--ink);
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.34;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .connector-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        width: 1920px;
+        height: 1080px;
+        pointer-events: none;
+      }
+
+      .connector-layer path {
+        fill: none;
+        stroke: rgba(37, 99, 235, 0.24);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 9 12;
+      }
+
+      .focus-panel {
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        z-index: 5;
+        width: 800px;
+        min-height: 290px;
+        transform: translate(-50%, -50%);
+        padding: 38px 46px;
+        border: 1px solid rgba(37, 99, 235, 0.16);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 28px 100px rgba(37, 99, 235, 0.16);
+        text-align: center;
+      }
+
+      .panel-label {
+        display: inline-flex;
+        margin-bottom: 20px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        background: rgba(37, 99, 235, 0.09);
+        color: var(--blue);
+        font-size: 22px;
+        font-weight: 900;
+        font-variant-caps: all-small-caps;
+      }
+
+      .focus-panel h1 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 72px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .focus-panel p {
+        max-width: 650px;
+        margin: 22px auto 0;
+        color: var(--text);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 500;
+      }
+
+      .info-node {
+        position: absolute;
+        z-index: 7;
+        width: 190px;
+        min-height: 112px;
+        padding: 16px 18px;
+        border: 1px solid rgba(37, 99, 235, 0.20);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      .info-node .node-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        height: 30px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+        background: rgba(37, 99, 235, 0.10);
+        color: var(--blue);
+        font-size: 16px;
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .info-node strong,
+      .info-node small {
+        display: block;
+      }
+
+      .info-node strong {
+        color: var(--ink);
+        font-size: 28px;
+        line-height: 1.1;
+        font-weight: 900;
+      }
+
+      .info-node small {
+        margin-top: 8px;
+        color: #374151;
+        font-size: 20px;
+        line-height: 1.25;
+        font-weight: 600;
+      }
+
+      .info-node-red {
+        border-color: rgba(239, 68, 68, 0.24);
+      }
+
+      .info-node-red .node-icon {
+        background: rgba(239, 68, 68, 0.12);
+        color: #b91c1c;
+      }
+
+      .info-node-yellow {
+        border-color: rgba(250, 204, 21, 0.45);
+      }
+
+      .info-node-yellow .node-icon {
+        background: rgba(250, 204, 21, 0.22);
+        color: #92400e;
+      }
+
+      .node-system { left: 210px; top: 232px; }
+      .node-demand { right: 205px; top: 224px; }
+      .node-test { right: 210px; bottom: 138px; }
+      .node-release { left: 220px; bottom: 128px; }
+      .node-chat { left: 1430px; top: 68px; }
+
+      .scene-two-body {
+        align-items: center;
+        gap: 42px;
+        padding: 42px 0 38px;
+      }
+
+      .role-column {
+        width: 300px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .role-card {
+        min-height: 132px;
+        padding: 20px;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 16px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      .role-card span {
+        display: inline-flex;
+        margin-bottom: 10px;
+        color: var(--blue);
+        font-size: 18px;
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .role-card strong,
+      .role-card small {
+        display: block;
+      }
+
+      .role-card strong {
+        color: var(--ink);
+        font-size: 34px;
+        font-weight: 900;
+      }
+
+      .role-card small {
+        margin-top: 8px;
+        color: var(--text);
+        font-size: 20px;
+        line-height: 1.3;
+        font-weight: 600;
+      }
+
+      .timeline-board {
+        position: relative;
+        flex: 1;
+        min-height: 600px;
+        padding: 70px 58px 56px;
+        border: 1px solid rgba(37, 99, 235, 0.16);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 24px 80px rgba(37, 99, 235, 0.09);
+      }
+
+      .timeline-axis {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-bottom: 44px;
+        color: #374151;
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .role-timeline {
+        position: relative;
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        align-items: center;
+        gap: 20px;
+        min-height: 90px;
+      }
+
+      .role-timeline b {
+        color: var(--text);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .timeline-line {
+        position: relative;
+        width: 100%;
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(37, 99, 235, 0.20);
+      }
+
+      .timeline-line::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        border-radius: inherit;
+        background: var(--blue);
+        transform: scaleX(0.72);
+        transform-origin: left center;
+      }
+
+      .timeline-line::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 56%;
+        border-radius: inherit;
+        background: var(--red);
+        opacity: var(--risk-after-opacity, 0);
+      }
+
+      .timeline-line i {
+        position: absolute;
+        top: 50%;
+        width: 24px;
+        height: 24px;
+        transform: translate(-50%, -50%);
+        border: 4px solid #ffffff;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.24);
+      }
+
+      .timeline-line i:nth-child(1) { left: 10%; }
+      .timeline-line i:nth-child(2) { left: 35%; }
+      .timeline-line i:nth-child(3) { left: 62%; }
+      .timeline-line i:nth-child(4) { left: 86%; }
+
+      .risk-break {
+        position: absolute;
+        left: 56%;
+        top: 294px;
+        width: 86px;
+        height: 86px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(239, 68, 68, 0.25);
+        border-radius: 8px;
+        background: rgba(254, 242, 242, 0.86);
+        opacity: 0;
+      }
+
+      .risk-break span {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 0 12px rgba(239, 68, 68, 0.14);
+      }
+
+      .keyword-panel {
+        flex: 0 0 318px;
+        width: 318px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        padding-left: 18px;
+        border-left: 1px solid rgba(37, 99, 235, 0.12);
+      }
+
+      .status-tag {
+        min-height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.16);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text);
+        font-size: 26px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .status-tag.warning {
+        border-color: rgba(250, 204, 21, 0.55);
+        background: rgba(255, 251, 235, 0.95);
+        color: #854d0e;
+      }
+
+      .status-tag.risk {
+        border-color: rgba(239, 68, 68, 0.34);
+        background: rgba(254, 242, 242, 0.95);
+        color: var(--red);
+      }
+
+      .scene-three-body {
+        align-items: center;
+        justify-content: space-between;
+        gap: 42px;
+        padding: 38px 0 56px;
+      }
+
+      .evidence-grid {
+        width: 960px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+
+      .evidence-card {
+        min-height: 224px;
+        padding: 22px;
+        border: 1px solid rgba(37, 99, 235, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.90);
+        box-shadow: 0 16px 46px rgba(15, 23, 42, 0.09);
+      }
+
+      .evidence-card header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .evidence-card header span {
+        color: var(--ink);
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .evidence-card header b {
+        padding: 7px 10px;
+        border-radius: 6px;
+        background: rgba(239, 68, 68, 0.09);
+        color: #b91c1c;
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .evidence-card p,
+      .evidence-card li,
+      .table-mini span,
+      .table-mini i {
+        color: var(--text);
+        font-size: 22px;
+        line-height: 1.35;
+        font-weight: 700;
+      }
+
+      .message-stack {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .message-stack i {
+        display: block;
+        height: 16px;
+        border-radius: 99px;
+        background: rgba(37, 99, 235, 0.16);
+      }
+
+      .message-stack i:nth-child(2) {
+        width: 78%;
+        background: rgba(239, 68, 68, 0.18);
+      }
+
+      .message-stack i:nth-child(3) {
+        width: 64%;
+      }
+
+      .table-mini {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px 12px;
+      }
+
+      .table-mini span {
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .table-mini i {
+        padding: 8px 10px;
+        border-radius: 6px;
+        background: rgba(243, 244, 246, 0.95);
+        font-style: normal;
+      }
+
+      .demand-card ul {
+        display: grid;
+        gap: 12px;
+        padding-left: 28px;
+      }
+
+      .risk-meter {
+        height: 18px;
+        margin: 28px 0 18px;
+        border-radius: 99px;
+        background: rgba(229, 231, 235, 0.95);
+        overflow: hidden;
+      }
+
+      .risk-meter span {
+        display: block;
+        width: 78%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--red);
+      }
+
+      .pain-panel {
+        position: absolute;
+        left: 214px;
+        top: 774px;
+        z-index: 9;
+        width: 1260px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        opacity: 0;
+      }
+
+      .problem-card {
+        width: 450px;
+        min-height: 470px;
+        padding: 34px 38px;
+        border: 2px solid rgba(239, 68, 68, 0.35);
+        border-radius: 8px;
+        background: rgba(254, 242, 242, 0.94);
+        box-shadow: 0 28px 90px rgba(239, 68, 68, 0.18);
+      }
+
+      .problem-card span {
+        color: var(--red);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .problem-card strong {
+        display: block;
+        margin-top: 28px;
+        padding: 20px 22px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--red);
+        font-size: 42px;
+        line-height: 1.1;
+        font-weight: 900;
+      }
+
+      .tangle-layer path {
+        stroke: rgba(239, 68, 68, 0.34);
+        stroke-width: 5;
+        stroke-dasharray: 12 12;
+      }
+
+      .tangle-layer #c01-rail-1,
+      .tangle-layer #c01-rail-2 {
+        stroke: rgba(37, 99, 235, 0.5);
+        stroke-width: 7;
+        stroke-dasharray: none;
+        opacity: 0;
+      }
+
+      .transition-swipe {
+        position: absolute;
+        inset: -60px;
+        z-index: 30;
+        transform: translateX(-110%);
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      .transition-blue {
+        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.82), rgba(37, 99, 235, 0.18), transparent);
+      }
+
+      .transition-red {
+        background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.78), rgba(239, 68, 68, 0.18), transparent);
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.addLabel("s1", 0);
+      tl.from("#c01-s1-kicker", { y: -18, opacity: 0, duration: 0.42, ease: "power3.out" }, "s1+=0.18");
+      tl.from("#c01-main-title", { y: 26, opacity: 0, duration: 0.56, ease: "power4.out" }, "s1+=0.42");
+      tl.from("#c01-main-subtitle", { y: 22, opacity: 0, duration: 0.52, ease: "sine.out" }, "s1+=0.72");
+      tl.from("#c01-s1-subtitle", { y: 28, opacity: 0, duration: 0.46, ease: "back.out(1.4)" }, "s1+=0.82");
+      tl.from(".scene-one .info-node", { opacity: 0, y: 34, scale: 0.96, duration: 0.48, stagger: 0.08, ease: "power2.out" }, "s1+=1.25");
+      tl.from(".c01-connectors path", { opacity: 0, duration: 0.44, stagger: 0.05, ease: "sine.out" }, "s1+=1.55");
+      tl.to(".scene-one .info-node", { keyframes: {
+            "0%": { y: 0 },
+            "82.8%": { x: -86, y: -147 },
+            "100%": { y: -6 },
+            easeEach: "power1.inOut"
+      }, duration: 0.36, stagger: 0.07, ease: "none" }, "s1+=2.0");
+      tl.to(".scene-one .info-node", { borderColor: "rgba(239, 68, 68, 0.34)", duration: 0.34, stagger: 0.08, ease: "power2.out" }, "s1+=3.1");
+      tl.to(".c01-connectors path", { x: -22, y: 12, stroke: "rgba(239, 68, 68, 0.38)", duration: 0.74, stagger: 0.04, ease: "power3.inOut" }, "s1+=4.05");
+
+      tl.addLabel("blueTransition", 5.6);
+      tl.fromTo("#c01-transition-blue", { xPercent: -110 }, { xPercent: 220, duration: 0.8, ease: "power3.inOut" }, "blueTransition");
+
+      tl.addLabel("s2", 5.6);
+      tl.from("#c01-s2-kicker", { y: -18, opacity: 0, duration: 0.42, ease: "power3.out" }, "s2+=0.36");
+      tl.from(".role-card", { x: -36, opacity: 0, duration: 0.52, stagger: 0.08, ease: "expo.out" }, "s2+=0.52");
+      tl.from(".timeline-board", { x: 42, opacity: 0, duration: 0.62, ease: "power4.out" }, "s2+=0.64");
+      tl.from(".timeline-axis span", { y: -14, opacity: 0, duration: 0.34, stagger: 0.04, ease: "sine.out" }, "s2+=0.92");
+      tl.from("#c01-s2-subtitle", { y: 24, opacity: 0, duration: 0.42, ease: "power2.out" }, "s2+=1.2");
+      tl.to(".tl-dev .timeline-line", { x: 48, width: "calc(100% - 54px)", duration: 0.74, ease: "power3.inOut" }, "s2+=3.0");
+      tl.to(".tl-test .timeline-line", { x: 96, width: "calc(100% - 104px)", duration: 0.74, ease: "power3.inOut" }, "s2+=3.14");
+      tl.to(".tl-release .timeline-line", { x: 142, width: "calc(100% - 152px)", duration: 0.74, ease: "power3.inOut" }, "s2+=3.28");
+      tl.to([".tl-test .timeline-line", ".tl-release .timeline-line"], { backgroundColor: "rgba(239, 68, 68, 0.10)", duration: 0.44, ease: "sine.inOut" }, "s2+=8.4");
+      tl.to([".tl-test .timeline-line", ".tl-release .timeline-line"], { boxShadow: "0 0 0 4px rgba(239, 68, 68, 0.06)", duration: 0.44, ease: "power1.out" }, "s2+=8.45");
+      tl.to([".tl-test .timeline-line", ".tl-release .timeline-line"], { "--risk-after-opacity": 0.45, duration: 0.34, ease: "sine.inOut" }, "s2+=8.4");
+      tl.to([".tl-test .timeline-line i:nth-child(n+3)", ".tl-release .timeline-line i:nth-child(n+3)"], { backgroundColor: "rgba(239, 68, 68, 0.72)", boxShadow: "0 0 0 2px rgba(239, 68, 68, 0.18)", duration: 0.34, ease: "sine.inOut" }, "s2+=8.4");
+      tl.to("#c01-s2-subtitle", { color: "#ef4444", duration: 0.38, ease: "sine.inOut" }, "s2+=8.4");
+
+      tl.addLabel("redTransition", 15.6);
+      tl.fromTo("#c01-transition-red", { xPercent: -110 }, { xPercent: 220, duration: 0.8, ease: "power3.inOut" }, "redTransition");
+
+      tl.addLabel("s3", 15.6);
+      tl.from("#c01-s3-kicker", { y: -18, opacity: 0, duration: 0.42, ease: "power3.out" }, "s3+=0.36");
+      tl.from(".evidence-card", { opacity: 0, y: 34, duration: 0.56, stagger: 0.09, ease: "expo.out" }, "s3+=0.58");
+      tl.from(".tangle-layer path:not(#c01-rail-1):not(#c01-rail-2)", { opacity: 0, duration: 0.44, stagger: 0.08, ease: "sine.out" }, "s3+=1.1");
+      tl.from("#c01-problem-card", { x: 48, opacity: 0, duration: 0.58, ease: "power4.out" }, "s3+=1.26");
+      tl.from("#c01-s3-subtitle", { y: 24, opacity: 0, duration: 0.46, ease: "back.out(1.35)" }, "s3+=1.34");
+      tl.to(".message-stack i", { x: 18, duration: 0.28, stagger: 0.06, ease: "power1.inOut" }, "s3+=3.1");
+      tl.to(".risk-meter span", { scaleX: 1.16, transformOrigin: "left center", duration: 0.46, ease: "power2.out" }, "s3+=3.25");
+      tl.to(".tangle-layer path:not(#c01-rail-1):not(#c01-rail-2)", { strokeWidth: 8, stroke: "rgba(239, 68, 68, 0.58)", duration: 0.6, stagger: 0.08, ease: "power2.inOut" }, "s3+=4.4");
+      tl.to("#c01-pain-panel", { opacity: 1, scale: 1, duration: 0.52, ease: "circ.out" }, "s3+=5.0");
+      tl.from("#c01-pain-panel .status-tag", { y: 18, opacity: 0, duration: 0.36, stagger: 0.08, ease: "back.out(1.25)" }, "s3+=5.05");
+      tl.from("#c01-problem-card strong", { x: 28, opacity: 0, duration: 0.36, stagger: 0.18, ease: "power3.out" }, "s3+=7.3");
+      tl.to("#c01-s3-subtitle", { textShadow: "0 0 18px rgba(239, 68, 68, 0.18)", duration: 0.42, ease: "sine.inOut" }, "s3+=8.0");
+      tl.to(".tangle-layer path:not(#c01-rail-1):not(#c01-rail-2)", { opacity: 0.18, y: 56, duration: 0.7, ease: "power3.inOut" }, "s3+=10.2");
+      tl.to(["#c01-rail-1", "#c01-rail-2"], { opacity: 1, duration: 0.58, ease: "power2.out" }, "s3+=10.45");
+      tl.to("#c01-problem-card", { y: -10, duration: 0.45, ease: "sine.inOut" }, "s3+=11.2");
+
+      tl.from("#c01-title-panel", { opacity: 0, duration: 0.74, ease: "expo.out" }, "s1+=0.28");
+
+      tl.to("#c01-title-panel", { keyframes: { "0%": { scale: 0.94 }, "100%": { scale: 1 } }, duration: 0.74, ease: "expo.out" }, 0);
+
+      tl.to("#c01-title-panel", { keyframes: { "17.8%": { x: 14, y: 16 }, "100%": { x: 19, y: -23 } }, duration: 4.167 }, 0);
+
+      tl.from(".keyword-panel .status-tag", { opacity: 0, duration: 0.36, ease: "power2.out", stagger: 0.24 }, "s2+=3.55");
+
+      tl.fromTo("#c01-risk-break", { opacity: 0, x: 153, y: 33, scale: 0.92, rotation: 0 }, { opacity: 1, x: 153, y: 33, scale: 1.04, rotation: 0, duration: 0.5, ease: "back.out(1.25)" }, "s2+=7.45");
+
+      tl.from(".role-timeline", { opacity: 0, duration: 0.42, ease: "back.out(1.25)", stagger: 0.08 }, "s2+=1.1");
+
+      tl.to(".role-timeline", { keyframes: { "0%": { y: 26 }, "100%": { y: 1, x: -23 }, easeEach: "back.out(1.25)" }, duration: 0.42, stagger: 0.08, ease: "none" }, "s2+=1.1");
+
+      window.__timelines["chapter-01-release-chaos"] = tl;
+    </script>
+  </div>
+</template>
