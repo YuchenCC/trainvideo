@@ -1,0 +1,533 @@
+<template id="scene-11-template">
+  <div class="scene11" data-composition-id="scene-11" data-width="1920" data-height="1080">
+    <style>
+      :root {
+        --background: #f8fafc;
+        --panel: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #64748b;
+        --tech-blue: #2563eb;
+        --tech-blue-soft: #dbeafe;
+        --governance-purple: #6d28d9;
+        --governance-soft: #f5f3ff;
+        --ai-orange: #f97316;
+        --ai-orange-soft: #fff7ed;
+        --done-green: #22c55e;
+        --done-green-soft: #dcfce7;
+        --line: #dbe3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .scene11 {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(37, 99, 235, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(109, 40, 217, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 18% 78%, rgba(37, 99, 235, 0.1), transparent 30%),
+          radial-gradient(circle at 82% 18%, rgba(34, 197, 94, 0.11), transparent 32%),
+          var(--background);
+        background-size: 64px 64px, 64px 64px, auto, auto, auto;
+        color: var(--text-primary);
+        font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage {
+        padding: 78px 104px 116px;
+      }
+
+      .scene-112 {
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 16px;
+        border: 1px solid rgba(37, 99, 235, 0.24);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--tech-blue);
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        margin-top: 22px;
+        max-width: 1240px;
+        color: var(--text-primary);
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .subline {
+        margin-top: 14px;
+        max-width: 1120px;
+        color: var(--text-secondary);
+        font-size: 28px;
+        line-height: 1.45;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 42px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0;
+        box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      }
+
+      .recap-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 292px;
+        bottom: 150px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .recap-rail {
+        position: absolute;
+        left: 118px;
+        right: 260px;
+        top: 334px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--ai-orange), var(--governance-purple), var(--done-green));
+        transform-origin: left center;
+      }
+
+      .module-cars {
+        position: absolute;
+        left: 92px;
+        right: 232px;
+        top: 202px;
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .module-car {
+        min-height: 118px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        background: white;
+        text-align: center;
+        box-shadow: 0 16px 38px rgba(15, 23, 42, 0.07);
+      }
+
+      .module-car b {
+        display: block;
+        color: var(--tech-blue);
+        font-size: 18px;
+        font-weight: 950;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .module-car strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-primary);
+        font-size: 22px;
+        line-height: 1.16;
+        font-weight: 950;
+      }
+
+      .module-car span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-secondary);
+        font-size: 15px;
+        line-height: 1.18;
+        font-weight: 750;
+      }
+
+      .module-car.ai {
+        border-color: rgba(249, 115, 22, 0.26);
+        background: var(--ai-orange-soft);
+      }
+
+      .module-car.ai b {
+        color: var(--ai-orange);
+      }
+
+      .module-car.gov {
+        border-color: rgba(109, 40, 217, 0.25);
+        background: var(--governance-soft);
+      }
+
+      .module-car.gov b {
+        color: var(--governance-purple);
+      }
+
+      .terminal {
+        position: absolute;
+        right: 52px;
+        top: 228px;
+        width: 172px;
+        min-height: 188px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        border-radius: 8px;
+        border: 2px solid rgba(34, 197, 94, 0.34);
+        background: rgba(240, 253, 244, 0.94);
+        color: #15803d;
+        box-shadow: 0 20px 54px rgba(34, 197, 94, 0.14);
+      }
+
+      .terminal b {
+        font-size: 48px;
+        line-height: 1;
+      }
+
+      .terminal strong {
+        max-width: 130px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.15;
+        font-weight: 950;
+      }
+
+      .whole-train-label {
+        position: absolute;
+        left: 118px;
+        bottom: 88px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .whole-train-label span {
+        display: inline-flex;
+        align-items: center;
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 8px;
+        background: var(--governance-soft);
+        color: var(--governance-purple);
+        font-size: 20px;
+        font-weight: 950;
+      }
+
+      .whole-train-label strong {
+        color: var(--text-primary);
+        font-size: 34px;
+        font-weight: 950;
+      }
+
+      .final-layout {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        top: 270px;
+        bottom: 150px;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .arrival-board {
+        position: relative;
+        height: 520px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.16);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+      }
+
+      .arrival-rail {
+        position: absolute;
+        left: 58px;
+        right: 58px;
+        top: 288px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--tech-blue), var(--governance-purple), var(--done-green));
+      }
+
+      .arrival-train {
+        position: absolute;
+        left: 72px;
+        right: 178px;
+        top: 206px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .arrival-car {
+        min-height: 88px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--governance-soft);
+        color: var(--governance-purple);
+        border: 1px solid rgba(109, 40, 217, 0.22);
+        font-size: 22px;
+        font-weight: 950;
+      }
+
+      .arrival-terminal {
+        position: absolute;
+        right: 48px;
+        top: 154px;
+        width: 150px;
+        height: 220px;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid rgba(34, 197, 94, 0.34);
+        background: rgba(240, 253, 244, 0.96);
+        color: #15803d;
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.18;
+        font-weight: 950;
+        box-shadow: 0 20px 54px rgba(34, 197, 94, 0.14);
+      }
+
+      .final-claim {
+        min-height: 520px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px;
+        border-radius: 8px;
+        border: 2px solid rgba(109, 40, 217, 0.28);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 30px 82px rgba(15, 23, 42, 0.12);
+      }
+
+      .final-claim h2 {
+        color: var(--text-primary);
+        font-size: 72px;
+        line-height: 1.12;
+        font-weight: 950;
+        letter-spacing: 0;
+      }
+
+      .final-claim h2 span {
+        color: var(--governance-purple);
+      }
+
+      .system-name {
+        margin-top: 26px;
+        color: var(--text-secondary);
+        font-size: 32px;
+        line-height: 1.3;
+        font-weight: 850;
+      }
+
+      .final-tags {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .final-tags span {
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--done-green-soft);
+        border: 1px solid rgba(34, 197, 94, 0.24);
+        color: #15803d;
+        font-size: 24px;
+        font-weight: 950;
+      }
+    </style>
+
+    <section class="clip stage scene-111" data-start="0" data-duration="4" data-track-index="1">
+      <div class="eyebrow">Scene 11-1 / 完整版本火车</div>
+      <h1 class="headline">八个模块，汇成一列完整版本火车</h1>
+      <p class="subline">回顾不再展开细节界面，只保留模块识别、顺序和治理终点。</p>
+
+      <div class="recap-layout">
+        <div class="recap-rail"></div>
+        <div class="module-cars">
+          <article class="module-car"><b>01</b><strong>混乱发布</strong><span>痛点起点</span></article>
+          <article class="module-car gov"><b>02</b><strong>版本火车</strong><span>班次容器</span></article>
+          <article class="module-car ai"><b>03</b><strong>AI 需求审查</strong><span>源头质量</span></article>
+          <article class="module-car ai"><b>04</b><strong>AI 智能纳版</strong><span>可解释决策</span></article>
+          <article class="module-car gov"><b>05</b><strong>分级变更</strong><span>风险管控</span></article>
+          <article class="module-car ai"><b>06</b><strong>飞书智能体</strong><span>沟通建档</span></article>
+          <article class="module-car"><b>07</b><strong>仪表盘</strong><span>统一认知</span></article>
+          <article class="module-car gov"><b>08</b><strong>AI 原生研发闭环</strong><span>过程重构</span></article>
+        </div>
+        <div class="terminal"><b>✓</b><strong>AI 原生治理</strong></div>
+        <div class="whole-train-label"><span>版本火车整体</span><strong>经验协同被串成统一治理链路</strong></div>
+      </div>
+
+      <div class="caption">我们彻底告别经验化协同，</div>
+    </section>
+
+    <section class="clip stage scene-112" data-start="4" data-duration="3" data-track-index="1">
+      <div class="eyebrow">Scene 11-2 / 最终定格</div>
+      <h1 class="headline">从经验协同，到 AI 原生治理</h1>
+      <p class="subline">最后只留下系统名称、治理终点和三个可验证关键词。</p>
+
+      <div class="final-layout">
+        <div class="arrival-board">
+          <div class="arrival-rail"></div>
+          <div class="arrival-train">
+            <div class="arrival-car">需求</div>
+            <div class="arrival-car">班次</div>
+            <div class="arrival-car">变更</div>
+            <div class="arrival-car">质量</div>
+          </div>
+          <div class="arrival-terminal">AI 原生治理</div>
+        </div>
+        <article class="final-claim">
+          <h2>从经验协同，到 <span>AI 原生治理</span></h2>
+          <div class="system-name">AI 原生 BizDevOps 版本火车系统</div>
+          <div class="final-tags">
+            <span>可解释</span>
+            <span>可确认</span>
+            <span>可审计</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="caption">实现 AI 原生 BizDevOps 智能治理工具链。</div>
+    </section>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const scene11 = gsap.timeline({ paused: true });
+      window.__timelines["scene-11"] = scene11;
+
+      scene11.from(".scene-111 .eyebrow, .scene-111 .headline, .scene-111 .subline", {
+        y: 22,
+        autoAlpha: 0,
+        duration: 0.58,
+        stagger: 0.08,
+        ease: "power3.out"
+      }, 0.12);
+      scene11.from(".scene-111 .recap-layout", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.62,
+        ease: "expo.out"
+      }, 0.48);
+      scene11.from(".scene-111 .recap-rail", {
+        scaleX: 0,
+        duration: 0.62,
+        ease: "circ.out"
+      }, 0.86);
+      scene11.from(".scene-111 .module-car", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.34,
+        stagger: 0.08,
+        ease: "back.out(1.08)"
+      }, 1.0);
+      scene11.from(".scene-111 .terminal", {
+        scale: 0.88,
+        autoAlpha: 0,
+        duration: 0.46,
+        ease: "power2.out"
+      }, 2.42);
+      scene11.from(".scene-111 .whole-train-label", {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.38,
+        ease: "power1.out"
+      }, 2.9);
+      scene11.from(".scene-111 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.42,
+        ease: "power2.out"
+      }, 0.28);
+
+      scene11.to(".scene-111", { autoAlpha: 0, duration: 0.24 }, 4);
+      scene11.set(".scene-112", { autoAlpha: 1 }, 4);
+      scene11.from(".scene-112 .eyebrow, .scene-112 .headline, .scene-112 .subline", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.42,
+        stagger: 0.06,
+        ease: "power3.out"
+      }, 4.08);
+      scene11.from(".scene-112 .arrival-board", {
+        x: -26,
+        autoAlpha: 0,
+        duration: 0.52,
+        ease: "expo.out"
+      }, 4.32);
+      scene11.from(".scene-112 .arrival-terminal", {
+        scale: 0.88,
+        autoAlpha: 0,
+        duration: 0.38,
+        ease: "back.out(1.08)"
+      }, 4.72);
+      scene11.from(".scene-112 .final-claim", {
+        x: 28,
+        autoAlpha: 0,
+        duration: 0.55,
+        ease: "power2.out"
+      }, 4.42);
+      scene11.from(".scene-112 .final-tags span", {
+        y: 12,
+        autoAlpha: 0,
+        duration: 0.26,
+        stagger: 0.08,
+        ease: "power1.out"
+      }, 5.55);
+      scene11.to(".scene-112 .arrival-board", {
+        opacity: 0.72,
+        duration: 0.42,
+        ease: "sine.out"
+      }, 6.35);
+      scene11.from(".scene-112 .caption", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.34,
+        ease: "power2.out"
+      }, 4.22);
+    </script>
+  </div>
+</template>
