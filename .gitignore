@@ -31,3 +31,5 @@ renders/*
 Thumbs.db
 .idea/
 .vscode/
+
+.waveform-cache
