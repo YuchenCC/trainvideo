@@ -60,8 +60,22 @@ https://hyperframes.heygen.com/llms.txt
 
 - `index.html` — main composition (root timeline)
 - `compositions/` — sub-compositions referenced via `data-composition-src`
+- `assets/screenshots/raw/` — original screenshots, source evidence for scene-specific UI
+- `assets/screenshots/processed/` — cropped, redacted, or prepared screenshot variants; prefer these for scene fill when available
 - `meta.json` — project metadata (id, name)
 - `transcript.json` — whisper word-level transcript (if generated)
+
+## Screenshot-First Scene Workflow
+
+When creating or modifying storyboard scenes, scene contracts, or scene HTML, inspect the screenshot assets before inventing UI:
+
+1. First look for a scene-matched processed/cropped image in `assets/screenshots/processed/`.
+2. If no processed image exists, inspect the corresponding original image in `assets/screenshots/raw/`.
+3. Prefer processed/cropped screenshots as the visual fill for scene content, because they preserve real product evidence while reducing noise.
+4. Use raw screenshots only as fallback evidence or as a source for making a cropped/processed variant.
+5. If no matching screenshot exists, use a clearly abstract diagram or placeholder and call out that the screenshot asset is missing; do not fabricate specific product data.
+
+Scene matching should use the scene id or nearby chapter naming, such as `Scene03.png`, `Scene05-3.png`, `scene-0503`, or a documented reference in `scene-contract.md`.
 
 ## Linting — ALWAYS RUN AFTER CHANGES
 
