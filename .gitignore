@@ -3,6 +3,7 @@ node_modules/
 
 # HyperFrames local state and preview logs
 .hyperframes/
+.thumbnails/
 .hyperframes-*.log
 *.log
 
