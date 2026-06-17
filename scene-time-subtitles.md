@@ -1,0 +1,40 @@
+# 分镜时间与字幕清单
+
+> 数据来源：`index.html` 的全片时间轴 + `compositions/scenes/*.html` 中每个分镜的 `data-start` / `data-duration` / 底部字幕。
+
+| 分镜 | 全片时间 | 分镜内时间 | 时长 | 字幕 | 来源 |
+|---|---:|---:|---:|---|---|
+| Scene 01-1<br>Scene 01 / 问题出现 | 00:00 - 00:06.4 | 00:00 - 00:06.4 | 6.4s | 企业多业务线、多系统并行迭代时，困难不只是写代码， | `compositions/scenes/chapter-01-release-chaos.html` |
+| Scene 01-2<br>Scene 01 / 机制拆解 | 00:05.6 - 00:16.4 | 00:05.6 - 00:16.4 | 10.8s | 而是让业务、研发、测试和投产在同一条时间线上协同。传统研发依赖零散沟通、人工排期和经验判断， | `compositions/scenes/chapter-01-release-chaos.html` |
+| Scene 01-3<br>Scene 01 / 痛点压缩 | 00:15.6 - 00:28 | 00:15.6 - 00:28 | 12.4s | 常常带来需求不规范、纳版无依据、变更无约束、沟通无留痕，最终形成版本冲突、风险失控和问题难追溯。 | `compositions/scenes/chapter-01-release-chaos.html` |
+| Scene 02-1<br>Scene 02-1 / 治理框架入场 | 00:28 - 00:36 | 00:00 - 00:08 | 8s | 从混乱协同，到版本火车治理。 | `compositions/scenes/scene-02.html` |
+| Scene 02-2<br>Scene 02-2 / BizDevOps 概念 | 00:36 - 00:48 | 00:08 - 00:20 | 12s | Biz 是新增的业务治理能力，DevOps 是原有工具链底座；持续集成｜持续部署；需求｜班次｜容量｜依赖｜变更。 | `compositions/scenes/scene-02.html` |
+| Scene 02-3<br>Scene 02-3 / 产品界面落地 | 00:48 - 00:58 | 00:20 - 00:30 | 10s | 它不是流程线上化，而是发布治理容器；可管控｜可追溯｜智能交付闭环。 | `compositions/scenes/scene-02.html` |
+| Scene 03-1<br>Scene 03-1 / 需求统一收口 | 00:58 - 01:10 | 00:00 - 00:12 | 12s | 需求散落，是协同失控的起点；统一需求池｜结构化字段。 | `compositions/scenes/scene-03.html` |
+| Scene 03-2<br>Scene 03-2 / 需求列表证明 | 01:10 - 01:22 | 00:12 - 00:24 | 12s | 需求先标准化，协同才有基础；评审｜纳版｜交付都有清晰依据。 | `compositions/scenes/scene-03.html` |
+| Scene 04-1<br>Scene 04-1 / AI 需求审查入口 | 01:22 - 01:30 | 00:00 - 00:08 | 8s | 在需求提交前，系统引入 AI 需求审查和智能补全能力。 | `compositions/scenes/scene-04.html` |
+| Scene 04-2<br>Scene 04-2 / 完整性与风险校验 | 01:30 - 01:40 | 00:08 - 00:18 | 10s | AI 会自动校验需求完整性，识别潜在风险和模糊表达，并补齐缺失的验收标准与备注。 | `compositions/scenes/scene-04.html` |
+| Scene 04-3<br>Scene 04-3 / 源头质量闸门 | 01:40 - 01:51 | 00:18 - 00:29 | 11s | 过去靠人工开会查漏的环节，现在可以在需求源头完成质量把关，把一句话需求提前拦截在评审之前。 | `compositions/scenes/scene-04.html` |
+| Scene 05-1<br>Scene 05-1 / 班次体系 | 01:51 - 01:59 | 00:00 - 00:08 | 8s | 在发布协同层面，我们搭建了专业化版本火车班次体系。 | `compositions/scenes/scene-05.html` |
+| Scene 05-2<br>Scene 05-2 / 班次绑定拆解 | 01:59 - 02:08 | 00:08 - 00:17 | 9s | 版本火车不是普通排期表，而是发布计划容器。每个班次精准绑定关联系统、研发容量、关键节点和版本快照。 | `compositions/scenes/scene-05.html` |
+| Scene 05-3<br>Scene 05-3 / 班次详情证明 | 02:08 - 02:16 | 00:17 - 00:25 | 8s | 让多系统并行发布拥有标准化、可落地、可存档的执行依据。 | `compositions/scenes/scene-05.html` |
+| Scene 06-1<br>Scene 06-1 / 纳版冲突 | 02:16 - 02:25 | 00:00 - 00:09 | 9s | 针对人工纳版凭感觉、产能过载、依赖冲突，多方业务所有需求都紧急、研发产能无法全部承接的核心矛盾。 | `compositions/scenes/scene-06.html` |
+| Scene 06-2<br>Scene 06-2 / AI 智能纳版引擎 | 02:25 - 02:35 | 00:09 - 00:19 | 10s | 系统上线 AI 智能纳版能力。它会综合需求优先级、研发容量、上下游依赖和业务紧急度。 | `compositions/scenes/scene-06.html` |
+| Scene 06-3<br>Scene 06-3 / 可解释纳版方案 | 02:35 - 02:43 | 00:19 - 00:27 | 8s | 生成可解释的纳版方案，清楚说明哪些需求适合上车，哪些需要暂缓，以及背后的容量和风险原因。 | `compositions/scenes/scene-06.html` |
+| Scene 06-4<br>Scene 06-4 / 可解释决策 | 02:43 - 02:47 | 00:27 - 00:31 | 4s | 纳版从经验拍板，升级为可解释决策。 | `compositions/scenes/scene-06.html` |
+| Scene 07-1<br>Scene 07-1 / 封板分水岭 | 02:47 - 02:55 | 00:00 - 00:08 | 8s | 封板，是版本治理的分水岭；分级变更管控。 | `compositions/scenes/scene-07.html` |
+| Scene 07-2<br>Scene 07-2 / 分级变更流程 | 02:55 - 03:05 | 00:08 - 00:18 | 10s | 封板前留痕，封板后审批；系统发起｜双层审批｜风险评估｜审计留痕。 | `compositions/scenes/scene-07.html` |
+| Scene 07-3<br>Scene 07-3 / 紧急变更弹窗 | 03:05 - 03:16 | 00:18 - 00:29 | 11s | 每一次变更都可追溯、可评估、可审计。 | `compositions/scenes/scene-07.html` |
+| Scene 08-1<br>Scene 08-1 / 群聊变更入口 | 03:16 - 03:24 | 00:00 - 00:08 | 8s | 群聊里的变更，算不算流程？；@需求变更助手。 | `compositions/scenes/scene-08.html` |
+| Scene 08-2<br>Scene 08-2 / AI Agent 解析 | 03:24 - 03:33 | 00:08 - 00:17 | 9s | AI 自动解析群聊变更；自动解析｜识别需求｜影响分析。 | `compositions/scenes/scene-08.html` |
+| Scene 08-3<br>Scene 08-3 / 系统建档 | 03:33 - 03:42 | 00:17 - 00:26 | 9s | 临时沟通，沉淀为可治理数据；系统建档｜留痕｜变更台账。 | `compositions/scenes/scene-08.html` |
+| Scene 08-4<br>Scene 08-4 / 三段链路 | 03:42 - 03:46 | 00:26 - 00:30 | 4s | 沟通变成治理数据；可治理数据。 | `compositions/scenes/scene-08.html` |
+| Scene 09-1<br>Scene 09-1 / 跨角色信息差 | 03:46 - 03:54 | 00:00 - 00:08 | 8s | 各看各的，协同就会失真；仪表盘｜日历视图。 | `compositions/scenes/scene-09.html` |
+| Scene 09-2<br>Scene 09-2 / 一套真实数据 | 03:54 - 04:02 | 00:08 - 00:16 | 8s | 一套数据，统一所有角色认知；排期｜容量｜变更率｜风险｜待办。 | `compositions/scenes/scene-09.html` |
+| Scene 09-3<br>Scene 09-3 / 截图证明 | 04:02 - 04:08 | 00:16 - 00:22 | 6s | 统一认知，降低沟通成本；一套真实数据。 | `compositions/scenes/scene-09.html` |
+| Scene 10-1<br>Scene 10-1 / AI 原生研发 | 04:08 - 04:17 | 00:00 - 00:09 | 9s | 更重要的是，本项目不是简单叠加 AI 功能，而是以 AI 原生方式重构研发过程。 | `compositions/scenes/scene-10.html` |
+| Scene 10-2<br>Scene 10-2 / Agent 调度与上下文 | 04:17 - 04:30 | 00:09 - 00:22 | 13s | 我们通过智能 Agent 调度和领域上下文沉淀，打通 PRD、设计文档、测试案例与代码结构的双向映射。 | `compositions/scenes/scene-10.html` |
+| Scene 10-3<br>Scene 10-3 / 质量闭环 | 04:30 - 04:42 | 00:22 - 00:34 | 12s | 结合 AI Skills、TDD 和 Playwright 自动化测试，形成文档联动、代码审查和自动化测试资产沉淀的质量闭环。 | `compositions/scenes/scene-10.html` |
+| Scene 10-4<br>Scene 10-4 / 章节结论 | 04:42 - 04:50 | 00:34 - 00:42 | 8s | 不是产品加 AI，而是研发过程 AI 原生化。 | `compositions/scenes/scene-10.html` |
+| Scene 11-1<br>Scene 11-1 / 完整版本火车 | 04:50 - 04:54 | 00:00 - 00:04 | 4s | 我们彻底告别经验化协同， | `compositions/scenes/scene-11.html` |
+| Scene 11-2<br>Scene 11-2 / 最终定格 | 04:54 - 04:57 | 00:04 - 00:07 | 3s | 实现 AI 原生 BizDevOps 智能治理工具链。 | `compositions/scenes/scene-11.html` |
