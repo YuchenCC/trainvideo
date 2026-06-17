@@ -22,19 +22,20 @@
 | Scene 06-2<br>Scene 06-2 / AI 智能纳版引擎 | 02:25 - 02:35 | 00:09 - 00:19 | 10s | 系统上线 AI 智能纳版能力。它会综合需求优先级、研发容量、上下游依赖和业务紧急度。 | `compositions/scenes/scene-06.html` |
 | Scene 06-3<br>Scene 06-3 / 可解释纳版方案 | 02:35 - 02:43 | 00:19 - 00:27 | 8s | 生成可解释的纳版方案，清楚说明哪些需求适合上车，哪些需要暂缓，以及背后的容量和风险原因。 | `compositions/scenes/scene-06.html` |
 | Scene 06-4<br>Scene 06-4 / 可解释决策 | 02:43 - 02:47 | 00:27 - 00:31 | 4s | 纳版从经验拍板，升级为可解释决策。 | `compositions/scenes/scene-06.html` |
-| Scene 07-1<br>Scene 07-1 / 封板分水岭 | 02:47 - 02:55 | 00:00 - 00:08 | 8s | 封板，是版本治理的分水岭；分级变更管控。 | `compositions/scenes/scene-07.html` |
-| Scene 07-2<br>Scene 07-2 / 分级变更流程 | 02:55 - 03:05 | 00:08 - 00:18 | 10s | 封板前留痕，封板后审批；系统发起｜双层审批｜风险评估｜审计留痕。 | `compositions/scenes/scene-07.html` |
-| Scene 07-3<br>Scene 07-3 / 紧急变更弹窗 | 03:05 - 03:16 | 00:18 - 00:29 | 11s | 每一次变更都可追溯、可评估、可审计。 | `compositions/scenes/scene-07.html` |
-| Scene 08-1<br>Scene 08-1 / 群聊变更入口 | 03:16 - 03:24 | 00:00 - 00:08 | 8s | 群聊里的变更，算不算流程？；@需求变更助手。 | `compositions/scenes/scene-08.html` |
-| Scene 08-2<br>Scene 08-2 / AI Agent 解析 | 03:24 - 03:33 | 00:08 - 00:17 | 9s | AI 自动解析群聊变更；自动解析｜识别需求｜影响分析。 | `compositions/scenes/scene-08.html` |
-| Scene 08-3<br>Scene 08-3 / 系统建档 | 03:33 - 03:42 | 00:17 - 00:26 | 9s | 临时沟通，沉淀为可治理数据；系统建档｜留痕｜变更台账。 | `compositions/scenes/scene-08.html` |
-| Scene 08-4<br>Scene 08-4 / 三段链路 | 03:42 - 03:46 | 00:26 - 00:30 | 4s | 沟通变成治理数据；可治理数据。 | `compositions/scenes/scene-08.html` |
-| Scene 09-1<br>Scene 09-1 / 跨角色信息差 | 03:46 - 03:54 | 00:00 - 00:08 | 8s | 各看各的，协同就会失真；仪表盘｜日历视图。 | `compositions/scenes/scene-09.html` |
-| Scene 09-2<br>Scene 09-2 / 一套真实数据 | 03:54 - 04:02 | 00:08 - 00:16 | 8s | 一套数据，统一所有角色认知；排期｜容量｜变更率｜风险｜待办。 | `compositions/scenes/scene-09.html` |
-| Scene 09-3<br>Scene 09-3 / 截图证明 | 04:02 - 04:08 | 00:16 - 00:22 | 6s | 统一认知，降低沟通成本；一套真实数据。 | `compositions/scenes/scene-09.html` |
-| Scene 10-1<br>Scene 10-1 / AI 原生研发 | 04:08 - 04:17 | 00:00 - 00:09 | 9s | 更重要的是，本项目不是简单叠加 AI 功能，而是以 AI 原生方式重构研发过程。 | `compositions/scenes/scene-10.html` |
-| Scene 10-2<br>Scene 10-2 / Agent 调度与上下文 | 04:17 - 04:30 | 00:09 - 00:22 | 13s | 我们通过智能 Agent 调度和领域上下文沉淀，打通 PRD、设计文档、测试案例与代码结构的双向映射。 | `compositions/scenes/scene-10.html` |
-| Scene 10-3<br>Scene 10-3 / 质量闭环 | 04:30 - 04:42 | 00:22 - 00:34 | 12s | 结合 AI Skills、TDD 和 Playwright 自动化测试，形成文档联动、代码审查和自动化测试资产沉淀的质量闭环。 | `compositions/scenes/scene-10.html` |
-| Scene 10-4<br>Scene 10-4 / 章节结论 | 04:42 - 04:50 | 00:34 - 00:42 | 8s | 不是产品加 AI，而是研发过程 AI 原生化。 | `compositions/scenes/scene-10.html` |
-| Scene 11-1<br>Scene 11-1 / 完整版本火车 | 04:50 - 04:54 | 00:00 - 00:04 | 4s | 我们彻底告别经验化协同， | `compositions/scenes/scene-11.html` |
-| Scene 11-2<br>Scene 11-2 / 最终定格 | 04:54 - 04:57 | 00:04 - 00:07 | 3s | 实现 AI 原生 BizDevOps 智能治理工具链。 | `compositions/scenes/scene-11.html` |
+| Scene 07-1<br>Scene 07-1 / 无序变更引发风险 | 02:47 - 02:53 | 00:00 - 00:06 | 6s | 无序变更容易引起版本混乱、投产风险。 | `compositions/scenes/scene-07.html` |
+| Scene 07-2<br>Scene 07-2 / 封板前后差异化规则 | 02:53 - 03:01 | 00:06 - 00:14 | 8s | 新增需求变更分级管控策略，封板前登记变更点，封板后启动刚性管控，仅允许 P0、P1 高危缺陷发起紧急变更。 | `compositions/scenes/scene-07.html` |
+| Scene 07-3<br>Scene 07-3 / P0P1紧急变更与双审批 | 03:01 - 03:05 | 00:14 - 00:18 | 4s | 且需项目经理、测试经理双审批，全流程可追溯、可审计，规避变更失控风险。 | `compositions/scenes/scene-07.html` |
+| Scene 07-4<br>Scene 07-4 / 可追溯可审计闭环 | 03:05 - 03:07 | 00:18 - 00:20 | 2s | 且需项目经理、测试经理双审批，全流程可追溯、可审计，规避变更失控风险。 | `compositions/scenes/scene-07.html` |
+| Scene 08-1<br>Scene 08-1 / 群聊变更入口 | 03:07 - 03:15 | 00:00 - 00:08 | 8s | 群聊里的变更，算不算流程？；@需求变更助手。 | `compositions/scenes/scene-08.html` |
+| Scene 08-2<br>Scene 08-2 / AI Agent 解析 | 03:15 - 03:24 | 00:08 - 00:17 | 9s | AI 自动解析群聊变更；自动解析｜识别需求｜影响分析。 | `compositions/scenes/scene-08.html` |
+| Scene 08-3<br>Scene 08-3 / 系统建档 | 03:24 - 03:33 | 00:17 - 00:26 | 9s | 临时沟通，沉淀为可治理数据；系统建档｜留痕｜变更台账。 | `compositions/scenes/scene-08.html` |
+| Scene 08-4<br>Scene 08-4 / 三段链路 | 03:33 - 03:37 | 00:26 - 00:30 | 4s | 沟通变成治理数据；可治理数据。 | `compositions/scenes/scene-08.html` |
+| Scene 09-1<br>Scene 09-1 / 跨角色信息差 | 03:37 - 03:45 | 00:00 - 00:08 | 8s | 各看各的，协同就会失真；仪表盘｜日历视图。 | `compositions/scenes/scene-09.html` |
+| Scene 09-2<br>Scene 09-2 / 一套真实数据 | 03:45 - 03:53 | 00:08 - 00:16 | 8s | 一套数据，统一所有角色认知；排期｜容量｜变更率｜风险｜待办。 | `compositions/scenes/scene-09.html` |
+| Scene 09-3<br>Scene 09-3 / 截图证明 | 03:53 - 03:59 | 00:16 - 00:22 | 6s | 统一认知，降低沟通成本；一套真实数据。 | `compositions/scenes/scene-09.html` |
+| Scene 10-1<br>Scene 10-1 / AI 原生研发 | 03:59 - 04:08 | 00:00 - 00:09 | 9s | 更重要的是，本项目不是简单叠加 AI 功能，而是以 AI 原生方式重构研发过程。 | `compositions/scenes/scene-10.html` |
+| Scene 10-2<br>Scene 10-2 / Agent 调度与上下文 | 04:08 - 04:21 | 00:09 - 00:22 | 13s | 我们通过智能 Agent 调度和领域上下文沉淀，打通 PRD、设计文档、测试案例与代码结构的双向映射。 | `compositions/scenes/scene-10.html` |
+| Scene 10-3<br>Scene 10-3 / 质量闭环 | 04:21 - 04:33 | 00:22 - 00:34 | 12s | 结合 AI Skills、TDD 和 Playwright 自动化测试，形成文档联动、代码审查和自动化测试资产沉淀的质量闭环。 | `compositions/scenes/scene-10.html` |
+| Scene 10-4<br>Scene 10-4 / 章节结论 | 04:33 - 04:41 | 00:34 - 00:42 | 8s | 不是产品加 AI，而是研发过程 AI 原生化。 | `compositions/scenes/scene-10.html` |
+| Scene 11-1<br>Scene 11-1 / 完整版本火车 | 04:41 - 04:45 | 00:00 - 00:04 | 4s | 我们彻底告别经验化协同， | `compositions/scenes/scene-11.html` |
+| Scene 11-2<br>Scene 11-2 / 最终定格 | 04:45 - 04:48 | 00:04 - 00:07 | 3s | 实现 AI 原生 BizDevOps 智能治理工具链。 | `compositions/scenes/scene-11.html` |

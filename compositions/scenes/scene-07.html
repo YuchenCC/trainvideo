@@ -4,366 +4,1210 @@
       --bg: #f8fafc;
       --panel: #ffffff;
       --ink: #111827;
-      --text: #64748b;
+      --text: #475569;
+      --muted: #64748b;
       --line: #dbe3ef;
       --blue: #2563eb;
+      --blue-soft: #dbeafe;
       --purple: #6d28d9;
       --red: #ef4444;
+      --red-deep: #b91c1c;
+      --red-soft: #fef2f2;
       --green: #22c55e;
-      --yellow: #facc15;
+      --green-deep: #15803d;
+      --green-soft: #dcfce7;
+      --orange: #f97316;
+      --orange-soft: #fff7ed;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     .scene07 {
       position: relative;
       width: 1920px;
       height: 1080px;
       overflow: hidden;
       color: var(--ink);
-      font-family: sans-serif;
+      font-family: "HarmonyOS Sans", "Alibaba PuHuiTi", "Source Han Sans SC", "PingFang SC", sans-serif;
       background:
-        linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px),
-        radial-gradient(circle at 84% 20%, rgba(109,40,217,.09), transparent 28%),
+        linear-gradient(rgba(37, 99, 235, 0.052) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.052) 1px, transparent 1px),
+        radial-gradient(circle at 18% 24%, rgba(239, 68, 68, 0.08), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(37, 99, 235, 0.1), transparent 28%),
         var(--bg);
-      background-size: 64px 64px, 64px 64px, auto, auto;
+      background-size: 64px 64px, 64px 64px, auto, auto, auto;
     }
-    .clip { position: absolute; inset: 0; }
-    .stage { padding: 78px 104px 114px; }
-    .scene-072, .scene-073 { opacity: 0; visibility: hidden; }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    .stage {
+      padding: 70px 104px 116px;
+    }
+
+    .scene-072,
+    .scene-073,
+    .scene-074 {
+      opacity: 0;
+      visibility: hidden;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      height: 44px;
+      height: 46px;
       padding: 0 16px;
+      border: 1px solid rgba(37, 99, 235, 0.22);
       border-radius: 8px;
-      border: 1px solid rgba(109,40,217,.24);
-      background: rgba(255,255,255,.76);
-      color: var(--purple);
-      font-size: 23px;
-      font-weight: 800;
-    }
-    .headline {
-      margin-top: 18px;
-      max-width: 1120px;
-      font-size: 62px;
-      line-height: 1.14;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--blue);
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: 0;
     }
-    .subline {
-      margin-top: 14px;
-      max-width: 1040px;
-      color: var(--text);
-      font-size: 28px;
-      line-height: 1.45;
-      font-weight: 700;
+
+    .headline {
+      margin-top: 18px;
+      max-width: 1180px;
+      font-size: 58px;
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: 0;
     }
+
+    .subline {
+      margin-top: 12px;
+      max-width: 1160px;
+      color: var(--text);
+      font-size: 27px;
+      line-height: 1.42;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
     .caption {
       position: absolute;
       left: 104px;
       right: 104px;
       bottom: 40px;
-      height: 60px;
+      min-height: 62px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0 34px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
       border-radius: 8px;
-      border: 1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.9);
-      box-shadow: 0 16px 42px rgba(15,23,42,.08);
-      font-size: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+      font-size: 27px;
+      line-height: 1.32;
       font-weight: 900;
+      letter-spacing: 0;
+      text-align: center;
     }
-    .board {
+
+    .risk-layout {
+      position: absolute;
+      left: 126px;
+      right: 126px;
+      top: 262px;
+      bottom: 140px;
+      display: grid;
+      grid-template-columns: 392px minmax(0, 1fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .risk-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .risk-item,
+    .source-card,
+    .policy-card,
+    .ledger-panel,
+    .gate-panel,
+    .approval-card,
+    .proof-shot,
+    .closed-loop-card {
+      border-radius: 8px;
+      border: 1px solid rgba(100, 116, 139, 0.16);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 56px rgba(15, 23, 42, 0.08);
+    }
+
+    .risk-item {
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 0 22px;
+      color: var(--red-deep);
+      font-size: 27px;
+      font-weight: 900;
+      background: rgba(254, 242, 242, 0.92);
+      border-color: rgba(239, 68, 68, 0.24);
+    }
+
+    .risk-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .chaos-core {
+      position: relative;
+      height: 628px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid rgba(37, 99, 235, 0.08);
+      background:
+        radial-gradient(circle at 50% 48%, rgba(239, 68, 68, 0.1), transparent 33%),
+        rgba(255, 255, 255, 0.34);
+    }
+
+    .source-card {
+      position: absolute;
+      width: 254px;
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      color: var(--ink);
+      font-size: 23px;
+      font-weight: 900;
+      z-index: 1;
+    }
+
+    .source-card.chat { left: 102px; top: 66px; }
+    .source-card.requirement { left: 34px; top: 260px; }
+    .source-card.schedule { left: 170px; bottom: 68px; }
+    .source-card.temp { right: 118px; top: 78px; }
+    .source-card.urgent { right: 52px; bottom: 68px; }
+
+    .mini-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .urgent .mini-icon {
+      background: var(--red);
+    }
+
+    .chaos-line {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 3px;
+      width: 370px;
+      border-top: 3px dashed rgba(239, 68, 68, 0.68);
+      transform-origin: left center;
+      z-index: 0;
+    }
+
+    .chaos-line.l1 { transform: rotate(206deg); }
+    .chaos-line.l2 { transform: rotate(180deg); }
+    .chaos-line.l3 { transform: rotate(140deg); }
+    .chaos-line.l4 { transform: rotate(-34deg); }
+    .chaos-line.l5 { transform: rotate(36deg); }
+
+    .alert-core {
+      position: relative;
+      width: 226px;
+      height: 226px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(254, 242, 242, 0.94);
+      border: 4px solid rgba(239, 68, 68, 0.52);
+      box-shadow: 0 28px 70px rgba(239, 68, 68, 0.18);
+      color: var(--red-deep);
+      text-align: center;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .alert-core strong {
+      display: block;
+      color: var(--red);
+      font-size: 82px;
+      line-height: 0.86;
+    }
+
+    .timeline-strip {
+      position: absolute;
+      left: 260px;
+      right: 260px;
+      bottom: 18px;
+      height: 70px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 28px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #cbd5e1, #cbd5e1 58%, var(--red) 58%, #cbd5e1);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 19px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid #cbd5e1;
+    }
+
+    .timeline-dot span {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 19px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .timeline-dot.d1 { left: 0; }
+    .timeline-dot.d2 { left: 25%; }
+    .timeline-dot.d3 { left: 50%; }
+    .timeline-dot.d4 { left: 69%; border-color: var(--red); background: var(--red); }
+    .timeline-dot.d4 span { color: var(--red-deep); }
+    .timeline-dot.d5 { right: 0; }
+
+    .policy-layout {
       position: absolute;
       left: 104px;
       right: 104px;
-      top: 272px;
-      bottom: 136px;
+      top: 246px;
+      bottom: 140px;
       display: grid;
-      grid-template-columns: 1fr 18px 1fr;
-      gap: 24px;
-      align-items: stretch;
+      grid-template-rows: 126px 1fr;
+      gap: 22px;
     }
-    .zone {
+
+    .release-timeline {
       position: relative;
+      padding: 24px 42px;
       border-radius: 8px;
-      border: 1px solid rgba(100,116,139,.16);
-      background: rgba(255,255,255,.82);
-      box-shadow: 0 20px 60px rgba(15,23,42,.08);
-      overflow: hidden;
-      padding: 34px;
+      border: 1px solid transparent;
+      background: transparent;
+      box-shadow: none;
     }
-    .zone-title {
-      font-size: 34px;
-      font-weight: 900;
-    }
-    .zone-sub {
-      margin-top: 8px;
-      color: var(--text);
-      font-size: 22px;
-      font-weight: 700;
-    }
-    .pre-zone .tag { background: rgba(37,99,235,.1); color: var(--blue); }
-    .post-zone { border-color: rgba(109,40,217,.28); }
-    .post-zone .tag { background: rgba(109,40,217,.1); color: var(--purple); }
-    .divider {
-      position: relative;
-      border-radius: 999px;
-      background: linear-gradient(var(--purple), rgba(109,40,217,.34));
-      box-shadow: 0 0 0 8px rgba(109,40,217,.08);
-      transform: scaleY(.52);
-      transform-origin: center;
-    }
-    .divider::before {
-      content: "封板";
+
+    .release-track {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(90deg);
-      color: #fff;
-      font-size: 24px;
+      left: 180px;
+      right: 100px;
+      top: 62px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+
+    .release-node {
+      position: absolute;
+      top: 48px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid var(--blue);
+    }
+
+    .release-label {
+      position: absolute;
+      top: 10px;
+      width: 78px;
+      text-align: center;
+      color: var(--text);
+      font-size: 21px;
       font-weight: 900;
       white-space: nowrap;
     }
-    .tag-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+
+    .release-label.l1 { left: 268px; }
+    .release-label.l2 { left: 528px; }
+    .release-label.l3 { left: 804px; }
+    .release-label.l4 {
+      top: 2px;
+      left: 1077px;
+      width: 80px;
+      color: var(--red-deep);
+      font-size: 24px;
+      font-weight: 950;
     }
-    .tag {
-      height: 48px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 18px;
+    .release-label.l5 { left: calc(100% - 102px); }
+
+    .release-node.n1 { left: 292px; }
+    .release-node.n2 { left: 552px; }
+    .release-node.n3 { left: 828px; }
+    .release-node.n4 {
+      left: 1086px;
+      top: 32px;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+      box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.12);
+    }
+    .release-node.n5 { right: 48px; }
+
+    .release-lock {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: 1fr 120px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .ledger-panel,
+    .gate-panel {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .ledger-panel {
+      border-color: rgba(34, 197, 94, 0.28);
+      background: rgba(240, 253, 244, 0.7);
+    }
+
+    .gate-panel {
+      border-color: rgba(239, 68, 68, 0.28);
+      background: rgba(254, 242, 242, 0.62);
+    }
+
+    .panel-title {
+      color: var(--ink);
+      font-size: 32px;
+      font-weight: 950;
+    }
+
+    .ledger-panel .panel-title { color: var(--green-deep); }
+    .gate-panel .panel-title { color: var(--red-deep); }
+
+    .panel-copy {
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 750;
+    }
+
+    .ledger-table {
+      margin-top: 24px;
       border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(100, 116, 139, 0.14);
+      background: #fff;
+    }
+
+    .ledger-row {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 0.9fr 0.8fr;
+      align-items: center;
+      gap: 16px;
+      padding: 0 18px;
+      border-bottom: 1px solid rgba(100, 116, 139, 0.1);
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 820;
+    }
+
+    .ledger-row:last-child {
+      border-bottom: 0;
+    }
+
+    .ledger-head {
+      min-height: 52px;
+      color: var(--text);
+      background: #f8fafc;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .status-ok {
+      color: var(--green-deep);
+      font-weight: 950;
+    }
+
+    .freeze-gate {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
+
+    .gate-door {
+      width: 76px;
+      height: 320px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #1d4ed8, #1e3a8a);
+      box-shadow: 0 22px 48px rgba(37, 99, 235, 0.22);
+    }
+
+    .gate-label {
+      position: absolute;
+      top: 46px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .gate-arrow {
+      position: absolute;
+      top: 50%;
+      width: 62px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    .gate-arrow.left {
+      left: 0;
+    }
+
+    .gate-arrow.right {
+      right: 0;
+    }
+
+    .access-list {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .access-row {
+      min-height: 62px;
+      display: grid;
+      grid-template-columns: 58px 1fr 40px;
+      align-items: center;
+      gap: 14px;
+      padding: 0 16px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid rgba(100, 116, 139, 0.14);
+      color: var(--ink);
       font-size: 22px;
       font-weight: 900;
     }
-    .gate {
-      position: absolute;
-      right: 40px;
-      bottom: 40px;
-      width: 260px;
-      height: 132px;
-      border-radius: 8px;
-      border: 3px solid rgba(109,40,217,.62);
-      background: rgba(245,243,255,.82);
+
+    .priority {
+      width: 48px;
+      height: 40px;
       display: grid;
       place-items: center;
-      color: var(--purple);
-      font-size: 26px;
-      font-weight: 900;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 950;
+      background: var(--red);
     }
-    .path {
+
+    .priority.p1 {
+      background: var(--orange);
+    }
+
+    .access-check {
+      color: var(--green-deep);
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .access-block {
+      color: var(--red);
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .approval-layout {
       position: absolute;
-      left: 40px;
-      right: 340px;
-      bottom: 94px;
-      height: 4px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(109,40,217,.15), var(--purple));
+      left: 84px;
+      right: 84px;
+      top: 250px;
+      bottom: 138px;
+      display: grid;
+      grid-template-columns: 460px 1fr 480px;
+      gap: 24px;
+      align-items: stretch;
     }
-    .screen-layout {
+
+    .emergency-card {
+      padding: 28px;
+      border-color: rgba(239, 68, 68, 0.24);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .proof-shot {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .proof-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .shot-emergency img {
+      object-position: 52% 26%;
+    }
+
+    .shot-audit img {
+      object-position: 50% 72%;
+    }
+
+    .shot-mask {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 999px rgba(15, 23, 42, 0.14);
+      pointer-events: none;
+    }
+
+    .shot-focus {
+      position: absolute;
+      border: 4px solid var(--red);
+      border-radius: 8px;
+      box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.24), 0 18px 48px rgba(239, 68, 68, 0.22);
+      pointer-events: none;
+    }
+
+    .shot-emergency .shot-focus {
+      left: 132px;
+      top: 92px;
+      width: 256px;
+      height: 334px;
+    }
+
+    .shot-audit .shot-focus {
+      left: 36px;
+      top: 224px;
+      width: 590px;
+      height: 324px;
+      border-color: var(--green);
+      box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.22), 0 18px 48px rgba(34, 197, 94, 0.22);
+    }
+
+    .approval-chain {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 42px 1fr 42px 1fr;
+      gap: 0;
+      align-items: center;
+    }
+
+    .approval-card {
+      min-height: 236px;
+      padding: 24px;
+      text-align: center;
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .approval-card.done {
+      border-color: rgba(34, 197, 94, 0.32);
+      background: rgba(240, 253, 244, 0.84);
+    }
+
+    .approval-title {
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      margin: 26px auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 26px;
+      font-weight: 950;
+    }
+
+    .approval-status {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .flow-arrow {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.25), var(--blue));
+    }
+
+    .emergency-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      font-size: 30px;
+      font-weight: 950;
+    }
+
+    .emergency-lines {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+      color: var(--text);
+      font-size: 21px;
+      line-height: 1.34;
+      font-weight: 800;
+    }
+
+    .launch-button {
+      margin-top: 24px;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .approval-tags {
+      position: absolute;
+      left: 50%;
+      bottom: 122px;
+      width: 620px;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .approval-tags span {
+      min-height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      background: rgba(219, 234, 254, 0.82);
+      color: var(--blue);
+      font-size: 21px;
+      font-weight: 950;
+    }
+
+    .loop-layout {
       position: absolute;
       left: 104px;
       right: 104px;
-      top: 326px;
-      bottom: 132px;
+      top: 250px;
+      bottom: 142px;
       display: grid;
-      grid-template-columns: .92fr 1.08fr;
+      grid-template-columns: 0.96fr 1.04fr;
       gap: 28px;
+      align-items: stretch;
     }
-    .flow-panel, .shot-panel {
+
+    .loop-flow {
       position: relative;
-      border-radius: 8px;
-      border: 1px solid rgba(37,99,235,.14);
-      background: rgba(255,255,255,.84);
-      overflow: hidden;
-      box-shadow: 0 20px 58px rgba(15,23,42,.08);
-    }
-    .flow-panel { padding: 34px; }
-    .flow-title { font-size: 31px; font-weight: 900; }
-    .flow-columns {
-      margin-top: 28px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .flow-col {
-      border-radius: 8px;
-      border: 1px solid rgba(100,116,139,.18);
-      background: rgba(248,250,252,.84);
-      padding: 22px;
-      min-height: 360px;
-    }
-    .flow-col.after { border-color: rgba(109,40,217,.28); background: rgba(245,243,255,.72); }
-    .step {
-      display: flex;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
       align-items: center;
-      min-height: 56px;
+    }
+
+    .closed-loop-card {
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 12px;
-      font-size: 22px;
-      font-weight: 850;
-      color: var(--ink);
+      padding: 20px;
+      text-align: center;
+      border-color: rgba(37, 99, 235, 0.18);
     }
-    .dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--blue);
-      flex: 0 0 auto;
-    }
-    .after .dot { background: var(--purple); }
-    .disabled {
-      margin-top: 20px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .loop-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
       border-radius: 8px;
-      border: 1px dashed rgba(239,68,68,.45);
-      color: var(--red);
-      font-size: 21px;
-      font-weight: 900;
-      background: rgba(254,242,242,.72);
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 950;
     }
-    .shot-frame {
-      position: absolute;
-      inset: 22px;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid rgba(100,116,139,.14);
-    }
-    .shot-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: top left;
+
+    .closed-loop-card strong {
       display: block;
+      font-size: 25px;
+      font-weight: 950;
     }
-    .hl {
-      position: absolute;
-      border: 4px solid var(--blue);
-      border-radius: 8px;
-      box-shadow: 0 0 0 999px rgba(15,23,42,.08), 0 20px 44px rgba(37,99,235,.25);
-      opacity: 0;
-      pointer-events: none;
+
+    .closed-loop-card span {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
     }
-    .hl-approve { left: 300px; top: 70px; width: 314px; height: 230px; }
-    .hl-risk { left: 294px; top: 302px; width: 330px; height: 78px; border-color: var(--red); }
-    .hl-audit { left: 30px; bottom: 20px; width: 520px; height: 210px; border-color: var(--green); }
-    .audit-bar {
+
+    .final-tags {
       position: absolute;
-      left: 160px;
-      right: 160px;
-      bottom: 36px;
-      height: 58px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .final-tags span {
+      min-height: 66px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      background: rgba(34,197,94,.12);
-      border: 1px solid rgba(34,197,94,.32);
-      color: #15803d;
-      font-size: 24px;
-      font-weight: 900;
-      opacity: 0;
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      background: rgba(240, 253, 244, 0.92);
+      color: var(--green-deep);
+      font-size: 28px;
+      font-weight: 950;
     }
   </style>
-  <div class="scene07" data-composition-id="scene-07" data-start="0" data-duration="29" data-width="1920" data-height="1080">
-    <section class="clip stage scene-071" data-start="0" data-duration="8" data-track-index="1">
-      <div class="eyebrow">Scene 07-1 / 封板分水岭</div>
-      <h1 class="headline">封板，是版本治理的分水岭</h1>
-      <p class="subline">封板前可以调整，但必须留痕；封板后进入受控变更，触发分级审批。</p>
-      <div class="board">
-        <div class="zone pre-zone">
-          <div class="zone-title">封板前</div>
-          <div class="zone-sub">可调整，但系统记录变更来源</div>
-          <div class="tag-row">
-            <span class="tag">系统发起</span>
-            <span class="tag">变更记录</span>
-            <span class="tag">全程留痕</span>
+
+  <div class="scene07" data-composition-id="scene-07" data-start="0" data-duration="20" data-width="1920" data-height="1080">
+    <section class="clip stage scene-071" data-start="0" data-duration="6" data-track-index="1">
+      <div class="eyebrow">0-6s / 01 风险混乱</div>
+      <h1 class="headline">无序变更引发风险</h1>
+      <p class="subline">多入口需求变更同时涌入，版本节点被打断，投产窗口开始告警。</p>
+
+      <div class="risk-layout">
+        <div class="risk-list">
+          <div class="risk-item"><span class="risk-icon">!</span><span>版本冲突频发</span></div>
+          <div class="risk-item"><span class="risk-icon">!</span><span>投产风险升高</span></div>
+          <div class="risk-item"><span class="risk-icon">!</span><span>变更沟通无序</span></div>
+        </div>
+
+        <div class="chaos-core">
+          <div class="source-card chat"><span class="mini-icon">IM</span><span>群聊消息</span></div>
+          <div class="source-card requirement"><span class="mini-icon">REQ</span><span>需求单</span></div>
+          <div class="source-card schedule"><span class="mini-icon">CAL</span><span>排期表</span></div>
+          <div class="source-card temp"><span class="mini-icon">TMP</span><span>临时需求</span></div>
+          <div class="source-card urgent"><span class="mini-icon">P0</span><span>紧急变更</span></div>
+          <div class="chaos-line l1"></div>
+          <div class="chaos-line l2"></div>
+          <div class="chaos-line l3"></div>
+          <div class="chaos-line l4"></div>
+          <div class="chaos-line l5"></div>
+          <div class="alert-core"><strong>!</strong><span>版本混乱<br>投产风险</span></div>
+          <div class="timeline-strip">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot d1"><span>需求</span></div>
+            <div class="timeline-dot d2"><span>开发</span></div>
+            <div class="timeline-dot d3"><span>测试</span></div>
+            <div class="timeline-dot d4"><span>封板</span></div>
+            <div class="timeline-dot d5"><span>投产</span></div>
           </div>
         </div>
-        <div class="divider"></div>
-        <div class="zone post-zone">
-          <div class="zone-title">封板后</div>
-          <div class="zone-sub">受控状态，不能私下调整</div>
-          <div class="tag-row">
-            <span class="tag">紧急变更</span>
-            <span class="tag">分级审批</span>
-            <span class="tag">审计留痕</span>
-          </div>
-          <div class="path"></div>
-          <div class="gate">治理闸门</div>
-        </div>
+
       </div>
-      <div class="caption">无序变更容易引起版本混乱、投产风险，新增需求变更分级管控策略</div>
+
+      <div class="caption">无序变更容易引起版本混乱、投产风险。</div>
     </section>
 
-    <section class="clip stage scene-072" data-start="8" data-duration="10" data-track-index="1">
-      <div class="eyebrow">Scene 07-2 / 分级变更流程</div>
-      <h1 class="headline">封板前留痕，封板后审批</h1>
-      <p class="subline">私下调整路径变灰，紧急变更必须经过 PM 和测试经理双层审批。</p>
-      <div class="screen-layout">
-        <div class="flow-panel">
-          <div class="flow-title">分级变更流程</div>
-          <div class="flow-columns">
-            <div class="flow-col before">
-              <div class="step"><span class="dot"></span>系统发起</div>
-              <div class="step"><span class="dot"></span>变更记录</div>
-              <div class="step"><span class="dot"></span>全程留痕</div>
-              <div class="disabled">私下调整禁用</div>
+    <section class="clip stage scene-072" data-start="6" data-duration="8" data-track-index="1">
+      <div class="eyebrow">6-14s / 02 差异化规则</div>
+      <h1 class="headline">需求变更分级管控策略</h1>
+      <p class="subline">封板前登记变更点，封板后进入刚性管控，按风险等级决定准入。</p>
+
+      <div class="policy-layout">
+        <div class="release-timeline">
+          <div class="release-track"></div>
+          <div class="release-label l1">需求</div>
+          <div class="release-label l2">开发</div>
+          <div class="release-label l3">测试</div>
+          <div class="release-label l4">封板</div>
+          <div class="release-label l5">投产</div>
+          <div class="release-node n1"></div>
+          <div class="release-node n2"></div>
+          <div class="release-node n3"></div>
+          <div class="release-node n4"></div>
+          <div class="release-node n5"></div>
+        </div>
+
+        <div class="rule-grid">
+          <div class="ledger-panel">
+            <div class="panel-title">封板前：登记变更点</div>
+            <div class="panel-copy">所有变更先进入登记台账，沉淀影响范围和责任信息。</div>
+            <div class="ledger-table">
+              <div class="ledger-row ledger-head"><span>变更内容</span><span>影响范围</span><span>关联版本</span><span>责任人</span></div>
+              <div class="ledger-row"><span>新增导出字段</span><span>订单模块</span><span>V2.4.1</span><span class="status-ok">登记中</span></div>
+              <div class="ledger-row"><span>调整登录逻辑</span><span>认证中心</span><span>V2.4.1</span><span class="status-ok">登记中</span></div>
+              <div class="ledger-row"><span>优化报表展示</span><span>报表系统</span><span>V2.4.1</span><span class="status-ok">登记中</span></div>
             </div>
-            <div class="flow-col after">
-              <div class="step"><span class="dot"></span>紧急变更</div>
-              <div class="step"><span class="dot"></span>PM 审批</div>
-              <div class="step"><span class="dot"></span>测试经理审批</div>
-              <div class="step"><span class="dot"></span>审计留痕</div>
+          </div>
+
+          <div class="freeze-gate">
+            <div class="gate-label">封板节点</div>
+            <div style="z-index: 2" class="gate-arrow left"></div>
+            <div class="gate-door"></div>
+            <div class="gate-arrow right"></div>
+          </div>
+
+          <div class="gate-panel">
+            <div class="panel-title">封板后：刚性管控</div>
+            <div class="panel-copy">普通变更一律拦截，仅允许 P0、P1 高危缺陷进入紧急通道。</div>
+            <div class="access-list">
+              <div class="access-row"><span class="priority">P0</span><span>高危缺陷</span><span class="access-check">✔</span></div>
+              <div class="access-row"><span class="priority p1">P1</span><span>高危缺陷</span><span class="access-check">✔</span></div>
+              <div class="access-row"><span class="priority" style="background:#94a3b8;">N</span><span>其他变更一律拦截</span><span class="access-block">×</span></div>
             </div>
           </div>
         </div>
-        <div class="shot-panel">
-          <div class="shot-frame"><img src="assets/screenshots/raw/Scene07-2.png" alt="紧急变更审批截图"></div>
-        </div>
       </div>
-      <div class="caption">封板前登记变更点，封板后启动刚性管控，仅允许P0、P1高危缺陷发起紧急变更</div>
+
+      <div class="caption">新增需求变更分级管控策略，封板前登记变更点，封板后启动刚性管控，仅允许 P0、P1 高危缺陷发起紧急变更。</div>
     </section>
 
-    <section class="clip stage scene-073" data-start="18" data-duration="11" data-track-index="1">
-      <div class="eyebrow">Scene 07-3 / 紧急变更弹窗</div>
-      <h1 class="headline">每一次变更都可追溯、可评估、可审计</h1>
-      <p class="subline">审批、风险和操作留痕都被系统记录下来，变更不再只是临时沟通。</p>
-      <div class="shot-panel" style="left: 180px; right: 180px; top: 326px; bottom: 130px; position: absolute;">
-        <div class="shot-frame"><img src="assets/screenshots/raw/Scene07-3.png" alt="操作留痕截图"></div>
-        <div class="hl hl-approve"></div>
-        <div class="hl hl-risk"></div>
-        <div class="hl hl-audit"></div>
-        <div class="audit-bar">审批、风险、留痕三处确认，生成审计记录</div>
+    <section class="clip stage scene-073" data-start="14" data-duration="4" data-track-index="1">
+      <div class="eyebrow">14-18s / 03 双审批机制</div>
+      <h1 class="headline">P0、P1 缺陷进入紧急变更通道</h1>
+      <p class="subline">高危缺陷提交后，项目经理与测试经理依次审批，审批通过后才允许继续执行。</p>
+
+      <div class="approval-layout">
+        <div class="approval-card emergency-card">
+          <div class="emergency-title"><span class="priority">P0</span><span>紧急变更申请</span></div>
+          <div class="emergency-lines">
+            <span>影响范围：支付模块</span>
+            <span>关联版本：V2.4.1</span>
+            <span>变更内容：修复支付超时问题</span>
+          </div>
+          <div class="launch-button">发起紧急变更</div>
+        </div>
+
+        <div class="approval-chain">
+          <div class="approval-card pm-card">
+            <div class="approval-title">项目经理审批</div>
+            <div class="avatar">PM</div>
+            <div class="approval-status">已通过</div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="approval-card test-card">
+            <div class="approval-title">测试经理审批</div>
+            <div class="avatar">QA</div>
+            <div class="approval-status">已通过</div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="approval-card done">
+            <div class="approval-title">继续执行</div>
+            <div class="avatar">RUN</div>
+            <div class="approval-status">流程流转</div>
+          </div>
+        </div>
+
+        <div class="proof-shot shot-emergency">
+          <img src="assets/screenshots/raw/Scene07-2.png" alt="紧急变更申请截图">
+          <div class="shot-mask"></div>
+          <div class="shot-focus"></div>
+        </div>
       </div>
-      <div class="caption">且需项目经理、测试经理双审批，全流程可追溯、可审计，规避变更失控风险</div>
+      <div class="approval-tags"><span>双审批</span><span>风险评估</span><span>紧急变更</span></div>
+
+      <div class="caption">且需项目经理、测试经理双审批，全流程可追溯、可审计，规避变更失控风险。</div>
+    </section>
+
+    <section class="clip stage scene-074" data-start="18" data-duration="2" data-track-index="1">
+      <div class="eyebrow">18-20s / 04 治理闭环</div>
+      <h1 class="headline">全流程可追溯、可审计、风险可控</h1>
+      <p class="subline">变更发起、风险评估、双层审批、执行记录和审计留痕形成闭环。</p>
+
+      <div class="loop-layout">
+        <div class="loop-flow">
+          <div class="closed-loop-card"><span class="loop-icon">01</span><strong>变更发起</strong><span>提交变更申请</span></div>
+          <div class="closed-loop-card"><span class="loop-icon">02</span><strong>风险评估</strong><span>评估影响与风险</span></div>
+          <div class="closed-loop-card"><span class="loop-icon">03</span><strong>双层审批</strong><span>项目经理 + 测试经理</span></div>
+          <div class="closed-loop-card"><span class="loop-icon">04</span><strong>执行记录</strong><span>变更执行与发布</span></div>
+          <div class="closed-loop-card"><span class="loop-icon">05</span><strong>审计留痕</strong><span>全链路日志留存</span></div>
+          <div class="final-tags"><span>可追溯</span><span>可审计</span><span>风险可控</span></div>
+        </div>
+
+        <div class="proof-shot shot-audit">
+          <img src="assets/screenshots/raw/Scene07-3.png" alt="操作历史审计留痕截图">
+          <div class="shot-mask"></div>
+          <div class="shot-focus"></div>
+        </div>
+      </div>
+
+      <div class="caption">且需项目经理、测试经理双审批，全流程可追溯、可审计，规避变更失控风险。</div>
     </section>
   </div>
+
   <script>
     window.__timelines = window.__timelines || {};
     const scene07 = gsap.timeline({ paused: true });
     window.__timelines["scene-07"] = scene07;
-    scene07.from(".scene07 .eyebrow, .scene07 .headline, .scene07 .subline", { y: 18, duration: .7, stagger: .08, ease: "power2.out" }, 0);
-    scene07.from(".scene-071 .divider", { scaleY: .12, duration: 1.1, ease: "power3.out" }, .6);
-    scene07.from(".scene-071 .post-zone .tag, .scene-071 .gate", { autoAlpha: 0, y: 16, duration: .6, stagger: .12, ease: "power2.out" }, 3);
-    scene07.set(".scene-071", { autoAlpha: 0 }, 8);
-    scene07.set(".scene-072", { autoAlpha: 1 }, 8);
-    scene07.from(".scene-072 .flow-col, .scene-072 .shot-panel", { y: 24, duration: .75, stagger: .12, ease: "power2.out" }, 8.2);
-    scene07.from(".scene-072 .step", { x: -14, duration: .45, stagger: .12, ease: "power2.out" }, 10);
-    scene07.from(".scene-072 .disabled", { scale: .96, duration: .5, ease: "power2.out" }, 12);
-    scene07.set(".scene-072", { autoAlpha: 0 }, 18);
-    scene07.set(".scene-073", { autoAlpha: 1 }, 18);
-    scene07.from(".scene-073 .shot-panel", { y: 28, duration: .8, ease: "power2.out" }, 18.4);
-    scene07.to(".scene-073 .hl-approve", { autoAlpha: 1, duration: .5, ease: "power2.out" }, 21);
-    scene07.to(".scene-073 .hl-risk", { autoAlpha: 1, duration: .5, ease: "power2.out" }, 24);
-    scene07.to(".scene-073 .hl-audit, .scene-073 .audit-bar", { autoAlpha: 1, duration: .6, ease: "power2.out" }, 26);
+
+    scene07.from(".scene-071 .eyebrow, .scene-071 .headline, .scene-071 .subline", {
+      y: 22,
+      autoAlpha: 0,
+      duration: 0.68,
+      stagger: 0.08,
+      ease: "power3.out"
+    }, 0.15);
+    scene07.from(".scene-071 .risk-item", {
+      x: -24,
+      autoAlpha: 0,
+      duration: 0.46,
+      stagger: 0.08,
+      ease: "power2.out"
+    }, 0.42);
+    scene07.from(".scene-071 .source-card", {
+      scale: 0.94,
+      autoAlpha: 0,
+      duration: 0.42,
+      stagger: 0.08,
+      ease: "back.out(1.1)"
+    }, 0.38);
+    scene07.from(".scene-071 .chaos-line", {
+      scaleX: 0,
+      autoAlpha: 0,
+      duration: 0.52,
+      stagger: 0.05,
+      ease: "circ.out"
+    }, 0.58);
+    scene07.from(".scene-071 .alert-core", {
+      scale: 0.82,
+      autoAlpha: 0,
+      duration: 0.58,
+      ease: "back.out(1.18)"
+    }, 0.72);
+    scene07.to(".scene-071 .alert-core", {
+      scale: 1.06,
+      yoyo: true,
+      repeat: 3,
+      duration: 0.32,
+      ease: "power1.inOut"
+    }, 3.4);
+    scene07.from(".scene-071 .caption", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.5,
+      ease: "power2.out"
+    }, 0.35);
+
+    scene07.to(".scene-071", { autoAlpha: 0, duration: 0.34 }, 6);
+    scene07.set(".scene-072", { autoAlpha: 1 }, 6);
+    scene07.from(".scene-072 .eyebrow, .scene-072 .headline, .scene-072 .subline", {
+      y: 22,
+      autoAlpha: 0,
+      duration: 0.62,
+      stagger: 0.08,
+      ease: "power3.out"
+    }, 6.12);
+    scene07.from(".scene-072 .release-timeline", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.62,
+      ease: "expo.out"
+    }, 6.35);
+    scene07.from(".scene-072 .release-track", {
+      scaleX: 0,
+      transformOrigin: "left center",
+      duration: 0.78,
+      ease: "circ.out"
+    }, 6.55);
+    scene07.from(".scene-072 .release-node", {
+      scale: 0.78,
+      autoAlpha: 0,
+      duration: 0.38,
+      stagger: 0.1,
+      ease: "back.out(1.1)"
+    }, 6.72);
+    scene07.from(".scene-072 .ledger-panel, .scene-072 .gate-panel", {
+      y: 24,
+      autoAlpha: 0,
+      duration: 0.66,
+      stagger: 0.12,
+      ease: "power2.out"
+    }, 6.46);
+    scene07.from(".scene-072 .gate-door", {
+      scaleY: 0.16,
+      transformOrigin: "center bottom",
+      duration: 0.7,
+      ease: "power3.out"
+    }, 6.95);
+    scene07.from(".scene-072 .ledger-row:not(.ledger-head), .scene-072 .access-row", {
+      x: -14,
+      autoAlpha: 0,
+      duration: 0.34,
+      stagger: 0.08,
+      ease: "power2.out"
+    }, 6.82);
+    scene07.from(".scene-072 .caption", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.48,
+      ease: "power2.out"
+    }, 6.35);
+
+    scene07.to(".scene-072", { autoAlpha: 0, duration: 0.34 }, 14);
+    scene07.set(".scene-073", { autoAlpha: 1 }, 14);
+    scene07.from(".scene-073 .eyebrow, .scene-073 .headline, .scene-073 .subline", {
+      y: 22,
+      autoAlpha: 0,
+      duration: 0.42,
+      stagger: 0.05,
+      ease: "power3.out"
+    }, 14.08);
+    scene07.from(".scene-073 .emergency-card", {
+      x: -26,
+      duration: 0.42,
+      ease: "expo.out"
+    }, 14.25);
+    scene07.from(".scene-073 .approval-card", {
+      y: 22,
+      duration: 0.36,
+      stagger: 0.07,
+      ease: "power2.out"
+    }, 14.35);
+    scene07.from(".scene-073 .flow-arrow", {
+      scaleX: 0,
+      transformOrigin: "left center",
+      duration: 0.28,
+      stagger: 0.1,
+      ease: "circ.out"
+    }, 14.75);
+    scene07.from(".scene-073 .proof-shot", {
+      x: 28,
+      autoAlpha: 0,
+      duration: 0.42,
+      ease: "power2.out"
+    }, 14.35);
+    scene07.from(".scene-073 .shot-focus", {
+      scale: 0.96,
+      autoAlpha: 0,
+      duration: 0.34,
+      ease: "circ.out"
+    }, 15.0);
+    scene07.from(".scene-073 .pm-card .approval-status", {
+      scale: 0.9,
+      autoAlpha: 0,
+      duration: 0.26,
+      ease: "back.out(1.1)"
+    }, 15.25);
+    scene07.from(".scene-073 .test-card .approval-status", {
+      scale: 0.9,
+      autoAlpha: 0,
+      duration: 0.26,
+      ease: "back.out(1.1)"
+    }, 16.0);
+    scene07.from(".scene-073 .approval-tags span", {
+      y: 12,
+      autoAlpha: 0,
+      duration: 0.26,
+      stagger: 0.06,
+      ease: "power2.out"
+    }, 16.55);
+    scene07.from(".scene-073 .caption", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.34,
+      ease: "power2.out"
+    }, 14.25);
+
+    scene07.to(".scene-073", { autoAlpha: 0, duration: 0.24 }, 18);
+    scene07.set(".scene-074", { autoAlpha: 1 }, 18);
+    scene07.from(".scene-074 .eyebrow, .scene-074 .headline, .scene-074 .subline", {
+      y: 20,
+      autoAlpha: 0,
+      duration: 0.28,
+      stagger: 0.04,
+      ease: "power3.out"
+    }, 18.05);
+    scene07.from(".scene-074 .closed-loop-card", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.24,
+      stagger: 0.04,
+      ease: "power2.out"
+    }, 18.25);
+    scene07.from(".scene-074 .shot-audit", {
+      x: 28,
+      autoAlpha: 0,
+      duration: 0.3,
+      ease: "power2.out"
+    }, 18.35);
+    scene07.from(".scene-074 .shot-focus", {
+      scale: 0.96,
+      autoAlpha: 0,
+      duration: 0.24,
+      ease: "circ.out"
+    }, 18.75);
+    scene07.from(".scene-074 .final-tags span", {
+      y: 14,
+      autoAlpha: 0,
+      duration: 0.22,
+      stagger: 0.05,
+      ease: "power2.out"
+    }, 19.1);
+    scene07.from(".scene-074 .caption", {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.28,
+      ease: "power2.out"
+    }, 18.15);
+    scene07.from(".scene-071 .timeline-strip", { y: 18, duration: 0.55, ease: "power2.out" }, 3.9);
+    scene07.from(".scene-071 .timeline-strip", { autoAlpha: 0, duration: 0.55, ease: "power2.out" }, 3.9);
+    scene07.to(".scene-071 .timeline-strip", { keyframes: { "0%": { x: 0, y: 0 }, "43.5%": { x: 0, y: 0 }, "100%": { x: -226, y: 54 } }, duration: 1.264 }, 3.9);
   </script>
 </template>
