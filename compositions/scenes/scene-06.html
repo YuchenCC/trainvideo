@@ -50,7 +50,6 @@
       }
 
       .scene-062,
-      .scene-063,
       .scene-064 {
         opacity: 0;
       }
@@ -207,10 +206,10 @@
       }
 
       .dev header .urgent {
-        min-width: 112px;
-        height: 42px;
-        padding: 0 16px;
-        font-size: 20px;
+        min-width: 142px;
+        height: 50px;
+        padding: 0 20px;
+        font-size: 24px;
         animation: capacityPulse 0.82s ease-in-out infinite;
       }
 
@@ -335,7 +334,7 @@
         height: 100%;
         object-fit: contain;
         object-position: center top;
-        opacity: 0.3;
+        opacity: 1;
       }
 
       .ai-engine {
@@ -454,113 +453,6 @@
         background: linear-gradient(90deg, var(--tech-blue), var(--ai-orange));
       }
 
-      .result-layout {
-        position: absolute;
-        left: 108px;
-        right: 108px;
-        top: 292px;
-        bottom: 150px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-      }
-
-      .result-zone {
-        position: relative;
-        padding: 26px;
-        border-radius: 8px;
-        border: 2px solid rgba(34, 197, 94, 0.24);
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
-        overflow: hidden;
-      }
-
-      .result-zone.defer {
-        border-color: rgba(250, 204, 21, 0.5);
-      }
-
-      .result-zone header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 18px;
-        color: var(--text-primary);
-        font-size: 31px;
-        font-weight: 950;
-      }
-
-      .result-zone header span {
-        display: inline-flex;
-        align-items: center;
-        height: 38px;
-        padding: 0 12px;
-        border-radius: 8px;
-        color: #15803d;
-        background: var(--done-green-soft);
-        font-size: 18px;
-        font-weight: 900;
-      }
-
-      .result-zone.defer header span {
-        color: #a16207;
-        background: var(--warning-soft);
-      }
-
-      .result-card {
-        min-height: 118px;
-        padding: 18px 20px;
-        border-radius: 8px;
-        border: 1px solid rgba(100, 116, 139, 0.14);
-        background: #f8fafc;
-        margin-bottom: 14px;
-      }
-
-      .result-card strong {
-        display: flex;
-        justify-content: space-between;
-        color: var(--text-primary);
-        font-size: 24px;
-        font-weight: 950;
-      }
-
-      .result-card strong b {
-        color: var(--tech-blue);
-        font-size: 20px;
-        font-weight: 950;
-        font-variant-numeric: tabular-nums;
-      }
-
-      .reason {
-        margin-top: 12px;
-        color: var(--text-secondary);
-        font-size: 20px;
-        line-height: 1.38;
-        font-weight: 750;
-      }
-
-      .reason-tags {
-        position: absolute;
-        left: 26px;
-        right: 26px;
-        bottom: 24px;
-        display: flex;
-        gap: 14px;
-      }
-
-      .reason-tags span {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 46px;
-        border-radius: 8px;
-        color: var(--text-primary);
-        background: rgba(219, 234, 254, 0.72);
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        font-size: 20px;
-        font-weight: 900;
-      }
-
       .summary-layout {
         position: absolute;
         left: 108px;
@@ -600,6 +492,23 @@
         box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.14), 0 18px 48px rgba(249, 115, 22, 0.2);
       }
 
+      .summary-focus::after {
+        content: "纳版建议";
+        position: absolute;
+        left: 18px;
+        top: -48px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 8px;
+        background: var(--ai-orange);
+        color: white;
+        font-size: 22px;
+        font-weight: 950;
+        box-shadow: 0 14px 34px rgba(249, 115, 22, 0.24);
+      }
+
       .decision-upgrade {
         display: flex;
         flex-direction: column;
@@ -625,6 +534,16 @@
         background: rgba(240, 253, 244, 0.92);
       }
 
+      .upgrade-card.lead {
+        border-color: rgba(249, 115, 22, 0.34);
+        background: var(--ai-orange-soft);
+      }
+
+      .upgrade-card.lead strong {
+        color: var(--ai-orange);
+        font-size: 34px;
+      }
+
       .upgrade-card strong {
         display: block;
         color: var(--text-primary);
@@ -639,6 +558,35 @@
         font-size: 20px;
         line-height: 1.38;
         font-weight: 750;
+      }
+
+      .guidance-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .guidance-card {
+        min-height: 96px;
+        padding: 18px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        background: rgba(219, 234, 254, 0.72);
+      }
+
+      .guidance-card strong {
+        display: block;
+        color: var(--tech-blue);
+        font-size: 25px;
+        font-weight: 950;
+      }
+
+      .guidance-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text-primary);
+        font-size: 19px;
+        line-height: 1.35;
+        font-weight: 800;
       }
 
       .freeze-cue {
@@ -687,7 +635,7 @@
             <div class="capacity-bar"><div class="capacity-fill"></div></div>
           </div>
           <div class="capacity-card">
-            <strong><span>已分配</span><b>58 点</b></strong>
+            <strong><span>已分配</span><b>52 点</b></strong>
             <div class="capacity-bar"><div class="capacity-fill overload"></div></div>
           </div>
         </article>
@@ -704,15 +652,15 @@
       <div class="engine-layout">
         <div class="engine-board">
           <img src="assets/screenshots/raw/Scene06-2.png" alt="AI 智能纳版分析">
-          <div class="engine-line l1"></div>
+          <!-- <div class="engine-line l1"></div>
           <div class="engine-line l2"></div>
           <div class="engine-line l3"></div>
-          <div class="engine-line l4"></div>
-          <div class="input-card priority"><strong>优先级</strong><span>P0 / P1 / P2 / P3 智能排序</span></div>
+          <div class="engine-line l4"></div> -->
+          <!-- <div class="input-card priority"><strong>优先级</strong><span>P0 / P1 / P2 / P3 智能排序</span></div>
           <div class="input-card capacity"><strong>容量</strong><span>剩余容量与故事点约束</span></div>
           <div class="input-card dependency"><strong>依赖</strong><span>上下游系统影响分析</span></div>
           <div class="input-card urgency"><strong>紧急度</strong><span>业务诉求与时间窗口读取</span></div>
-          <div class="ai-engine"><span>AI 智能</span><span>纳版引擎</span></div>
+          <div class="ai-engine"><span>AI 智能</span><span>纳版引擎</span></div> -->
         </div>
         <aside class="score-panel">
           <h2>纳版评分面板</h2>
@@ -726,33 +674,10 @@
       <div class="caption">系统上线 AI 智能纳版能力，会综合需求优先级、研发容量、上下游依赖和业务紧急度</div>
     </section>
 
-    <section class="clip stage scene-063" data-start="19" data-duration="8" data-track-index="1">
-      <div class="eyebrow">Scene 06-3 / 可解释纳版方案</div>
-      <h1 class="headline">建议上车和建议暂缓，都要说明原因</h1>
-      <p class="subline">绿色不是简单通过，黄色也不是失败，而是带着容量与风险原因的决策状态。</p>
-
-      <div class="result-layout">
-        <section class="result-zone board">
-          <header>建议上车 <span>可纳版</span></header>
-          <article class="result-card"><strong>薪资计算模块优化 <b>Score 96</b></strong><div class="reason">P0 优先级，系统剩余容量充足，可纳入本班次。</div></article>
-          <article class="result-card"><strong>基础数据层 <b>Score 88</b></strong><div class="reason">依赖清晰，研发容量仍可承接，建议随本班次交付。</div></article>
-          <div class="reason-tags"><span>容量原因</span><span>风险原因</span></div>
-        </section>
-        <section class="result-zone defer">
-          <header>建议暂缓 <span>待调整</span></header>
-          <article class="result-card"><strong>报表看板首页 <b>Score 62</b></strong><div class="reason">优先级较低，前置接口依赖未确认，建议暂缓。</div></article>
-          <article class="result-card"><strong>数据导出功能 <b>Score 58</b></strong><div class="reason">容量压力较高，影响范围需要补充评估后再纳版。</div></article>
-          <div class="reason-tags"><span>容量不足</span><span>依赖风险</span></div>
-        </section>
-      </div>
-
-      <div class="caption">输出可解释纳版方案，直观展示产能与风险判定依据</div>
-    </section>
-
-    <section class="clip stage scene-064" data-start="27" data-duration="4" data-track-index="1">
-      <div class="eyebrow">Scene 06-4 / 可解释决策</div>
+    <section class="clip stage scene-064" data-start="19" data-duration="12" data-track-index="1">
+      <div class="eyebrow">Scene 06-4 / 可解释纳版方案</div>
       <h1 class="headline">纳版从经验拍板，升级为可解释决策</h1>
-      <p class="subline">建议原因和风险说明被保留下来，后续封板管控才有明确边界。</p>
+      <p class="subline">纳版建议不只是给结论，而是把为什么能上、为什么要缓、容量边界在哪里讲清楚。</p>
 
       <div class="summary-layout">
         <div class="summary-shot">
@@ -760,8 +685,11 @@
           <div class="summary-focus"></div>
         </div>
         <aside class="decision-upgrade">
-          <article class="upgrade-card muted"><strong>经验拍板</strong><span>只看紧急度，容易忽略容量和依赖风险。</span></article>
-          <article class="upgrade-card active"><strong>可解释决策</strong><span>建议原因、风险说明、容量约束全部可追溯。</span></article>
+          <article class="upgrade-card lead"><strong>统一认知</strong><span>从“都很急”回到统一标准，让业务看到系统建议背后的排序逻辑。</span></article>
+          <div class="guidance-grid">
+            <article class="guidance-card"><strong>需求优先级标准</strong><span>用 P0 / P1 / P2 / P3 和建议理由，约束纳版顺序。</span></article>
+            <article class="guidance-card"><strong>研发产能容量</strong><span>把剩余容量、故事点和系统承接边界显性化。</span></article>
+          </div>
           <div class="freeze-cue">下一站：封板节点</div>
         </aside>
       </div>
@@ -802,12 +730,12 @@
       }, 2.0);
       scene06.to(".scene-061 .capacity-fill", {
         width: "92%",
-        backgroundColor: "#f97316",
+        backgroundColor: "#facc15",
         duration: 1.1,
         ease: "sine.inOut"
       }, 3.15);
       scene06.to(".scene-061 .capacity-fill.overload", {
-        width: "116%",
+        width: "104%",
         backgroundColor: "#ef4444",
         duration: 1.1,
         ease: "sine.inOut"
@@ -840,12 +768,6 @@
         stagger: 0.1,
         ease: "power3.out"
       }, 9.15);
-      scene06.from(".scene-062 .engine-board", {
-        y: 22,
-        autoAlpha: 0,
-        duration: 0.78,
-        ease: "expo.out"
-      }, 9.55);
       scene06.from(".scene-062 .ai-engine", {
         scale: 0.84,
         autoAlpha: 0,
@@ -886,87 +808,72 @@
       }, 9.35);
 
       scene06.to(".scene-062", { autoAlpha: 0, duration: 0.35 }, 19);
-      scene06.set(".scene-063", { autoAlpha: 1 }, 19);
-      scene06.from(".scene-063 .eyebrow, .scene-063 .headline, .scene-063 .subline", {
+      scene06.set(".scene-064", { autoAlpha: 1 }, 19);
+      scene06.from(".scene-064 .eyebrow, .scene-064 .headline, .scene-064 .subline", {
         y: 22,
         autoAlpha: 0,
-        duration: 0.68,
+        duration: 0.72,
         stagger: 0.1,
         ease: "power3.out"
       }, 19.15);
-      scene06.from(".scene-063 .result-zone", {
-        y: 24,
+      scene06.from(".scene-064 .summary-shot", {
+        x: -28,
         autoAlpha: 0,
-        duration: 0.76,
-        stagger: 0.14,
+        duration: 0.8,
         ease: "expo.out"
-      }, 19.62);
-      scene06.from(".scene-063 .result-card", {
+      }, 19.75);
+      scene06.from(".scene-064 .decision-upgrade", {
+        x: 28,
+        autoAlpha: 0,
+        duration: 0.72,
+        ease: "power2.out"
+      }, 20.05);
+      scene06.from(".scene-064 .summary-focus", {
+        scale: 0.96,
+        autoAlpha: 0,
+        duration: 0.56,
+        ease: "circ.out"
+      }, 20.95);
+      scene06.to(".scene-064 .summary-focus", {
+        keyframes: {
+          "0%": { scale: 1 },
+          "45%": { scale: 1.025 },
+          "100%": { scale: 1 }
+        },
+        duration: 1.4,
+        repeat: 2,
+        ease: "sine.inOut"
+      }, 22.6);
+      scene06.from(".scene-064 .upgrade-card.lead", {
+        y: 16,
+        autoAlpha: 0,
+        duration: 0.55,
+        ease: "power2.out"
+      }, 21.35);
+      scene06.from(".scene-064 .guidance-card", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.5,
+        stagger: 0.22,
+        ease: "power2.out"
+      }, 23.25);
+      scene06.from(".scene-064 .freeze-cue", {
         y: 14,
         autoAlpha: 0,
-        duration: 0.42,
-        stagger: 0.12,
+        duration: 0.48,
         ease: "power2.out"
-      }, 21.0);
-      scene06.from(".scene-063 .reason", {
-        autoAlpha: 0,
-        duration: 0.42,
-        stagger: 0.12,
-        ease: "power1.out"
-      }, 22.2);
-      scene06.from(".scene-063 .reason-tags span", {
-        y: 10,
-        autoAlpha: 0,
-        duration: 0.38,
-        stagger: 0.1,
-        ease: "power2.out"
-      }, 24.65);
-      scene06.from(".scene-063 .caption", {
+      }, 26.4);
+      scene06.from(".scene-064 .caption", {
         y: 18,
         autoAlpha: 0,
         duration: 0.56,
         ease: "power2.out"
       }, 19.35);
-
-      scene06.to(".scene-063", { autoAlpha: 0, duration: 0.35 }, 27);
-      scene06.set(".scene-064", { autoAlpha: 1 }, 27);
-      scene06.from(".scene-064 .eyebrow, .scene-064 .headline, .scene-064 .subline", {
-        y: 22,
-        autoAlpha: 0,
-        duration: 0.58,
-        stagger: 0.08,
-        ease: "power3.out"
-      }, 27.12);
-      scene06.from(".scene-064 .summary-shot", {
-        x: -28,
-        autoAlpha: 0,
-        duration: 0.62,
-        ease: "expo.out"
-      }, 27.45);
-      scene06.from(".scene-064 .decision-upgrade", {
-        x: 28,
-        autoAlpha: 0,
-        duration: 0.62,
-        ease: "power2.out"
-      }, 27.55);
-      scene06.from(".scene-064 .summary-focus", {
-        scale: 0.96,
-        autoAlpha: 0,
-        duration: 0.42,
-        ease: "circ.out"
-      }, 28.15);
-      scene06.from(".scene-064 .freeze-cue", {
-        y: 14,
-        autoAlpha: 0,
-        duration: 0.38,
-        ease: "power2.out"
-      }, 29.45);
-      scene06.from(".scene-064 .caption", {
-        y: 18,
-        autoAlpha: 0,
-        duration: 0.46,
-        ease: "power2.out"
-      }, 27.28);
+      scene06.from(".scene-062 .engine-board", { y: 22, duration: 0.78, ease: "expo.out" }, 9.55);
+      scene06.from(".scene-062 .engine-board", { autoAlpha: 0, duration: 0.78, ease: "expo.out" }, 9.55);
+      scene06.to(".scene-062 .engine-board", { keyframes: { "0%": { x: 0, y: 0 }, "0.6%": { x: 0, y: 0 }, "100%": { x: -47, y: -248 } }, duration: 140.617 }, 9.55);
+      scene06.to(".scene-062 .engine-board", { keyframes: { "0%": { x: 0, y: 0 }, "0.6%": { x: 0, y: 0 }, "100%": { x: -70, y: -227 } }, duration: 140.617 }, 9.55);
+      scene06.to(".scene-062 .engine-board", { keyframes: { "0%": { x: 0, y: 0 }, "0.6%": { x: 0, y: 0 }, "100%": { x: -45, y: -222 } }, duration: 140.617 }, 9.55);
     </script>
   </div>
 </template>

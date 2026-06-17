@@ -326,9 +326,9 @@
       .scan-frame {
         position: absolute;
         left: 276px;
-        top: 28px;
+        top: 100px;
         width: 420px;
-        height: 152px;
+        height: 200px;
         border: 4px solid var(--risk-red);
         border-radius: 8px;
         box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.18), 0 18px 48px rgba(239, 68, 68, 0.2);
@@ -337,7 +337,7 @@
       .scan-line {
         position: absolute;
         left: 280px;
-        top: 38px;
+        top: 100px;
         width: 412px;
         height: 4px;
         border-radius: 999px;
@@ -480,6 +480,7 @@
         position: relative;
         grid-column: 2;
         grid-row: 2;
+        top: -54px;
         padding: 28px;
         border-radius: 8px;
         border: 1px solid rgba(249, 115, 22, 0.28);
@@ -554,6 +555,7 @@
         position: relative;
         grid-column: 2;
         grid-row: 1;
+        top: -34px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -570,7 +572,7 @@
 
     <section class="clip stage scene-041" data-start="0" data-duration="8" data-track-index="1">
       <div class="eyebrow">Scene 04-1 / AI 需求审查入口</div>
-      <h1 class="headline">一句话需求，先进入 AI 审查边界</h1>
+      <h1 class="headline">一句话需求，先进入 AI 审查</h1>
       <p class="subline">需求不是写进系统就结束，提交前要先把范围、验收、影响和依赖说清楚。</p>
 
       <div class="question-board">
@@ -596,7 +598,7 @@
 
     <section class="clip stage scene-042" data-start="8" data-duration="10" data-track-index="1">
       <div class="eyebrow">Scene 04-2 / 完整性与风险校验</div>
-      <h1 class="headline">AI 自动识别风险，并补齐缺失标准</h1>
+      <h1 class="headline">AI 自动识别问题，并补齐缺失标准</h1>
       <p class="subline">完整性、风险点、模糊表达先被识别，再把验收标准与备注补全成可评审材料。</p>
 
       <div class="review-layout">
@@ -629,7 +631,7 @@
           <div class="focus-box score"></div>
           <div class="focus-box risk-zone"></div>
         </div>
-        <div class="quality-gate"><span>AI Orange 质量闸门</span><b>评审前拦截</b></div>
+        <div class="quality-gate"><span>AI质量闸门</span><b>评审前拦截</b></div>
         <aside class="gate-panel">
           <div class="score-badge">78<span>分</span></div>
           <h2>需求质量从低分状态切换为可评审状态</h2>
@@ -728,7 +730,7 @@
         ease: "back.out(1.18)"
       }, 9.25);
       scene04.to(".scene-042 .scan-line", {
-        y: 132,
+        y: 172,
         duration: 2.1,
         ease: "sine.inOut"
       }, 9.55);

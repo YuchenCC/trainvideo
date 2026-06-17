@@ -20,19 +20,46 @@
     .headline { margin-top: 18px; max-width: 1120px; font-size: 62px; line-height: 1.14; font-weight: 900; }
     .subline { margin-top: 14px; max-width: 1040px; color: var(--text); font-size: 28px; line-height: 1.45; font-weight: 700; }
     .caption { position: absolute; left: 104px; right: 104px; bottom: 40px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid rgba(15,23,42,.08); background: rgba(255,255,255,.9); box-shadow: 0 16px 42px rgba(15,23,42,.08); font-size: 28px; font-weight: 900; }
-    .chat-card { position: absolute; left: 210px; top: 276px; width: 620px; min-height: 420px; border-radius: 8px; border: 1px solid rgba(37,99,235,.16); background: rgba(255,255,255,.88); box-shadow: 0 20px 58px rgba(15,23,42,.08); padding: 34px; }
+    .chat-card { position: absolute; left: 210px; top: 356px; width: 620px; min-height: 420px; border-radius: 8px; border: 1px solid rgba(37,99,235,.16); background: rgba(255,255,255,.88); box-shadow: 0 20px 58px rgba(15,23,42,.08); padding: 34px; }
     .chat-title { font-size: 28px; font-weight: 900; color: var(--blue); }
     .message { margin-top: 28px; border-radius: 8px; background: rgba(219,234,254,.72); padding: 26px; font-size: 30px; line-height: 1.5; font-weight: 850; }
     .msg-line { margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(249,115,22,.14); color: #7c2d12; }
     .bot { margin-top: 24px; display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 18px; border-radius: 8px; background: rgba(249,115,22,.10); border: 1px solid rgba(249,115,22,.30); color: var(--orange); font-size: 24px; font-weight: 900; }
     .pending { margin-top: 18px; color: var(--text); font-size: 22px; font-weight: 800; }
-    .field-board { position: absolute; right: 190px; top: 294px; width: 690px; min-height: 400px; display: grid; gap: 16px; }
+    .field-board { position: absolute; right: 190px; top: 374px; width: 690px; min-height: 400px; display: grid; gap: 16px; }
     .field { min-height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; border-radius: 8px; background: rgba(255,255,255,.88); border: 1px solid rgba(100,116,139,.16); font-size: 24px; font-weight: 900; box-shadow: 0 12px 30px rgba(15,23,42,.06); }
     .field span:last-child { color: #15803d; }
     .field .waiting { color: #475569; }
     .field .ai-wait { color: #a16207; }
     .field.warn span:last-child { color: #a16207; }
-    .agent-node { position: absolute; left: 50%; top: 498px; transform: translateX(-50%); width: 126px; height: 126px; border-radius: 50%; display: grid; place-items: center; background: rgba(249,115,22,.14); border: 3px solid rgba(249,115,22,.55); color: var(--orange); font-size: 24px; font-weight: 900; box-shadow: 0 18px 48px rgba(249,115,22,.18); }
+    .feishu-robot { position: absolute; left: 868px; top: 510px; width: 138px; height: 138px; border-radius: 50%; display: grid; place-items: center; background: rgba(37,99,235,.12); border: 3px solid rgba(37,99,235,.46); color: var(--blue); font-size: 22px; line-height: 1.15; font-weight: 900; text-align: center; box-shadow: 0 18px 48px rgba(37,99,235,.18); animation: robotFloat 1.15s ease-in-out infinite; }
+    .feishu-robot::before { content: ""; position: absolute; top: -22px; width: 4px; height: 24px; border-radius: 999px; background: rgba(37,99,235,.62); }
+    .feishu-robot::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; border: 2px solid rgba(37,99,235,.18); animation: robotPulse 1.15s ease-in-out infinite; }
+    .robot-eye { position: absolute; top: 44px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); box-shadow: 38px 0 0 var(--blue); transform: translateX(-19px); }
+    .robot-text { margin-top: 28px; }
+    .robot-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+    .chat-card, .field-board, .feishu-robot { z-index: 2; }
+    .robot-link-base { fill: none; stroke: rgba(37,99,235,.2); stroke-width: 5; stroke-linecap: round; }
+    .robot-link-pulse { fill: none; stroke: rgba(37,99,235,.78); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 86 620; animation: linkPulse 1.18s linear infinite; filter: drop-shadow(0 0 10px rgba(37,99,235,.28)); }
+    .robot-link-pulse.delay { animation-delay: .36s; }
+    @keyframes robotFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes robotPulse {
+      0%, 100% { opacity: .35; transform: scale(.96); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+    @keyframes linkPulse {
+      0% { stroke-dashoffset: 706; opacity: .08; }
+      12% { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: .08; }
+    }
+    .agent-node { position: absolute; right: 122px; top: 260px; width: 126px; height: 126px; border-radius: 50%; display: grid; place-items: center; background: rgba(249,115,22,.14); border: 3px solid rgba(249,115,22,.55); color: var(--orange); font-size: 24px; font-weight: 900; box-shadow: 0 18px 48px rgba(249,115,22,.18); animation: agentBlink .82s ease-in-out infinite; }
+    @keyframes agentBlink {
+      0%, 100% { background: rgba(249,115,22,.14); border-color: rgba(249,115,22,.55); box-shadow: 0 18px 48px rgba(249,115,22,.18); }
+      50% { background: rgba(249,115,22,.26); border-color: rgba(249,115,22,.9); box-shadow: 0 0 0 10px rgba(249,115,22,.16), 0 20px 54px rgba(249,115,22,.28); }
+    }
     .shot-layout { position: absolute; left: 150px; right: 150px; top: 328px; bottom: 132px; display: grid; grid-template-columns: .74fr 1.26fr; gap: 28px; }
     .phone-shot, .system-panel, .chain-panel { position: relative; border-radius: 8px; border: 1px solid rgba(37,99,235,.14); background: rgba(255,255,255,.86); overflow: hidden; box-shadow: 0 20px 58px rgba(15,23,42,.08); }
     .phone-shot img, .chain-panel img { width: 100%; height: 100%; object-fit: contain; object-position: top center; display: block; }
@@ -51,8 +78,8 @@
   <div class="scene08" data-composition-id="scene-08" data-start="0" data-duration="30" data-width="1920" data-height="1080">
     <section class="clip stage scene-081" data-start="0" data-duration="8" data-track-index="1">
       <div class="eyebrow">Scene 08-1 / 群聊变更入口</div>
-      <h1 class="headline">群聊里的变更，算不算流程？</h1>
-      <p class="subline">变更先出现在临时沟通里，AI 变更助手把它标记为待解析对象。</p>
+      <h1 class="headline">群聊零散变更，极易流失失控</h1>
+      <p class="subline">研发工作中大量的变更都藏匿在日常的群聊里，打通飞书群聊机器人，变更沟通全流程留痕。</p>
       <div class="chat-card">
         <div class="chat-title">飞书群聊</div>
         <div class="message">
@@ -67,6 +94,13 @@
         <div class="field"><span>变更内容</span><span class="waiting">待识别</span></div>
         <div class="field warn"><span>影响分析</span><span class="ai-wait">等待 AI</span></div>
       </div>
+      <svg class="robot-links" viewBox="0 0 1920 1080" aria-hidden="true" data-layout-ignore="">
+        <path class="robot-link-base" d="M 492 656 C 612 646 742 596 868 579" />
+        <path class="robot-link-pulse" d="M 492 656 C 612 646 742 596 868 579" />
+        <path class="robot-link-base" d="M 1006 579 C 1034 560 1038 500 1078 470" />
+        <path class="robot-link-pulse delay" d="M 1006 579 C 1034 560 1038 500 1078 470" />
+      </svg>
+      <div class="feishu-robot"><span class="robot-eye"></span><span data-hf-studio-original-inline-translate="none" data-hf-studio-original-translate="" data-hf-studio-path-offset="true" style="--hf-studio-offset-x: -2px; --hf-studio-offset-y: 115px; translate: var(--hf-studio-offset-x, 0px) var(--hf-studio-offset-y, 0px)" class="robot-text">飞书<br>机器人</span></div>
       <div class="caption">日常更多的变更在飞书群里沟通，沟通细节易丢失</div>
     </section>
 
@@ -74,7 +108,7 @@
       <div class="eyebrow">Scene 08-2 / AI Agent 解析</div>
       <h1 class="headline">AI 自动解析群聊变更</h1>
       <p class="subline">从群聊消息抽取五类字段，并评估工作量、进度风险和依赖风险。</p>
-      <div class="shot-layout">
+      <div data-hf-studio-original-inline-translate="none" data-hf-studio-original-translate="" data-hf-studio-path-offset="true" style="--hf-studio-offset-x: -28px; --hf-studio-offset-y: 10px; translate: var(--hf-studio-offset-x, 0px) var(--hf-studio-offset-y, 0px)" class="shot-layout">
         <div class="phone-shot"><img src="assets/screenshots/raw/Scene08-2.jpeg" alt="飞书 AI 解析报告"></div>
         <div class="field-board" style="position: relative; inset: auto; width: auto; top: auto; right: auto;">
           <div class="field"><span>涉及需求</span><span>已识别</span></div>
@@ -123,7 +157,9 @@
     window.__timelines["scene-08"] = scene08;
     scene08.from(".scene08 .eyebrow, .scene08 .headline, .scene08 .subline", { y: 18, duration: .7, stagger: .08, ease: "power2.out" }, 0);
     scene08.from(".scene-081 .chat-card, .scene-081 .field", { y: 24, duration: .65, stagger: .1, ease: "power2.out" }, .5);
+    scene08.from(".scene-081 .feishu-robot", { x: -34, scale: .82, autoAlpha: 0, duration: .62, ease: "back.out(1.25)" }, 2.2);
     scene08.to(".scene-081 .bot", { boxShadow: "0 0 0 8px rgba(249,115,22,.12)", duration: .6, ease: "power2.out" }, 5);
+    scene08.to(".scene-081 .feishu-robot", { boxShadow: "0 0 0 12px rgba(37,99,235,.12), 0 20px 54px rgba(37,99,235,.24)", duration: .6, yoyo: true, repeat: 3, ease: "power1.inOut" }, 4.6);
     scene08.set(".scene-081", { autoAlpha: 0 }, 8);
     scene08.set(".scene-082", { autoAlpha: 1 }, 8);
     scene08.from(".scene-082 .phone-shot, .scene-082 .field, .scene-082 .agent-node", { y: 20, duration: .55, stagger: .1, ease: "power2.out" }, 8.4);

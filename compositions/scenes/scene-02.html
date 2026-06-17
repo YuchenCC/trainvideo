@@ -318,7 +318,7 @@
       position: absolute;
       left: 122px;
       right: 122px;
-      bottom: 176px;
+      bottom: 256px;
       display: grid;
       grid-template-columns: 250px 1fr;
       gap: 22px;
@@ -496,13 +496,15 @@
       top: 276px;
       bottom: 136px;
       display: grid;
-      grid-template-rows: 220px 1fr 64px;
+      grid-template-rows: 156px minmax(0, 1fr) 56px;
       gap: 20px;
       align-items: stretch;
     }
 
     .concept-panel {
       position: relative;
+      width: 1500px;
+      justify-self: center;
       border: 1px solid rgba(37, 99, 235, 0.14);
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.88);
@@ -513,7 +515,7 @@
     .panel-title {
       position: absolute;
       left: 32px;
-      top: 24px;
+      top: 20px;
       z-index: 2;
       color: var(--text-primary);
       font-size: 28px;
@@ -523,7 +525,7 @@
     .panel-note {
       position: absolute;
       right: 32px;
-      top: 26px;
+      top: 22px;
       z-index: 2;
       color: var(--text-secondary);
       font-size: 22px;
@@ -534,8 +536,8 @@
       position: absolute;
       left: 238px;
       right: 238px;
-      top: 74px;
-      height: 122px;
+      top: 68px;
+      height: 74px;
       z-index: 1;
     }
 
@@ -543,7 +545,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 92px;
+      top: 62px;
       height: 7px;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--tech-blue), var(--governance-purple), var(--ai-orange));
@@ -553,7 +555,7 @@
       position: absolute;
       left: 0;
       right: 128px;
-      top: 18px;
+      top: 0;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
@@ -591,7 +593,7 @@
     .mini-loco {
       position: absolute;
       right: 0;
-      top: 18px;
+      top: 0;
       width: 106px;
       height: 70px;
       display: flex;
@@ -605,30 +607,6 @@
       font-size: 22px;
       font-weight: 900;
       box-shadow: 0 14px 30px rgba(249, 115, 22, 0.12);
-    }
-
-    .mapping-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .mapping-layer path {
-      fill: none;
-      stroke: rgba(37, 99, 235, 0.44);
-      stroke-width: 4;
-      stroke-linecap: round;
-      stroke-dasharray: 520;
-      stroke-dashoffset: 520;
-      opacity: 0;
-    }
-
-    .mapping-layer path:nth-child(4),
-    .mapping-layer path:nth-child(5) {
-      stroke: rgba(109, 40, 217, 0.42);
     }
 
     .shot-row {
@@ -672,8 +650,8 @@
     .shot-card img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: top left;
+      object-fit: contain;
+      object-position: center top;
       display: block;
       opacity: 0.72;
       filter: saturate(0.78);
@@ -817,15 +795,15 @@
 
     <section class="clip stage scene-022" data-start="8" data-duration="12" data-track-index="1">
       <div class="eyebrow">Scene 02-2 / BizDevOps 概念</div>
-      <h1 class="headline">落地 BizDevOps 全新能力</h1>
-      <p class="subline">Biz 是系统新支持的业务治理能力，DevOps 是原有工具底座，AI 串联端到端流程。</p>
+      <h1 class="headline">重塑 BizDevOps 全新能力</h1>
+      <p class="subline">系统新支持的业务治理能力biz，原有工具底座DevOps，AI 串联端到端流程。</p>
       <div class="concept-title"><span>Biz</span><span>DevOps</span><span>AI 原生</span></div>
 
       <div class="layer-map">
         <div class="layer-labels">
           <div class="layer-label ai">AI 原生能力<span>贯穿治理与交付链路</span></div>
           <div class="layer-label biz">Biz 新增支持<span>业务治理能力层</span></div>
-          <div class="layer-label">DevOps 原有底座<span>灰色弱化承托</span></div>
+          <div class="layer-label">DevOps 原有底座<span>已有能力</span></div>
         </div>
         <div class="layers">
           <div class="ai-layer"><div class="ai-band">AI 串联全流程</div></div>
@@ -853,12 +831,9 @@
     <section class="clip stage scene-023" data-start="20" data-duration="10" data-track-index="1">
       <div class="eyebrow">Scene 02-3 / 产品界面落地</div>
       <h1 class="headline">版本火车打通业务与研发壁垒</h1>
-      <p class="subline">上方是治理容器，下方用业务侧与研发侧截图承接，模块关系由连线闭合。</p>
-
       <div class="proof-grid">
         <div class="concept-panel">
           <div class="panel-title">版本火车治理容器</div>
-          <div class="panel-note">需求｜班次｜容量｜依赖｜变更</div>
           <div class="mini-train">
             <div class="mini-track"></div>
             <div class="mini-cars">
@@ -871,20 +846,11 @@
             <div class="mini-loco">AI</div>
           </div>
         </div>
-        <svg class="mapping-layer" viewBox="0 0 1728 668" data-layout-ignore="" aria-hidden="true">
-          <path d="M 394 188 C 360 248 292 276 292 344" />
-          <path d="M 624 188 C 570 248 488 284 488 344" />
-          <path d="M 864 188 C 864 250 864 284 864 344" />
-          <path d="M 1104 188 C 1160 248 1244 284 1244 344" />
-          <path d="M 1334 188 C 1388 248 1460 276 1460 344" />
-        </svg>
         <div class="shot-row">
           <article class="shot-card business-shot">
-            <div class="shot-label">业务侧：需求与治理入口</div>
             <img src="assets/screenshots/raw/Scene02-3-1.png" alt="业务侧版本火车界面">
           </article>
           <article class="shot-card dev-shot">
-            <div class="shot-label">研发侧：班次与发布节奏</div>
             <img src="assets/screenshots/raw/Scene02-3-2.png" alt="研发侧版本火车月历视图">
           </article>
         </div>
@@ -1049,19 +1015,6 @@
     stagger: 0.08,
     ease: "sine.out"
   }, 23.15);
-  scene02.to(".scene-023 .mapping-layer path", {
-    strokeDashoffset: 0,
-    autoAlpha: 1,
-    duration: 0.72,
-    stagger: 0.12,
-    ease: "power2.out"
-  }, 23.2);
-  scene02.to(".scene-023 .mapping-layer path", {
-    stroke: "rgba(34, 197, 94, 0.62)",
-    duration: 0.72,
-    stagger: 0.05,
-    ease: "sine.inOut"
-  }, 26.7);
   scene02.to(".scene-023 .delivery-line", {
     scaleX: 1,
     duration: 0.78,
