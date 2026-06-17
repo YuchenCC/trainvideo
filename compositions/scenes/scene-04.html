@@ -130,7 +130,7 @@
       .product-ghost img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center top;
       }
 
@@ -319,7 +319,7 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center top;
       }
 
@@ -429,11 +429,13 @@
         bottom: 148px;
         display: grid;
         grid-template-columns: 1fr 390px;
+        grid-template-rows: auto 1fr;
         gap: 28px;
       }
 
       .proof-shot {
         position: relative;
+        grid-row: 1 / span 2;
         overflow: hidden;
         border-radius: 8px;
         border: 1px solid rgba(100, 116, 139, 0.18);
@@ -444,7 +446,7 @@
       .proof-shot img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center top;
         display: block;
       }
@@ -476,6 +478,8 @@
 
       .gate-panel {
         position: relative;
+        grid-column: 2;
+        grid-row: 2;
         padding: 28px;
         border-radius: 8px;
         border: 1px solid rgba(249, 115, 22, 0.28);
@@ -547,10 +551,9 @@
       }
 
       .quality-gate {
-        position: absolute;
-        left: 28px;
-        right: 28px;
-        bottom: 28px;
+        position: relative;
+        grid-column: 2;
+        grid-row: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -571,7 +574,7 @@
       <p class="subline">需求不是写进系统就结束，提交前要先把范围、验收、影响和依赖说清楚。</p>
 
       <div class="question-board">
-        <div class="product-ghost" data-layout-ignore><img src="assets/screenshots/raw/Scene04-1.png" alt="AI 需求审查界面"></div>
+        <div class="product-ghost" data-layout-ignore=""><img src="assets/screenshots/raw/Scene04-1.png" alt="AI 需求审查界面"></div>
         <div class="question-line l1"></div>
         <div class="question-line l2"></div>
         <div class="question-line l3"></div>
@@ -608,7 +611,7 @@
           <article class="check-item risk"><b>2</b><strong>风险点</strong><span>已识别</span></article>
           <article class="check-item risk"><b>3</b><strong>模糊表达</strong><span>已识别</span></article>
           <article class="check-item done"><b>4</b><strong>验收标准</strong><span>已补全</span></article>
-          <article class="check-item done"><b>5</b><strong>备注补全</strong><span>已补全</span></article>
+          <article class="check-item done"><b>5</b><strong>优化建议</strong><span>已补全</span></article>
         </div>
       </div>
 
@@ -626,6 +629,7 @@
           <div class="focus-box score"></div>
           <div class="focus-box risk-zone"></div>
         </div>
+        <div class="quality-gate"><span>AI Orange 质量闸门</span><b>评审前拦截</b></div>
         <aside class="gate-panel">
           <div class="score-badge">78<span>分</span></div>
           <h2>需求质量从低分状态切换为可评审状态</h2>
@@ -634,7 +638,6 @@
             <article><strong>风险提示</strong><span>中等与严重风险进入显性提示区。</span></article>
             <article><strong>验收标准补全</strong><span>补齐可验证、可测试的完成条件。</span></article>
           </div>
-          <div class="quality-gate"><span>AI Orange 质量闸门</span><b>评审前拦截</b></div>
         </aside>
       </div>
 
@@ -801,18 +804,14 @@
         duration: 0.55,
         ease: "power1.out"
       }, 22.55);
-      scene04.from(".scene-043 .quality-gate", {
-        y: 18,
-        autoAlpha: 0,
-        duration: 0.58,
-        ease: "expo.out"
-      }, 26.6);
       scene04.from(".scene-043 .caption", {
         y: 18,
         autoAlpha: 0,
         duration: 0.56,
         ease: "power2.out"
       }, 18.35);
+      scene04.from(".scene-043 .quality-gate", { y: 18, duration: 0.58, ease: "expo.out" }, 26.6);
+      scene04.from(".scene-043 .quality-gate", { autoAlpha: 0, duration: 0.58, ease: "expo.out" }, 26.6);
     </script>
   </div>
 </template>

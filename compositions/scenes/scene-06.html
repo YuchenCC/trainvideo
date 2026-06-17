@@ -189,6 +189,7 @@
       .urgent {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         height: 34px;
         padding: 0 10px;
         border-radius: 8px;
@@ -196,6 +197,33 @@
         color: var(--risk-red);
         font-size: 17px;
         font-weight: 900;
+      }
+
+      .demand-row .urgent {
+        min-width: 56px;
+        height: 42px;
+        padding: 0 14px;
+        font-size: 21px;
+      }
+
+      .dev header .urgent {
+        min-width: 112px;
+        height: 42px;
+        padding: 0 16px;
+        font-size: 20px;
+        animation: capacityPulse 0.82s ease-in-out infinite;
+      }
+
+      @keyframes capacityPulse {
+        0%,
+        100% {
+          background: rgba(239, 68, 68, 0.1);
+          box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+        }
+        50% {
+          background: rgba(239, 68, 68, 0.2);
+          box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.12);
+        }
       }
 
       .capacity-card {
@@ -219,7 +247,7 @@
         height: 18px;
         border-radius: 999px;
         background: #e5e7eb;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .capacity-fill {
@@ -305,7 +333,7 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center top;
         opacity: 0.3;
       }
@@ -556,17 +584,17 @@
       .summary-shot img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center top;
         display: block;
       }
 
       .summary-focus {
         position: absolute;
-        left: 632px;
-        top: 108px;
-        width: 580px;
-        height: 178px;
+        left: 348px;
+        top: 264px;
+        width: 568px;
+        height: 282px;
         border: 4px solid var(--ai-orange);
         border-radius: 8px;
         box-shadow: 0 0 0 999px rgba(248, 250, 252, 0.14), 0 18px 48px rgba(249, 115, 22, 0.2);
@@ -639,9 +667,9 @@
           <div class="talk-bubble">我的需求都很紧急！</div>
           <div class="demand-list">
             <div class="demand-row">薪资计算模块优化 <span class="urgent">P0</span></div>
-            <div class="demand-row">报表看板首页 <span class="urgent">P1</span></div>
-            <div class="demand-row">数据导出功能 <span class="urgent">P2</span></div>
-            <div class="demand-row">配置管理 <span class="urgent">P3</span></div>
+            <div class="demand-row">报表看板首页 <span class="urgent">P0</span></div>
+            <div class="demand-row">数据导出功能 <span class="urgent">P0</span></div>
+            <div class="demand-row">配置管理 <span class="urgent">P0</span></div>
           </div>
         </article>
         <div class="conflict-center">
@@ -659,7 +687,7 @@
             <div class="capacity-bar"><div class="capacity-fill"></div></div>
           </div>
           <div class="capacity-card">
-            <strong><span>已分配</span><b>48 点</b></strong>
+            <strong><span>已分配</span><b>58 点</b></strong>
             <div class="capacity-bar"><div class="capacity-fill overload"></div></div>
           </div>
         </article>
@@ -779,7 +807,7 @@
         ease: "sine.inOut"
       }, 3.15);
       scene06.to(".scene-061 .capacity-fill.overload", {
-        width: "96%",
+        width: "116%",
         backgroundColor: "#ef4444",
         duration: 1.1,
         ease: "sine.inOut"
