@@ -10,7 +10,7 @@ Use when a scene needs product-like proof without relying on screenshots.
 
 ```html
 <article class="evidence-card">
-  <header><span>飞书消息</span><b>刷新中</b></header>
+  <header><span>飞书消息</span><b>消息爆炸</b></header>
   <div class="evidence-lines">
     <i></i><i></i><i></i>
   </div>
