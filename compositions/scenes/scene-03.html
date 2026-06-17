@@ -9,7 +9,7 @@
         --text-secondary: #64748b;
         --tech-blue: #2563eb;
         --tech-blue-soft: #dbeafe;
-        --risk-red: #ef4444;
+        --risk-red: #dc2626;
         --warning-yellow: #facc15;
         --done-green: #22c55e;
         --line: #dbe3ef;
@@ -42,6 +42,16 @@
 
       .stage {
         padding: 78px 104px 116px;
+      }
+
+      .scene-031 {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scene-032 {
+        opacity: 0;
+        visibility: hidden;
       }
 
       .eyebrow {
@@ -479,27 +489,27 @@
         <div class="pool">
           <div class="pool-title">标准化需求池 <span>统一入口</span></div>
           <div class="field-grid">
-            <div class="field">
+            <div class="field" data-layout-allow-overlap>
               <strong>状态</strong>
               <span class="pending">待补齐</span>
               <span class="done">已补齐</span>
             </div>
-            <div class="field">
+            <div class="field" data-layout-allow-overlap>
               <strong>优先级</strong>
               <span class="pending">待补齐</span>
               <span class="done">已补齐</span>
             </div>
-            <div class="field">
+            <div class="field" data-layout-allow-overlap>
               <strong>系统归属</strong>
               <span class="pending">待补齐</span>
               <span class="done">已补齐</span>
             </div>
-            <div class="field">
+            <div class="field" data-layout-allow-overlap>
               <strong>依赖关系</strong>
               <span class="pending">待补齐</span>
               <span class="done">已补齐</span>
             </div>
-            <div class="field">
+            <div class="field" data-layout-allow-overlap>
               <strong>评审记录</strong>
               <span class="pending">待补齐</span>
               <span class="done">已补齐</span>
@@ -541,25 +551,20 @@
       const scene03 = gsap.timeline({ paused: true });
       window.__timelines["scene-03"] = scene03;
 
-      scene03.set(".scene03 .clip", { autoAlpha: 0 });
-      scene03.set(".scene-031", { autoAlpha: 1 }, 0);
       scene03.from(".scene-031 .eyebrow, .scene-031 .headline, .scene-031 .subline", {
         y: 24,
-        autoAlpha: 0,
         duration: 0.75,
         stagger: 0.1,
         ease: "power2.out"
       }, 0.15);
       scene03.from(".scene-031 .source-card", {
         y: 18,
-        autoAlpha: 0,
         duration: 0.7,
         stagger: 0.12,
         ease: "power3.out"
       }, 0.7);
       scene03.from(".scene-031 .pool", {
         scale: 0.96,
-        autoAlpha: 0,
         duration: 0.8,
         ease: "back.out(1.2)"
       }, 3.9);
@@ -603,23 +608,20 @@
       }, 8);
       scene03.from(".scene-031 .caption", {
         y: 18,
-        autoAlpha: 0,
         duration: 0.6,
         ease: "power2.out"
       }, 0.35);
 
-      scene03.to(".scene-031", { autoAlpha: 0, duration: 0.35 }, 12);
+      scene03.set(".scene-031", { autoAlpha: 0 }, 12);
       scene03.set(".scene-032", { autoAlpha: 1 }, 12);
       scene03.from(".scene-032 .eyebrow, .scene-032 .headline, .scene-032 .subline", {
         y: 22,
-        autoAlpha: 0,
         duration: 0.7,
         stagger: 0.1,
         ease: "power2.out"
       }, 12.15);
       scene03.from(".scene-032 .screenshot-card", {
         y: 20,
-        autoAlpha: 0,
         duration: 0.8,
         ease: "power3.out"
       }, 12.5);
@@ -659,7 +661,6 @@
       }, 18);
       scene03.from(".scene-032 .caption", {
         y: 18,
-        autoAlpha: 0,
         duration: 0.6,
         ease: "power2.out"
       }, 12.3);
