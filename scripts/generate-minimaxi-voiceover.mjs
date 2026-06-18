@@ -20,16 +20,16 @@ const CHAPTER_SPEEDS = {
 
 const CHAPTERS = [
   { chapter: "01", start: 0, duration: 28 },
-  { chapter: "02", start: 28, duration: 30 },
-  { chapter: "03", start: 58, duration: 24 },
-  { chapter: "04", start: 82, duration: 29 },
-  { chapter: "05", start: 111, duration: 23 },
-  { chapter: "06", start: 134, duration: 26 },
-  { chapter: "07", start: 160, duration: 20 },
-  { chapter: "08", start: 180, duration: 30 },
-  { chapter: "09", start: 210, duration: 19 },
-  { chapter: "10", start: 229, duration: 43 },
-  { chapter: "11", start: 272, duration: 18 }
+  { chapter: "02", start: 28, duration: 28 },
+  { chapter: "03", start: 56, duration: 21 },
+  { chapter: "04", start: 77, duration: 25 },
+  { chapter: "05", start: 102, duration: 23 },
+  { chapter: "06", start: 125, duration: 26 },
+  { chapter: "07", start: 151, duration: 20 },
+  { chapter: "08", start: 171, duration: 30 },
+  { chapter: "09", start: 201, duration: 19 },
+  { chapter: "10", start: 220, duration: 43 },
+  { chapter: "11", start: 263, duration: 18 }
 ];
 
 function parseEnv(content) {
