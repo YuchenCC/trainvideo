@@ -20,6 +20,7 @@
 - 视频素材放 `assets/media/video/`。
 - 口播和旁白放 `assets/media/audio/`。
 - 背景音乐放 `assets/media/bgm/`。
+- 通过 `minimaxi.com` 生成背景音乐前，先按 `docs/minimaxi-music-workflow.md` 填写 `data/music-config.json`，默认 `voiceid` 为 `moss_audio_ce44fc67-7ce3-11f0-8de5-96e35d26fb85`。
 - 外部媒体元素加 `crossorigin="anonymous"`。
 - 视频作为视觉层必须 `muted playsinline`，声音另放 `<audio>`。
 

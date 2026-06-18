@@ -40,6 +40,7 @@ npm run render:high
 │  ├─ engineering-standards.md # 工程约定
 │  ├─ hyperframes-authoring.md # HyperFrames 写作规范
 │  ├─ asset-guidelines.md      # 截图和素材规范
+│  ├─ minimaxi-music-workflow.md # MiniMax 音乐配置流程
 │  ├─ prompt-template.md       # 每章 Prompt 模板
 │  └─ quality-checklist.md     # 质量检查清单
 ├─ renders/                    # 渲染输出
@@ -51,9 +52,10 @@ npm run render:high
 1. 先读 `DESIGN.md`，确认色彩、字体、字幕和动效边界。
 2. 在 `data/chapters.json` 中选择章节，只围绕一个核心观点写镜头。
 3. 将原始截图放到 `assets/screenshots/raw/`，处理稿放到 `assets/screenshots/processed/`。
-4. 在 `compositions/scenes/` 新建分章子合成，并在 `index.html` 装配。
-5. 每章遵循“问题出现 -> 机制拆解 -> 系统截图证明 -> 关键词总结”。
-6. 修改完成后执行 `npm run check`，确认没有 lint、validate、inspect 问题。
+4. 需要背景音乐时，按 `docs/minimaxi-music-workflow.md` 从 `minimaxi.com` 获取音乐配置，默认 `voiceid` 为 `moss_audio_ce44fc67-7ce3-11f0-8de5-96e35d26fb85`。
+5. 在 `compositions/scenes/` 新建分章子合成，并在 `index.html` 装配。
+6. 每章遵循“问题出现 -> 机制拆解 -> 系统截图证明 -> 关键词总结”。
+7. 修改完成后执行 `npm run check`，确认没有 lint、validate、inspect 问题。
 
 ## 命名约定
 
