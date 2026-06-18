@@ -23,13 +23,13 @@ const CHAPTERS = [
   { chapter: "02", start: 28, duration: 30 },
   { chapter: "03", start: 58, duration: 24 },
   { chapter: "04", start: 82, duration: 29 },
-  { chapter: "05", start: 111, duration: 25 },
-  { chapter: "06", start: 136, duration: 31 },
-  { chapter: "07", start: 167, duration: 20 },
-  { chapter: "08", start: 187, duration: 30 },
-  { chapter: "09", start: 217, duration: 22 },
-  { chapter: "10", start: 239, duration: 43 },
-  { chapter: "11", start: 282, duration: 18 }
+  { chapter: "05", start: 111, duration: 23 },
+  { chapter: "06", start: 134, duration: 26 },
+  { chapter: "07", start: 160, duration: 20 },
+  { chapter: "08", start: 180, duration: 30 },
+  { chapter: "09", start: 210, duration: 19 },
+  { chapter: "10", start: 229, duration: 43 },
+  { chapter: "11", start: 272, duration: 18 }
 ];
 
 function parseEnv(content) {
