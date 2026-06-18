@@ -125,7 +125,7 @@
     <section class="clip stage scene-083" data-start="17" data-duration="9" data-track-index="1">
       <div class="eyebrow">Scene 08-3 / 系统建档</div>
       <h1 class="headline">临时沟通，沉淀为可治理数据</h1>
-      <p class="subline">群聊里的结构化结果进入系统建档、留痕，并生成变更台账。</p>
+      <p class="subline">群聊里的结构化结果进入OpenAPI、留痕，并生成变更台账。</p>
       <div class="shot-layout">
         <div class="phone-shot"><img src="assets/screenshots/raw/Scene08-3.jpeg" alt="飞书变更卡片"></div>
         <div class="system-panel">
@@ -145,9 +145,8 @@
     <section class="clip stage scene-084" data-start="26" data-duration="4" data-track-index="1">
       <div class="eyebrow">Scene 08-4 / 三段链路</div>
       <h1 class="headline">沟通变成治理数据</h1>
-      <p class="subline">飞书 → AI Agent → 系统建档，三段链路在四秒内读完。</p>
       <div class="chain-panel"><img src="assets/screenshots/raw/Scene08-4.png" alt="飞书到系统建档链路"></div>
-      <div class="chain-summary">飞书 → AI Agent → 系统建档｜可治理数据</div>
+      <div class="chain-summary">飞书 → AI Agent → OpenAPI｜可治理数据</div>
       <div class="caption">利用飞书、coze、openAPI，将沟通变成治理数据</div>
     </section>
   </div>
@@ -157,7 +156,7 @@
     window.__timelines["scene-08"] = scene08;
     scene08.from(".scene08 .eyebrow, .scene08 .headline, .scene08 .subline", { y: 18, duration: .7, stagger: .08, ease: "power2.out" }, 0);
     scene08.from(".scene-081 .chat-card, .scene-081 .field", { y: 24, duration: .65, stagger: .1, ease: "power2.out" }, .5);
-    scene08.from(".scene-081 .feishu-robot", { x: -34, scale: .82, autoAlpha: 0, duration: .62, ease: "back.out(1.25)" }, 2.2);
+    scene08.from(".scene-081 .feishu-robot", { x: -34, scale: .82, autoAlpha: 0, duration: .62, ease: "back.out(1.25)" }, 0.1);
     scene08.to(".scene-081 .bot", { boxShadow: "0 0 0 8px rgba(249,115,22,.12)", duration: .6, ease: "power2.out" }, 5);
     scene08.to(".scene-081 .feishu-robot", { boxShadow: "0 0 0 12px rgba(37,99,235,.12), 0 20px 54px rgba(37,99,235,.24)", duration: .6, yoyo: true, repeat: 3, ease: "power1.inOut" }, 4.6);
     scene08.set(".scene-081", { autoAlpha: 0 }, 8);
