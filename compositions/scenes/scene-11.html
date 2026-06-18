@@ -380,8 +380,8 @@
       }
     </style>
 
-    <section class="clip stage scene-111" data-start="0" data-duration="4" data-track-index="1">
-      <div class="eyebrow">Scene 11-1 / 完整版本火车</div>
+    <section class="clip stage scene-111" data-start="0" data-duration="8" data-track-index="1">
+      <div class="eyebrow">Scene 11-1 / 八个模块，汇成一列完整版本火车</div>
       <h1 class="headline">AI原生重塑协作体系</h1>
       <div class="recap-layout">
         <div class="recap-rail"></div>
@@ -399,10 +399,10 @@
         <div class="whole-train-label"><span>版本火车整体</span><strong>经验协同被串成统一治理链路</strong></div>
       </div>
 
-      <div class="caption">项目以AI原生重构BizDevOps系统交付工具链</div>
+      <div class="caption">版本火车管理系统，AI原生驱动项目。重构BizDevOps系统交付工具链</div>
     </section>
 
-    <section class="clip stage scene-112" data-start="4" data-duration="3" data-track-index="1">
+    <section class="clip stage scene-112" data-start="8" data-duration="10" data-track-index="1">
       <div class="eyebrow">Scene 11-2 / 最终定格</div>
       <h1 class="headline">AI 原生 BizDevOps 版本火车系统</h1>
       <div class="final-layout">
@@ -436,22 +436,20 @@
 
       scene11.from(".scene-111 .eyebrow, .scene-111 .headline, .scene-111 .subline", {
         y: 22,
-        autoAlpha: 0,
         duration: 0.58,
         stagger: 0.08,
         ease: "power3.out"
-      }, 0.12);
+      }, 0);
       scene11.from(".scene-111 .recap-layout", {
         y: 18,
-        autoAlpha: 0,
         duration: 0.62,
         ease: "expo.out"
-      }, 0.48);
+      }, 0.24);
       scene11.from(".scene-111 .recap-rail", {
         scaleX: 0,
         duration: 0.62,
         ease: "circ.out"
-      }, 0.86);
+      }, 0.62);
       scene11.from(".scene-111 .module-car", {
         y: 18,
         autoAlpha: 0,
@@ -473,56 +471,55 @@
       }, 2.9);
       scene11.from(".scene-111 .caption", {
         y: 18,
-        autoAlpha: 0,
         duration: 0.42,
         ease: "power2.out"
-      }, 0.28);
+      }, 0);
 
-      scene11.to(".scene-111", { autoAlpha: 0, duration: 0.24 }, 4);
-      scene11.set(".scene-112", { autoAlpha: 1 }, 4);
+      scene11.to(".scene-111", { autoAlpha: 0, duration: 0.24 }, 8);
+      scene11.set(".scene-112", { autoAlpha: 1 }, 8);
       scene11.from(".scene-112 .eyebrow, .scene-112 .headline, .scene-112 .subline", {
         y: 18,
         autoAlpha: 0,
         duration: 0.42,
         stagger: 0.06,
         ease: "power3.out"
-      }, 4.08);
+      }, 8.08);
       scene11.from(".scene-112 .arrival-board", {
         x: -26,
         autoAlpha: 0,
         duration: 0.52,
         ease: "expo.out"
-      }, 4.32);
+      }, 8.32);
       scene11.from(".scene-112 .arrival-terminal", {
         scale: 0.88,
         autoAlpha: 0,
         duration: 0.38,
         ease: "back.out(1.08)"
-      }, 4.72);
+      }, 8.72);
       scene11.from(".scene-112 .final-claim", {
         x: 28,
         autoAlpha: 0,
         duration: 0.55,
         ease: "power2.out"
-      }, 4.42);
+      }, 8.42);
       scene11.from(".scene-112 .final-tags span", {
         y: 12,
         autoAlpha: 0,
         duration: 0.26,
         stagger: 0.08,
         ease: "power1.out"
-      }, 5.55);
+      }, 9.55);
       scene11.to(".scene-112 .arrival-board", {
         opacity: 0.72,
         duration: 0.42,
         ease: "sine.out"
-      }, 6.35);
+      }, 10.35);
       scene11.from(".scene-112 .caption", {
         y: 18,
         autoAlpha: 0,
         duration: 0.34,
         ease: "power2.out"
-      }, 4.22);
+      }, 8.22);
     </script>
   </div>
 </template>

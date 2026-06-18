@@ -9,9 +9,13 @@ const OUTPUT_DIR = path.join(PROJECT_ROOT, "assets/media/audio/voiceover");
 const RATE_LIMIT_WAIT_MS = 65_000;
 const MAX_ATTEMPTS = 3;
 const DEFAULT_SPEED = 1.15;
+const CHAPTER_OUTPUT_FILES = {
+  "11": "chapter-11-voiceover-v2.mp3"
+};
 const CHAPTER_SPEEDS = {
   "07": 1.22,
-  "11": 2
+  "10": 1.15,
+  "11": 1.15
 };
 
 const CHAPTERS = [
@@ -24,8 +28,8 @@ const CHAPTERS = [
   { chapter: "07", start: 167, duration: 20 },
   { chapter: "08", start: 187, duration: 30 },
   { chapter: "09", start: 217, duration: 22 },
-  { chapter: "10", start: 239, duration: 52 },
-  { chapter: "11", start: 291, duration: 7 }
+  { chapter: "10", start: 239, duration: 43 },
+  { chapter: "11", start: 282, duration: 18 }
 ];
 
 function parseEnv(content) {
@@ -187,7 +191,10 @@ async function generateChapterAudio(apiKey, chapter) {
   }
 
   const audioHex = audioHexFromResponse(json);
-  const outputPath = path.join(OUTPUT_DIR, `chapter-${chapter.chapter}.mp3`);
+  const outputPath = path.join(
+    OUTPUT_DIR,
+    CHAPTER_OUTPUT_FILES[chapter.chapter] || `chapter-${chapter.chapter}.mp3`
+  );
   await writeFile(outputPath, Buffer.from(audioHex, "hex"));
 
   return {

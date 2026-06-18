@@ -37,5 +37,5 @@
 | Scene 10-2<br>Scene 10-2 / Agent 调度与上下文 | 04:08 - 04:21 | 00:09 - 00:22 | 13s | 我们通过智能 Agent 调度和领域上下文沉淀，打通 PRD、设计文档、测试案例与代码结构的双向映射。 | `compositions/scenes/scene-10.html` |
 | Scene 10-3<br>Scene 10-3 / 质量闭环 | 04:21 - 04:33 | 00:22 - 00:34 | 12s | 结合 AI Skills、TDD 和 Playwright 自动化测试，形成文档联动、代码审查和自动化测试资产沉淀的质量闭环。 | `compositions/scenes/scene-10.html` |
 | Scene 10-4<br>Scene 10-4 / 章节结论 | 04:33 - 04:41 | 00:34 - 00:42 | 8s | 不是产品加 AI，而是研发过程 AI 原生化。 | `compositions/scenes/scene-10.html` |
-| Scene 11-1<br>Scene 11-1 / 完整版本火车 | 04:41 - 04:45 | 00:00 - 00:04 | 4s | 我们彻底告别经验化协同， | `compositions/scenes/scene-11.html` |
-| Scene 11-2<br>Scene 11-2 / 最终定格 | 04:45 - 04:48 | 00:04 - 00:07 | 3s | 实现 AI 原生 BizDevOps 智能治理工具链。 | `compositions/scenes/scene-11.html` |
+| Scene 11-1<br>Scene 11-1 / 八个模块，汇成一列完整版本火车 | 04:42 - 04:50 | 00:00 - 00:08 | 8s | 版本火车管理系统，AI原生驱动项目。重构BizDevOps系统交付工具链 | `compositions/scenes/scene-11.html` |
+| Scene 11-2<br>Scene 11-2 / 最终定格 | 04:50 - 05:00 | 00:08 - 00:18 | 10s | 将经验驱动的研发协同，升级为可解释、可确认、可审计的标准化智能流程 | `compositions/scenes/scene-11.html` |
