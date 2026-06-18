@@ -8,6 +8,11 @@ const SCRIPT_PATH = path.join(PROJECT_ROOT, "口播稿.md");
 const OUTPUT_DIR = path.join(PROJECT_ROOT, "assets/media/audio/voiceover");
 const RATE_LIMIT_WAIT_MS = 65_000;
 const MAX_ATTEMPTS = 3;
+const DEFAULT_SPEED = 1.15;
+const CHAPTER_SPEEDS = {
+  "07": 1.22,
+  "11": 2
+};
 
 const CHAPTERS = [
   { chapter: "01", start: 0, duration: 28 },
@@ -19,8 +24,8 @@ const CHAPTERS = [
   { chapter: "07", start: 167, duration: 20 },
   { chapter: "08", start: 187, duration: 30 },
   { chapter: "09", start: 217, duration: 22 },
-  { chapter: "10", start: 239, duration: 42 },
-  { chapter: "11", start: 281, duration: 7 }
+  { chapter: "10", start: 239, duration: 52 },
+  { chapter: "11", start: 291, duration: 7 }
 ];
 
 function parseEnv(content) {
@@ -129,7 +134,7 @@ async function generateChapterAudio(apiKey, chapter) {
     stream: false,
     voice_setting: {
       voice_id: DEFAULT_VOICE_ID,
-      speed: 1.15,
+      speed: CHAPTER_SPEEDS[chapter.chapter] || DEFAULT_SPEED,
       vol: 1,
       pitch: 0
     },
@@ -200,7 +205,13 @@ async function main() {
   }
 
   const markdown = await readFile(SCRIPT_PATH, "utf8");
-  const chapters = parseVoiceoverMarkdown(markdown);
+  const requestedChapters = new Set(process.argv.slice(2));
+  const chapters = parseVoiceoverMarkdown(markdown).filter((chapter) => (
+    requestedChapters.size === 0 || requestedChapters.has(chapter.chapter)
+  ));
+  if (chapters.length === 0) {
+    throw new Error(`No chapters matched: ${[...requestedChapters].join(", ")}`);
+  }
 
   await mkdir(OUTPUT_DIR, { recursive: true });
 
