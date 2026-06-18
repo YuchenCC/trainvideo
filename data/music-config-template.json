@@ -1,0 +1,18 @@
+{
+  "provider": "minimaxi.com",
+  "model": "music-2.6",
+  "voiceid": "moss_audio_ce44fc67-7ce3-11f0-8de5-96e35d26fb85",
+  "title": "main-theme",
+  "duration_seconds": 180,
+  "prompt": "clean technology documentary background music, confident, precise, restrained, modern enterprise software, steady pulse, light electronic percussion, subtle piano motifs, no vocals, no dramatic trailer hits, leaves room for Mandarin narration",
+  "lyrics": "",
+  "is_instrumental": true,
+  "audio_setting": {
+    "sample_rate": 44100,
+    "bitrate": 256000,
+    "format": "mp3"
+  },
+  "output_format": "url",
+  "asset_path": "assets/media/bgm/main-theme.mp3",
+  "usage_notes": "Use under Mandarin narration at low volume. Keep rhythm steady, avoid dense midrange, and reserve emphasis for scene transitions."
+}

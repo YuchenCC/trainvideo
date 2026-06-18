@@ -5,6 +5,7 @@
 - `DESIGN.md` 是视觉风格门禁。
 - `data/chapters.json` 是章节结构、结论字幕和颜色角色的来源。
 - `docs/hyperframes-authoring.md` 是写合成 HTML 时的技术规则。
+- `docs/minimaxi-music-workflow.md` 是从 `minimaxi.com` 获取音乐配置和背景音乐资产的标准流程。
 - `docs/quality-checklist.md` 是每章完成前的验收标准。
 
 ## Directory Ownership
@@ -15,6 +16,7 @@
 | `compositions/scenes/` | 分章子合成，每章一个或多个 HTML 文件。 |
 | `compositions/components/` | 可复用组件说明、局部 HTML/CSS/JS 片段。 |
 | `data/` | 章节、镜头、字幕、关键词等结构化数据。 |
+| `data/music-config-template.json` | MiniMax 音乐配置模板，默认 `voiceid` 为 `moss_audio_ce44fc67-7ce3-11f0-8de5-96e35d26fb85`。 |
 | `assets/screenshots/raw/` | 未处理系统截图，保留原始可信证据。 |
 | `assets/screenshots/processed/` | 裁切、脱敏、压暗、局部放大准备稿。 |
 | `assets/media/audio/` | 人声、旁白、口播。 |
